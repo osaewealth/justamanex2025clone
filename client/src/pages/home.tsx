@@ -95,8 +95,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            {/* Desktop Navigation - Show on xl screens (1280px+) */}
+            <nav className="hidden xl:flex items-center space-x-8">
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Purpose</a>
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Brands</a>
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Sustainability</a>
@@ -107,7 +107,7 @@ export default function Home() {
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
-              <div className="hidden lg:flex items-center space-x-4">
+              <div className="hidden xl:flex items-center space-x-4">
                 {/* Language Selector */}
                 <div className="relative">
                   <select className="bg-transparent border border-coty-navy text-coty-navy px-3 py-1 rounded text-sm font-medium cursor-pointer hover:bg-coty-navy hover:text-white transition-colors duration-200">
@@ -132,14 +132,56 @@ export default function Home() {
                 <Search className="h-5 w-5" />
               </Button>
 
-              {/* Mobile Menu Button */}
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="lg:hidden text-coty-navy"
+              {/* Animated Mobile Menu Button */}
+              <button 
+                className="xl:hidden flex min-h-[24px] flex-col items-center justify-center gap-y-1 py-2 px-2"
+                aria-label="Open menu" 
+                aria-expanded={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                <Menu className="h-6 w-6" />
+                <span 
+                  className={`h-0.5 w-6 bg-coty-navy transition duration-700 ease-in-out ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''
+                  }`}
+                />
+                <span 
+                  className={`h-0.5 w-6 bg-coty-navy transition duration-700 ease-in-out ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`xl:hidden bg-white border-t transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+        }`}>
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <nav className="space-y-4">
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Our Purpose</a>
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Our Brands</a>
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Sustainability</a>
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Innovation</a>
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Your Career</a>
+              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">News</a>
+            </nav>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200 space-y-4">
+              <div>
+                <select className="w-full bg-transparent border border-coty-navy text-coty-navy px-3 py-2 rounded text-sm font-medium">
+                  <option>EN</option>
+                  <option>FR</option>
+                  <option>DE</option>
+                  <option>ES</option>
+                </select>
+              </div>
+              <Button 
+                variant="outline" 
+                className="w-full border-coty-navy text-coty-navy hover:bg-coty-navy hover:text-white transition-colors duration-200"
+              >
+                OPEN POSITIONS
               </Button>
             </div>
           </div>
@@ -185,31 +227,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Content - Models with Flowers */}
+          {/* Right Content - Single Hero Image */}
           <div className="relative">
-            {/* Three diverse models in colorful clothing */}
             <div className="relative z-20">
               <img 
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000" 
                 alt="Diverse models representing Coty's inclusive beauty vision" 
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
-              />
-            </div>
-
-            {/* Yellow Flower Decorations */}
-            <div className="absolute -top-8 -right-8 z-10 opacity-80">
-              <img 
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128" 
-                alt="Yellow hibiscus flower decoration" 
-                className="w-32 h-32 object-cover rounded-full"
-              />
-            </div>
-
-            <div className="absolute -bottom-6 -left-6 z-10 opacity-70">
-              <img 
-                src="https://images.unsplash.com/photo-1597848212624-e593c83afd77?ixlib=rb-4.0.3&auto=format&fit=crop&w=96&h=96" 
-                alt="Golden yellow flower accent" 
-                className="w-24 h-24 object-cover rounded-full"
               />
             </div>
           </div>
