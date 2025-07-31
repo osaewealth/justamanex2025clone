@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Search, Menu, ArrowRight, ChevronDown } from "lucide-react";
+import { Search, Menu, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
-export default function Home() {
+export default function About() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -27,56 +26,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', requestTick);
   }, []);
 
-  const newsArticles = [
-    {
-      id: 1,
-      category: "PRESS RELEASE",
-      date: "JULY 16, 2025",
-      title: "INTRODUCING ORIGEN: A fragrance collection where scent meets adventure",
-      excerpt: "Coty, Inc. unveils Origen, a new Consumer Beauty fragrance brand inspired by the spirit of discovery and scent stories from around the world.",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-    },
-    {
-      id: 2,
-      category: "PRESS RELEASE",
-      date: "JUNE 10, 2025",
-      title: "INTRODUCING ADIDAS VIBES FRAGRANCE HAIR & BODY MISTS",
-      excerpt: "Building on the success of the 'Vibes' Eau de Parfum collection, Coty launches new mood-boosting sportswear scents.",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-    },
-    {
-      id: 3,
-      category: "PRESS RELEASE",
-      date: "JUNE 3, 2025",
-      title: "Marc Jacobs celebrates anniversary at Maison Orveda",
-      excerpt: "Maison Orveda hosted an intimate fireside conversation between Marc Jacobs and Bridget Foley in New York.",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-    }
-  ];
-
-  const linkedinPosts = [
-    {
-      id: 1,
-      date: "July 24, 2025",
-      content: "Soft. Strong. Unstoppable. Introducing LeGer Signature Wildflower—a bold new fragrance inspired by flowers that bloom fiercely in the desert sun. 🌸🌵"
-    },
-    {
-      id: 2,
-      date: "July 23, 2025",
-      content: "Exciting news from Coty! Congratulating Jerome Auvinet on his promotion to Chief Information, Digital Innovation & Business Services Officer."
-    },
-    {
-      id: 3,
-      date: "July 14, 2025",
-      content: "Award-winning vibes only. 🏆 Coty claimed FIVE wins at the inaugural Marie Claire UK Fragrance Awards, celebrating scent legends and bold innovations."
-    },
-    {
-      id: 4,
-      date: "July 8, 2025",
-      content: "Miley Cyrus returns as the face of Gucci Flora Gorgeous Gardenia Eau de Parfum Intense. Shot by Tyler Mitchell against the L.A. skyline."
-    }
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -89,10 +38,10 @@ export default function Home() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="text-coty-navy font-bold text-2xl tracking-tight">
+              <a href="/" className="text-coty-navy font-bold text-2xl tracking-tight">
                 COTY
                 <div className="text-xs font-normal text-coty-gray -mt-1">SINCE 1904</div>
-              </div>
+              </a>
             </div>
 
             {/* Desktop Navigation - Show on desktop (1080px+) */}
@@ -182,127 +131,114 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 50%, #80cbc4 100%)'
-        }}
-      >
-        {/* Artistic Cracked Background Texture */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
+      {/* About Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-coty-mint-light to-coty-gray-light pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
+            WHO WE ARE
+          </h1>
+          <p className="text-xl lg:text-2xl text-coty-gray max-w-3xl mx-auto">
+            Fearless. Forward. You. We are one of the world's largest beauty companies with iconic brands across fragrance, color cosmetics, and skin & body care.
+          </p>
+        </div>
+      </section>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
-              WE<br />
-              ARE<br />
-              <span className="text-coty-navy">COTY</span>
-            </h1>
-            
-            <a 
-              href="/about" 
-              className="bg-coty-navy text-white px-8 py-4 font-semibold hover:bg-transparent hover:text-coty-navy border-2 border-coty-navy transition-all duration-300 flex items-center mx-auto lg:mx-0 group w-fit"
-            >
-              WHO WE ARE
-              <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </a>
-
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-coty-gray mr-3"></div>
-              <span className="text-sm tracking-wide">SCROLL DOWN</span>
+      {/* Company Overview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Story</h2>
+              <p className="text-lg text-coty-gray mb-6">
+                Since 1904, Coty has been a pioneer in the beauty industry. We believe beauty is a force for transformation – inspiring confidence, creativity, and connection.
+              </p>
+              <p className="text-lg text-coty-gray mb-6">
+                Today, we're one of the world's largest beauty companies with a portfolio of iconic brands that span across prestige and consumer beauty.
+              </p>
+              <div className="grid grid-cols-2 gap-8 mt-8">
+                <div>
+                  <h3 className="text-3xl font-bold text-coty-navy">40+</h3>
+                  <p className="text-coty-gray">Iconic Brands</p>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-coty-navy">$6B+</h3>
+                  <p className="text-coty-gray">Annual Revenue</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Coty beauty products and innovation" 
+                className="rounded-xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* News Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">IN THE NEWS</h2>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {newsArticles.map((article) => (
-              <Card key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <img 
-                  src={article.image} 
-                  alt={article.title} 
-                  className="w-full h-48 object-cover"
-                />
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-coty-gray text-sm font-medium">{article.category}</span>
-                    <span className="text-coty-gray text-sm">{article.date}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-coty-navy mb-3 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-coty-gray mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  <Button className="bg-coty-navy text-white px-6 py-2 font-medium hover:bg-coty-blue transition-colors duration-300 flex items-center group">
-                    READ MORE
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button 
-              variant="outline" 
-              className="border-2 border-coty-navy text-coty-navy px-8 py-3 font-semibold hover:bg-coty-navy hover:text-white transition-colors duration-300"
-            >
-              READ ALL NEWS
-            </Button>
+      {/* Our Purpose */}
+      <section className="py-20 bg-coty-gray-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-coty-navy mb-12">Our Purpose</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="bg-white p-8 rounded-xl shadow-lg">
+              <div className="w-16 h-16 bg-coty-mint rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl">🌟</span>
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-4">Inspire Confidence</h3>
+              <p className="text-coty-gray">We create products that help people express their unique beauty and feel confident in their own skin.</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-lg">
+              <div className="w-16 h-16 bg-coty-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-4">Foster Creativity</h3>
+              <p className="text-coty-gray">Beauty is an art form. We empower creativity and self-expression through innovative products and experiences.</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-lg">
+              <div className="w-16 h-16 bg-coty-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl">🤝</span>
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-4">Create Connection</h3>
+              <p className="text-coty-gray">Beauty brings people together. We build bridges across cultures and communities through shared experiences.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* LinkedIn Section */}
-      <section className="py-20 bg-coty-gray-light">
+      {/* Leadership */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">FROM OUR LINKEDIN</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {linkedinPosts.map((post) => (
-              <Card key={post.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-sm text-coty-gray mb-3">{post.date}</div>
-                <p className="text-coty-navy font-medium mb-4 line-clamp-4">
-                  {post.content}
-                </p>
-                <Button 
-                  variant="link" 
-                  className="text-coty-gold font-medium hover:text-coty-navy transition-colors duration-200 p-0"
-                >
-                  READ MORE
-                </Button>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button 
-              variant="outline" 
-              className="border-2 border-coty-navy text-coty-navy px-8 py-3 font-semibold hover:bg-coty-navy hover:text-white transition-colors duration-300 flex items-center mx-auto"
-            >
-              <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-              FOLLOW US ON LINKEDIN
-            </Button>
+          <h2 className="text-4xl font-bold text-coty-navy text-center mb-16">Leadership Team</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                alt="CEO Portrait" 
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="text-xl font-bold text-coty-navy">Sue Nabi</h3>
+              <p className="text-coty-gray">Chief Executive Officer</p>
+            </div>
+            <div className="text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108755-2616c55e8b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                alt="CFO Portrait" 
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="text-xl font-bold text-coty-navy">Laurent Kleitman</h3>
+              <p className="text-coty-gray">Chief Financial Officer</p>
+            </div>
+            <div className="text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                alt="COO Portrait" 
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="text-xl font-bold text-coty-navy">Sergio Pedreiro</h3>
+              <p className="text-coty-gray">Chief Operating Officer</p>
+            </div>
           </div>
         </div>
       </section>
