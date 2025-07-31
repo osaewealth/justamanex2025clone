@@ -199,36 +199,22 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-left">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center text-center min-h-screen">
+          <div>
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
               WE<br />
               ARE<br />
               <span className="text-coty-navy">COTY</span>
             </h1>
             
-            <Button className="bg-coty-navy text-white px-8 py-4 font-semibold hover:bg-coty-blue transition-colors duration-300 flex items-center group">
+            <button className="bg-coty-navy text-white px-8 py-4 font-semibold hover:bg-transparent hover:text-coty-navy border-2 border-coty-navy transition-all duration-300 flex items-center mx-auto group">
               WHO WE ARE
               <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </Button>
+            </button>
 
-            <div className="mt-12 text-coty-gray font-medium">
-              <div className="flex items-center">
-                <div className="w-8 h-px bg-coty-gray mr-3"></div>
-                <span className="text-sm tracking-wide">SCROLL DOWN</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Content - Single Hero Image */}
-          <div className="relative">
-            <div className="relative z-20">
-              <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000" 
-                alt="Diverse models representing Coty's inclusive beauty vision" 
-                className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
-              />
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center">
+              <div className="w-8 h-px bg-coty-gray mr-3"></div>
+              <span className="text-sm tracking-wide">SCROLL DOWN</span>
             </div>
           </div>
         </div>
