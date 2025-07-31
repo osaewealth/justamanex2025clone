@@ -95,8 +95,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Desktop Navigation - Show on xl screens (1280px+) */}
-            <nav className="hidden xl:flex items-center space-x-8">
+            {/* Desktop Navigation - Show on desktop (1080px+) */}
+            <nav className="hidden lg:flex items-center space-x-8">
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Purpose</a>
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Brands</a>
               <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Sustainability</a>
@@ -107,7 +107,7 @@ export default function Home() {
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
-              <div className="hidden xl:flex items-center space-x-4">
+              <div className="hidden lg:flex items-center space-x-4">
                 {/* Language Selector */}
                 <div className="relative">
                   <select className="bg-transparent border border-coty-navy text-coty-navy px-3 py-1 rounded text-sm font-medium cursor-pointer hover:bg-coty-navy hover:text-white transition-colors duration-200">
@@ -134,7 +134,7 @@ export default function Home() {
 
               {/* Animated Mobile Menu Button */}
               <button 
-                className="xl:hidden flex min-h-[24px] flex-col items-center justify-center gap-y-1 py-2 px-2"
+                className="lg:hidden flex min-h-[24px] flex-col items-center justify-center gap-y-1 py-2 px-2"
                 aria-label="Open menu" 
                 aria-expanded={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -155,7 +155,7 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`xl:hidden bg-white border-t transition-all duration-300 ease-in-out ${
+        <div className={`lg:hidden bg-white border-t transition-all duration-300 ease-in-out ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}>
           <div className="max-w-7xl mx-auto px-4 py-6">
