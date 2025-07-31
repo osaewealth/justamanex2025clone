@@ -97,12 +97,12 @@ export default function Home() {
 
             {/* Desktop Navigation - Show on desktop (1080px+) */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Purpose</a>
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Our Brands</a>
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Sustainability</a>
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Innovation</a>
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">Your Career</a>
-              <a href="#" className="text-coty-navy font-medium hover:text-coty-gold transition-colors duration-200">News</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Our Purpose</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Our Brands</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Sustainability</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Innovation</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Your Career</a>
+              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">News</a>
             </nav>
 
             {/* Right Side Actions */}
@@ -120,15 +120,15 @@ export default function Home() {
                 
                 {/* Open Positions Button */}
                 <Button 
-                  variant="outline" 
-                  className="border-coty-navy text-coty-navy hover:bg-coty-navy hover:text-white transition-colors duration-200"
+                  variant="ghost" 
+                  className="border border-coty-navy text-coty-navy hover:bg-transparent hover:border-coty-navy transition-all duration-300 px-4 py-2"
                 >
                   OPEN POSITIONS
                 </Button>
               </div>
 
               {/* Search Icon */}
-              <Button variant="ghost" size="icon" className="text-coty-navy hover:text-coty-gold">
+              <Button variant="ghost" size="icon" className="text-coty-navy hover:text-coty-navy transition-colors duration-200">
                 <Search className="h-5 w-5" />
               </Button>
 
@@ -160,12 +160,12 @@ export default function Home() {
         }`}>
           <div className="max-w-7xl mx-auto px-4 py-6">
             <nav className="space-y-4">
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Our Purpose</a>
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Our Brands</a>
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Sustainability</a>
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Innovation</a>
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">Your Career</a>
-              <a href="#" className="block text-coty-navy font-medium py-2 hover:text-coty-gold transition-colors duration-200">News</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Our Purpose</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Our Brands</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Sustainability</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Innovation</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Your Career</a>
+              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">News</a>
             </nav>
             
             <div className="mt-6 pt-6 border-t border-gray-200 space-y-4">
@@ -178,8 +178,8 @@ export default function Home() {
                 </select>
               </div>
               <Button 
-                variant="outline" 
-                className="w-full border-coty-navy text-coty-navy hover:bg-coty-navy hover:text-white transition-colors duration-200"
+                variant="ghost" 
+                className="w-full border border-coty-navy text-coty-navy hover:bg-transparent hover:border-coty-navy transition-all duration-300"
               >
                 OPEN POSITIONS
               </Button>
