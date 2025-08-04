@@ -1,38 +1,35 @@
 import { useState, useEffect } from "react";
-import { Search, Menu, ArrowRight, ChevronDown } from "lucide-react";
+import { Search, Menu, ArrowRight, ChevronDown, X, Phone, Briefcase, Globe, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Footer from "@/components/Footer";
+import HomeHeader from "@/components/HomeHeader";
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const heroImages = [
+    '/src/assets/jd.png',
+    '/src/assets/herobg.jpg',
+  ];
+
+  // Auto-slide effect for hero images
   useEffect(() => {
-    let ticking = false;
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Change image every 5 seconds
 
-    const updateScrollState = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 50);
-      ticking = false;
-    };
-
-    const requestTick = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollState);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', requestTick, { passive: true });
-    return () => window.removeEventListener('scroll', requestTick);
-  }, []);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const newsArticles = [
     {
       id: 1,
       category: "PRESS RELEASE",
       date: "JULY 16, 2025",
-      title: "INTRODUCING ORIGEN: A fragrance collection where scent meets adventure",
+      title: "INTRODUCING YES SKINCARE, we have a new variety of skincare products for everyone",
       excerpt: "Coty, Inc. unveils Origen, a new Consumer Beauty fragrance brand inspired by the spirit of discovery and scent stories from around the world.",
       image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
     },
@@ -54,172 +51,147 @@ export default function Home() {
     }
   ];
 
-  const linkedinPosts = [
+  const instagramPosts = [
     {
       id: 1,
-      date: "July 24, 2025",
-      content: "Soft. Strong. Unstoppable. Introducing LeGer Signature Wildflower—a bold new fragrance inspired by flowers that bloom fiercely in the desert sun. 🌸🌵"
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Behind the scenes at our manufacturing facility! Quality control in action 🏭✨ #AmanexQuality #ManufacturingExcellence",
+      likes: 234,
+      comments: 18,
+      type: "image",
+      url: "https://www.instagram.com/p/sample1/"
     },
     {
       id: 2,
-      date: "July 23, 2025",
-      content: "Exciting news from Coty! Congratulating Jerome Auvinet on his promotion to Chief Information, Digital Innovation & Business Services Officer."
+      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Fresh new air freshener collection launching soon! 🌸 Breathe in the difference #FreshAir #NewLaunch",
+      likes: 189,
+      comments: 12,
+      type: "image",
+      url: "https://www.instagram.com/p/sample2/"
     },
     {
       id: 3,
-      date: "July 14, 2025",
-      content: "Award-winning vibes only. 🏆 Coty claimed FIVE wins at the inaugural Marie Claire UK Fragrance Awards, celebrating scent legends and bold innovations."
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Our team working hard to bring you the best products! 💪 #TeamAmanex #HardWork",
+      likes: 156,
+      comments: 8,
+      type: "image",
+      url: "https://www.instagram.com/p/sample3/"
     },
     {
       id: 4,
-      date: "July 8, 2025",
-      content: "Miley Cyrus returns as the face of Gucci Flora Gorgeous Gardenia Eau de Parfum Intense. Shot by Tyler Mitchell against the L.A. skyline."
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Innovation meets tradition in our latest product line 🚀 #Innovation #QualityProducts",
+      likes: 298,
+      comments: 24,
+      type: "video",
+      url: "https://www.instagram.com/p/sample4/"
+    },
+    {
+      id: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Sustainability is at the heart of everything we do 🌱 #Sustainability #EcoFriendly",
+      likes: 267,
+      comments: 15,
+      type: "image",
+      url: "https://www.instagram.com/p/sample5/"
+    },
+    {
+      id: 6,
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Customer satisfaction is our priority! Thank you for choosing Amanex 🙏 #CustomerFirst #ThankYou",
+      likes: 145,
+      comments: 9,
+      type: "image",
+      url: "https://www.instagram.com/p/sample6/"
+    },
+    {
+      id: 7,
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "New product development in progress! Can't wait to share this with you 🔥 #NewProduct #ComingSoon",
+      likes: 312,
+      comments: 31,
+      type: "image",
+      url: "https://www.instagram.com/p/sample7/"
+    },
+    {
+      id: 8,
+      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      caption: "Quality control testing in action! Every product meets our high standards ✅ #QualityControl #Testing",
+      likes: 178,
+      comments: 11,
+      type: "image",
+      url: "https://www.instagram.com/p/sample8/"
     }
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="text-coty-navy font-bold text-2xl tracking-tight">
-                COTY
-                <div className="text-xs font-normal text-coty-gray -mt-1">SINCE 1904</div>
-              </div>
-            </div>
-
-            {/* Desktop Navigation - Show on desktop (1080px+) */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Our Purpose</a>
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Our Brands</a>
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Sustainability</a>
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Innovation</a>
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">Your Career</a>
-              <a href="#" className="relative text-coty-navy font-medium transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-1 after:transition-all after:duration-300">News</a>
-            </nav>
-
-            {/* Right Side Actions */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden lg:flex items-center space-x-4">
-                {/* Language Selector */}
-                <div className="relative">
-                  <select className="bg-transparent border border-coty-navy text-coty-navy px-3 py-1 rounded text-sm font-medium cursor-pointer hover:bg-coty-navy hover:text-white transition-colors duration-200">
-                    <option>EN</option>
-                    <option>FR</option>
-                    <option>DE</option>
-                    <option>ES</option>
-                  </select>
-                </div>
-                
-                {/* Open Positions Button */}
-                <button className="border border-coty-navy text-coty-navy text-sm font-medium px-4 py-2 rounded hover:bg-coty-navy hover:text-white transition-all duration-300">
-                  OPEN POSITIONS
-                </button>
-              </div>
-
-              {/* Search Icon */}
-              <Button variant="ghost" size="icon" className="text-coty-navy hover:text-coty-navy transition-colors duration-200">
-                <Search className="h-5 w-5" />
-              </Button>
-
-              {/* Animated Mobile Menu Button */}
-              <button 
-                className="lg:hidden flex min-h-[24px] flex-col items-center justify-center gap-y-1 py-2 px-2"
-                aria-label="Open menu" 
-                aria-expanded={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                <span 
-                  className={`h-0.5 w-6 bg-coty-navy transition duration-700 ease-in-out ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''
-                  }`}
-                />
-                <span 
-                  className={`h-0.5 w-6 bg-coty-navy transition duration-700 ease-in-out ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className={`lg:hidden bg-white border-t transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-        }`}>
-          <div className="max-w-7xl mx-auto px-4 py-6">
-            <nav className="space-y-4">
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Our Purpose</a>
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Our Brands</a>
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Sustainability</a>
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Innovation</a>
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">Your Career</a>
-              <a href="#" className="block relative text-coty-navy font-medium py-2 transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-coty-navy after:left-0 after:-bottom-0 after:transition-all after:duration-300">News</a>
-            </nav>
-            
-            <div className="mt-6 pt-6 border-t border-gray-200 space-y-4">
-              <div>
-                <select className="w-full bg-transparent border border-coty-navy text-coty-navy px-3 py-2 rounded text-sm font-medium">
-                  <option>EN</option>
-                  <option>FR</option>
-                  <option>DE</option>
-                  <option>ES</option>
-                </select>
-              </div>
-              <button className="w-full border border-coty-navy text-coty-navy text-sm font-medium px-4 py-2 rounded hover:bg-coty-navy hover:text-white transition-all duration-300">
-                OPEN POSITIONS
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <HomeHeader />
 
       {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 50%, #80cbc4 100%)'
-        }}
-      >
-        {/* Artistic Cracked Background Texture */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Images with Auto-Slide */}
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url('${image}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+        ))}
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
-              WE<br />
-              ARE<br />
-              <span className="text-coty-navy">COTY</span>
+        <div className="relative z-10 flex items-center h-full pl-16">
+          <div className="text-left">
+            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+              WE ARE<br />
+              <span className="text-white">AMANEX</span>
             </h1>
             
+            <p className="text-xl text-white mb-8 opacity-90 max-w-2xl">
+              Discover our diverse selection of products, meticulously crafted to bring convenience, 
+              freshness, and luxury into your home.
+            </p>
+            
             <a 
-              href="/about" 
-              className="bg-coty-navy text-white px-8 py-4 font-semibold hover:bg-transparent hover:text-coty-navy border-2 border-coty-navy transition-all duration-300 flex items-center mx-auto lg:mx-0 group w-fit"
+              href="/about-us" 
+              className="bg-white text-coty-navy px-10 py-6 font-medium hover:bg-transparent hover:text-white border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl"
             >
               WHO WE ARE
-              <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
 
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-coty-gray mr-3"></div>
+            <div className="mt-12 text-white font-medium flex items-center">
+              <div className="w-8 h-px bg-white mr-3"></div>
               <span className="text-sm tracking-wide">SCROLL DOWN</span>
             </div>
           </div>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex 
+                  ? 'bg-white scale-125' 
+                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -249,155 +221,175 @@ export default function Home() {
                   <p className="text-coty-gray mb-4 line-clamp-3">
                     {article.excerpt}
                   </p>
-                  <Button className="bg-coty-navy text-white px-6 py-2 font-medium hover:bg-coty-blue transition-colors duration-300 flex items-center group">
+                  <a href={`/blog#article-${article.id}`} className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
                     READ MORE
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                  </Button>
+                    <ArrowRight className="text-xl" />
+                  </a>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="text-center">
-            <Button 
-              variant="outline" 
-              className="border-2 border-coty-navy text-coty-navy px-8 py-3 font-semibold hover:bg-coty-navy hover:text-white transition-colors duration-300"
-            >
+            <a href="/blog" className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-coty-navy text-md font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border border-coty-navy transition-colors duration-300">
               READ ALL NEWS
-            </Button>
+              <ArrowRight className="text-2xl" />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* LinkedIn Section */}
-      <section className="py-20 bg-coty-gray-light">
+      {/* Instagram Feed Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">FROM OUR LINKEDIN</h2>
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center mb-4">
+              <svg className="w-8 h-8 text-pink-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.429 0-1.178.449-2.48 1.197-3.428.749-.949 1.9-1.56 3.197-1.56s2.449.611 3.198 1.56c.748.948 1.197 2.25 1.197 3.428 0 1.179-.449 2.481-1.197 3.429-.749.948-1.901 1.559-3.198 1.559zm7.718-6.988c-.297 0-.54-.242-.54-.54s.243-.54.54-.54.54.242.54.54-.243.54-.54.54zM15.55 12c0 1.961-1.589 3.55-3.55 3.55S8.45 13.961 8.45 12s1.589-3.55 3.55-3.55 3.55 1.589 3.55 3.55z"/>
+              </svg>
+              <h2 className="text-4xl font-bold text-coty-navy">@amanex_ghana</h2>
+            </div>
+            <p className="text-lg text-coty-gray max-w-2xl mx-auto">
+              Follow our journey and discover the latest updates, behind-the-scenes moments, and product highlights
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {linkedinPosts.map((post) => (
-              <Card key={post.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-sm text-coty-gray mb-3">{post.date}</div>
-                <p className="text-coty-navy font-medium mb-4 line-clamp-4">
-                  {post.content}
-                </p>
-                <Button 
-                  variant="link" 
-                  className="text-coty-gold font-medium hover:text-coty-navy transition-colors duration-200 p-0"
-                >
-                  READ MORE
-                </Button>
-              </Card>
+          {/* Instagram Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            {instagramPosts.map((post, index) => (
+              <div 
+                key={post.id} 
+                className="group relative aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => window.open(post.url, '_blank')}
+              >
+                {/* Post Image */}
+                <img 
+                  src={post.image} 
+                  alt={post.caption}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                
+                {/* Instagram Overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  {/* Instagram Icons */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-4 text-white">
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                      </svg>
+                      <span className="text-sm font-medium">{post.likes}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.99 4c0-1.1-.89-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                      </svg>
+                      <span className="text-sm font-medium">{post.comments}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Post Type Indicator */}
+                {post.type === 'video' && (
+                  <div className="absolute top-3 right-3">
+                    <svg className="w-6 h-6 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                )}
+
+                {/* Caption Preview (on hover) */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-white text-sm line-clamp-2">{post.caption}</p>
+                </div>
+              </div>
             ))}
           </div>
 
+          {/* Follow Button */}
           <div className="text-center">
             <Button 
-              variant="outline" 
-              className="border-2 border-coty-navy text-coty-navy px-8 py-3 font-semibold hover:bg-coty-navy hover:text-white transition-colors duration-300 flex items-center mx-auto"
+              className="w-fit flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-md font-medium rounded-br-3xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 mx-auto shadow-lg hover:shadow-xl"
+              onClick={() => window.open('https://www.instagram.com/amanex_ghana', '_blank')}
             >
-              <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.429 0-1.178.449-2.48 1.197-3.428.749-.949 1.9-1.56 3.197-1.56s2.449.611 3.198 1.56c.748.948 1.197 2.25 1.197 3.428 0 1.179-.449 2.481-1.197 3.429-.749.948-1.901 1.559-3.198 1.559zm7.718-6.988c-.297 0-.54-.242-.54-.54s.243-.54.54-.54.54.242.54.54-.243.54-.54.54zM15.55 12c0 1.961-1.589 3.55-3.55 3.55S8.45 13.961 8.45 12s1.589-3.55 3.55-3.55 3.55 1.589 3.55 3.55z"/>
               </svg>
-              FOLLOW US ON LINKEDIN
+              FOLLOW US ON INSTAGRAM
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-coty-navy text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start mb-16">
-            {/* Left Side - Brand Message */}
-            <div>
-              <h2 className="text-5xl lg:text-6xl font-bold leading-tight mb-8">
-                FEARLESS.<br />
-                FORWARD.<br />
-                YOU.
-              </h2>
-            </div>
 
-            {/* Right Side - Footer Links */}
-            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8">
-              <div>
-                <ul className="space-y-3 text-gray-300 text-sm">
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Contact Us</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Supplier Portal</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Terms of Use</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Careers</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Investors</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Modern Slavery Act &<br />Transparency in Supply Chains<br />Statement</a></li>
-                </ul>
-              </div>
-              <div>
-                <ul className="space-y-3 text-gray-300 text-sm">
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">FAQ</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Our Policies</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Privacy Notice</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors duration-200">Ethics & Compliance Hotline</a></li>
-                </ul>
-              </div>
-            </div>
+
+      {/* Our Mission Section - Inspired by Homedede */}
+      <section className="bg-yellow-100 py-16 px-4">
+        <div className="flex flex-col md:flex-row items-center md:items-start max-w-7xl mx-auto">
+          {/* Image */}
+          <div className="w-full md:w-1/2 mb-10 md:mb-0">
+            <img 
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              alt="Our Mission" 
+              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
+            />
           </div>
 
-          {/* Social Media Section */}
-          <div className="mb-16">
-            <h4 className="font-medium text-white mb-4">Follow Coty</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="Facebook">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="Twitter">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="Instagram">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.429 0-1.178.449-2.48 1.197-3.428.749-.949 1.9-1.56 3.197-1.56s2.449.611 3.198 1.56c.748.948 1.197 2.25 1.197 3.428 0 1.179-.449 2.481-1.197 3.429-.749.948-1.901 1.559-3.198 1.559zm7.718-6.988c-.297 0-.54-.242-.54-.54s.243-.54.54-.54.54.242.54.54-.243.54-.54.54zM15.55 12c0 1.961-1.589 3.55-3.55 3.55S8.45 13.961 8.45 12s1.589-3.55 3.55-3.55 3.55 1.589 3.55 3.55z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="LinkedIn">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* Bottom Section with Logo and Copyright */}
-          <div className="border-t border-gray-600 pt-8">
-            <div className="flex flex-col lg:flex-row justify-between items-center">
-              <div className="text-gray-300 text-sm mb-6 lg:mb-0">
-                <p>© 2025, Coty Inc.</p>
-                <p>All trademarks registered. All rights reserved.</p>
-              </div>
-
-              <div className="flex flex-col lg:flex-row items-center gap-6">
-                {/* Coty circular logo */}
-                <div className="w-16 h-16 border border-gray-400 rounded-full flex items-center justify-center">
-                  <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                <div className="text-gray-300 text-sm text-center lg:text-right">
-                  <p>NYSE</p>
-                  <p className="font-bold">$4.99 -0.1</p>
-                </div>
-              </div>
-            </div>
+          {/* Text Content */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center p-6">
+            <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Mission</h2>
+            <p className="text-lg text-gray-800">
+              Continuous quality improvement, employment creation,<br />
+              and sustainable growth in the manufacturing sector.
+            </p>
+            <a href="/blog#mission" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+              Learn More
+              <ArrowRight className="text-2xl" />
+            </a>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Our Vision Section - Inspired by Homedede */}
+      <section className="bg-yellow-100 py-16 px-4">
+        <div className="flex flex-col-reverse md:flex-row items-center md:items-start max-w-7xl mx-auto">
+          {/* Text Content */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center p-6">
+            <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Vision</h2>
+            <p className="text-lg text-gray-800">
+              To become one of Africa's leading household,<br />
+              cosmetics, and plastic manufacturers.
+            </p>
+            <a href="/blog#vision" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+              Learn More
+              <ArrowRight className="text-2xl" />
+            </a>
+          </div>
+
+          {/* Image */}
+          <div className="w-full md:w-1/2 mb-10 md:mb-0">
+            <img 
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              alt="Our Vision" 
+              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Back to Top Button */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
+          <Button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300"
+          >
+            BACK TO TOP
+            <ArrowUp className="text-2xl" />
+          </Button>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
