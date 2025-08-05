@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function PerfumesBodyCare() {
   const perfumesBodyCareProducts = [
@@ -105,6 +106,7 @@ export default function PerfumesBodyCare() {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 } 

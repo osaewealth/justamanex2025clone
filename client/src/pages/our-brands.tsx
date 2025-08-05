@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Star, ShoppingCart, Search, X, ArrowUp } from "lucide-react";
+import { ArrowRight, Star, Search, X, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function OurBrands() {
   const productCategories = [
@@ -249,18 +250,18 @@ export default function OurBrands() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">Our Best Selling Products</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
-              Discover our most popular products that customers love and trust.
+              Discover our most popular products that customers love and trust. These are our top-performing items across all categories.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {bestSellers.map((product, index) => (
-              <Card key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
                 <div className="text-center mb-4">
-                  <div className="w-16 h-16 bg-coty-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-white font-bold text-lg">{product.name}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-coty-navy mb-2">{product.name}</h3>
+                  <h3 className="text-lg font-bold text-coty-navy mb-2 group-hover:text-coty-navy/80 transition-colors duration-300">{product.name}</h3>
                   <p className="text-coty-gray text-sm mb-3">{product.category}</p>
                   <div className="flex items-center justify-center mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -271,11 +272,10 @@ export default function OurBrands() {
                     ))}
                     <span className="text-sm text-coty-gray ml-2">({product.rating})</span>
                   </div>
-                  <div className="text-2xl font-bold text-coty-navy mb-4">{product.price}</div>
-                  <Button className="w-full flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
-                    <ShoppingCart className="h-5 w-5" />
-                    ADD TO CART
-                  </Button>
+                  <div className="text-2xl font-bold text-coty-navy mb-4 group-hover:text-coty-navy/80 transition-colors duration-300">{product.price}</div>
+                  <div className="text-sm text-coty-gray bg-coty-gray-light px-3 py-2 rounded-full inline-block">
+                    Best Seller
+                  </div>
                 </div>
               </Card>
             ))}
@@ -299,7 +299,7 @@ export default function OurBrands() {
                 body splashes that define your personal style, our products are designed to enrich your everyday experiences.
               </p>
               <Button className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
-                SHOP NOW
+                LEARN MORE
                 <ArrowRight className="text-2xl" />
               </Button>
             </div>
@@ -322,26 +322,14 @@ export default function OurBrands() {
             Discover our products and experience the quality that has made us a trusted name in personal care and household products.
           </p>
           <Button className="w-fit flex items-center gap-4 px-8 py-4 bg-white text-coty-navy text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-white border border-white transition-colors duration-300">
-            SHOP ALL PRODUCTS
+            EXPLORE PRODUCTS
             <ArrowRight className="text-2xl" />
           </Button>
         </div>
       </section>
 
-      {/* Back to Top Button */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
-          <Button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300"
-          >
-            BACK TO TOP
-            <ArrowUp className="text-2xl" />
-          </Button>
-        </div>
-      </section>
-
       <Footer />
+      <ScrollToTop />
     </div>
   );
 } 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Search, X, Briefcase, Globe, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,31 +6,60 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function ContactUs() {
+  const [isVisible, setIsVisible] = useState(false);
+  const contactCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (contactCardsRef.current.length > 0) {
+      contactCardsRef.current.forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const contactInfo = [
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Address",
       content: "4TH KINGDOM RD, OSHIYIE, ACCRA\nP.O.BOX ML 980, MALLAM",
-      link: "https://maps.google.com"
+      link: "https://maps.google.com",
+      color: "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Phone",
       content: "TEL: +233 303 943 842\nMobile: +233 550 434 576\nWhatsApp: 0 303 943 842",
-      link: "tel:+233303943842"
+      link: "tel:+233303943842",
+      color: "bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
       content: "amanexcomltd@gmail.com",
-      link: "mailto:amanexcomltd@gmail.com"
+      link: "mailto:amanexcomltd@gmail.com",
+      color: "bg-red-100 text-red-600 group-hover:bg-red-200"
     },
     {
       icon: <Clock className="h-6 w-6" />,
       title: "Business Hours",
-      content: "Mon - Fri: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 3:00 PM\nSunday: Closed"
+      content: "Mon - Fri: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 3:00 PM\nSunday: Closed",
+      color: "bg-blue-50 text-blue-500 group-hover:bg-blue-100"
     }
   ];
 
@@ -96,21 +125,37 @@ export default function ContactUs() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
-              <Card key={index} className="bg-white rounded-xl p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="text-coty-navy mb-4 flex justify-center">
-                  {info.icon}
-                </div>
-                <h3 className="text-xl font-bold text-coty-navy mb-3">{info.title}</h3>
-                <div className="text-coty-gray whitespace-pre-line">
-                  {info.link ? (
-                    <a href={info.link} className="hover:text-coty-navy transition-colors duration-200">
-                      {info.content}
-                    </a>
-                  ) : (
-                    info.content
-                  )}
-                </div>
-              </Card>
+              <div
+                key={index}
+                ref={(el) => (contactCardsRef.current[index] = el)}
+                className={`transform transition-all duration-700 ease-out ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 150}ms`,
+                  minHeight: '200px'
+                }}
+              >
+                <Card className="bg-white rounded-xl p-6 text-center h-full hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
+                  <div className="text-coty-navy mb-4 flex justify-center">
+                    <div className={`p-3 rounded-full transition-all duration-300 group-hover:scale-110 transform ${info.color}`}>
+                      {info.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">{info.title}</h3>
+                  <div className="text-coty-gray whitespace-pre-line">
+                    {info.link ? (
+                      <a href={info.link} className="hover:text-coty-navy transition-colors duration-200 hover:underline">
+                        {info.content}
+                      </a>
+                    ) : (
+                      info.content
+                    )}
+                  </div>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -202,18 +247,29 @@ export default function ContactUs() {
 
               <div className="space-y-6">
                 {departments.map((dept, index) => (
-                  <Card key={index} className="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <h3 className="text-lg font-bold text-coty-navy mb-3">{dept.name}</h3>
+                  <Card 
+                    key={index} 
+                    className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group"
+                    style={{ 
+                      transitionDelay: `${index * 100}ms`,
+                      minHeight: '120px'
+                    }}
+                  >
+                    <h3 className="text-lg font-bold text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">{dept.name}</h3>
                     <div className="space-y-2 text-coty-gray">
-                      <div className="flex items-center">
-                        <Mail className="h-4 w-4 mr-2" />
-                        <a href={`mailto:${dept.email}`} className="hover:text-coty-navy transition-colors duration-200">
+                      <div className="flex items-center group/item">
+                        <div className="p-1.5 rounded-full bg-blue-100 text-blue-600 mr-2 group-hover/item:scale-110 transition-transform duration-200">
+                          <Mail className="h-4 w-4" />
+                        </div>
+                        <a href={`mailto:${dept.email}`} className="hover:text-coty-navy transition-colors duration-200 hover:underline">
                           {dept.email}
                         </a>
                       </div>
-                      <div className="flex items-center">
-                        <Phone className="h-4 w-4 mr-2" />
-                        <a href={`tel:${dept.phone}`} className="hover:text-coty-navy transition-colors duration-200">
+                      <div className="flex items-center group/item">
+                        <div className="p-1.5 rounded-full bg-yellow-100 text-yellow-600 mr-2 group-hover/item:scale-110 transition-transform duration-200">
+                          <Phone className="h-4 w-4" />
+                        </div>
+                        <a href={`tel:${dept.phone}`} className="hover:text-coty-navy transition-colors duration-200 hover:underline">
                           {dept.phone}
                         </a>
                       </div>
@@ -273,20 +329,8 @@ export default function ContactUs() {
         </div>
       </section>
 
-      {/* Back to Top Button */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
-          <Button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300"
-          >
-            BACK TO TOP
-            <ArrowUp className="text-2xl" />
-          </Button>
-        </div>
-      </section>
-
       <Footer />
+      <ScrollToTop />
     </div>
   );
 } 

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function PersonalCare() {
   const personalCareProducts = [
@@ -123,6 +124,7 @@ export default function PersonalCare() {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 } 

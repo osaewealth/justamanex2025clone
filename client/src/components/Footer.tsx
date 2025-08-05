@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Briefcase, Globe } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 export default function Footer() {
@@ -7,48 +7,80 @@ export default function Footer() {
     <footer className="bg-coty-navy text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-2">
             <h3 className="text-xl font-semibold mb-4">Amanex Company Limited</h3>
             <p className="text-gray-300 mb-4">
               Leading manufacturer and distributor of premium personal care, home care, and fragrance products across Africa.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Phone className="h-5 w-5" />
+              <a 
+                href="https://www.facebook.com/amanexcompanyltd" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Follow us on Facebook"
+              >
+                <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Briefcase className="h-5 w-5" />
+              <a 
+                href="https://www.instagram.com/amanexcompanyltd" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Globe className="h-5 w-5" />
+              <a 
+                href="https://www.linkedin.com/company/amanex-company-limited" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Follow us on LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://x.com/AmanexCompany" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Follow us on X (Twitter)"
+              >
+                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="/about-us" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/our-story" className="text-gray-300 hover:text-white transition-colors">Our Story</a></li>
-              <li><a href="/our-brands" className="text-gray-300 hover:text-white transition-colors">Our Brands</a></li>
-              <li><a href="/our-impact" className="text-gray-300 hover:text-white transition-colors">Our Impact</a></li>
-              <li><a href="/contact-us" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
-            </ul>
-          </div>
+          {/* Quick Links and Products - Side by side on mobile/tablet */}
+          <div className="sm:col-span-2 lg:col-span-2">
+            <div className="grid grid-cols-2 gap-8">
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul className="space-y-2">
+                  <li><a href="/about-us" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                  <li><a href="/our-story" className="text-gray-300 hover:text-white transition-colors">Our Story</a></li>
+                  <li><a href="/our-brands" className="text-gray-300 hover:text-white transition-colors">Our Brands</a></li>
+                  <li><a href="/our-impact" className="text-gray-300 hover:text-white transition-colors">Our Impact</a></li>
+                  <li><a href="/contact-us" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                </ul>
+              </div>
 
-          {/* Products */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Products</h4>
-            <ul className="space-y-2">
-              <li><a href="/personal-care" className="text-gray-300 hover:text-white transition-colors">Personal Care</a></li>
-              <li><a href="/home-care" className="text-gray-300 hover:text-white transition-colors">Home Care</a></li>
-              <li><a href="/fragrance" className="text-gray-300 hover:text-white transition-colors">Fragrance</a></li>
-              <li><a href="/air-fresheners" className="text-gray-300 hover:text-white transition-colors">Air Fresheners</a></li>
-              <li><a href="/cleaning-products" className="text-gray-300 hover:text-white transition-colors">Cleaning Products</a></li>
-            </ul>
+              {/* Products */}
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Products</h4>
+                <ul className="space-y-2">
+                  <li><a href="/personal-care" className="text-gray-300 hover:text-white transition-colors">Personal Care</a></li>
+                  <li><a href="/home-care" className="text-gray-300 hover:text-white transition-colors">Home Care</a></li>
+                  <li><a href="/fragrance" className="text-gray-300 hover:text-white transition-colors">Fragrance</a></li>
+                  <li><a href="/air-fresheners" className="text-gray-300 hover:text-white transition-colors">Air Fresheners</a></li>
+                  <li><a href="/cleaning-products" className="text-gray-300 hover:text-white transition-colors">Cleaning Products</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 

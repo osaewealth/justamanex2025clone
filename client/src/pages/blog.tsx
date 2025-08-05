@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Footer from '@/components/Footer';
 import StandardHeader from '@/components/StandardHeader';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Blog() {
   // Sample blog articles data
@@ -278,20 +279,8 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Back to Top Button */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
-          <Button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300"
-          >
-            BACK TO TOP
-            <ArrowUp className="text-2xl" />
-          </Button>
-        </div>
-      </section>
-
       <Footer />
+      <ScrollToTop />
     </div>
   );
 } 
