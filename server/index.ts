@@ -1,59 +1,89 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+import fs from "fs";
 
 const app = express();
+
+// Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Simple logging middleware
 app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
-  });
-
+  console.log(`${req.method} ${req.path}`);
   next();
 });
 
-// Initialize routes
+// Initialize API routes
 registerRoutes(app);
 
+// Error handling middleware
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  console.error('Error:', err);
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
-
   res.status(status).json({ message });
-  throw err;
 });
 
-// Setup static file serving for production
-if (app.get("env") === "development") {
-  // In development, we'll handle Vite setup differently
-  log("Running in development mode");
+// Serve static files in production
+if (process.env.NODE_ENV === "production") {
+  // Try to serve the built client files
+  const possiblePaths = [
+    path.join(process.cwd(), "dist", "public"),
+    path.join(process.cwd(), "dist"),
+    path.join(__dirname, "..", "dist", "public"),
+    path.join(__dirname, "..", "dist"),
+  ];
+
+  let staticPath = null;
+  for (const possiblePath of possiblePaths) {
+    if (fs.existsSync(possiblePath)) {
+      staticPath = possiblePath;
+      break;
+    }
+  }
+
+  if (staticPath) {
+    console.log(`Serving static files from: ${staticPath}`);
+    app.use(express.static(staticPath));
+    
+    // Serve index.html for all non-API routes
+    app.get("*", (req, res) => {
+      if (!req.path.startsWith("/api")) {
+        const indexPath = path.join(staticPath, "index.html");
+        if (fs.existsSync(indexPath)) {
+          res.sendFile(indexPath);
+        } else {
+          res.status(404).json({ message: "index.html not found" });
+        }
+      } else {
+        res.status(404).json({ message: "API route not found" });
+      }
+    });
+  } else {
+    // Fallback if no build files found
+    app.get("*", (req, res) => {
+      if (req.path.startsWith("/api")) {
+        res.status(404).json({ message: "API route not found" });
+      } else {
+        res.status(200).json({ 
+          message: "Server is running", 
+          note: "Build files not found. Please run 'npm run build' first." 
+        });
+      }
+    });
+  }
 } else {
-  serveStatic(app);
+  // Development mode - just return a message
+  app.get("*", (req, res) => {
+    if (req.path.startsWith("/api")) {
+      res.status(404).json({ message: "API route not found" });
+    } else {
+      res.status(200).json({ message: "Development server running" });
+    }
+  });
 }
 
-// Export the app for Vercel serverless functions
+// Export for Vercel
 export default app;

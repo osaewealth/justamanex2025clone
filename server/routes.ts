@@ -1,12 +1,8 @@
 import type { Express } from "express";
-import { storage } from "./storage";
 
 export function registerRoutes(app: Express): void {
   // put application routes here
   // prefix all routes with /api
-
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
 
   // Example API route
   app.get("/api/health", (req, res) => {
@@ -19,6 +15,17 @@ export function registerRoutes(app: Express): void {
       message: "API is working!", 
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || "development"
+    });
+  });
+
+  // Simple data route
+  app.get("/api/data", (req, res) => {
+    res.json({
+      items: [
+        { id: 1, name: "Item 1" },
+        { id: 2, name: "Item 2" },
+        { id: 3, name: "Item 3" }
+      ]
     });
   });
 }
