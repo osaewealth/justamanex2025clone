@@ -178,9 +178,9 @@ export default function Fragrance() {
               Discover our comprehensive range of fragrances, cleaning solutions, and personal care products. 
               From air fresheners to shower gels, each product is carefully formulated to provide freshness, cleanliness, and comfort for your home and personal care needs.
             </p>
-            <div className="mt-12 text-gray-500 font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-gray-500 mr-3"></div>
-              <span className="text-sm tracking-wide">EXPLORE OUR SCENTS</span>
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
+              <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
+              <span className="text-sm tracking-wide animate-bounce">EXPLORE OUR SCENTS</span>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function Footer() {
             <p className="text-gray-300 mb-4">
               Leading manufacturer and distributor of premium personal care, home care, and fragrance products across Africa.
             </p>
-            <div className="flex space-x-4">
+              <div className="flex space-x-4">
               <a 
                 href="https://www.facebook.com/amanexcompanyltd" 
                 target="_blank" 
@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="grid grid-cols-2 gap-8">
               {/* Quick Links */}
-              <div>
+            <div>
                 <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
                 <ul className="space-y-2">
                   <li><a href="/about-us" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
@@ -66,11 +66,11 @@ export default function Footer() {
                   <li><a href="/our-brands" className="text-gray-300 hover:text-white transition-colors">Our Brands</a></li>
                   <li><a href="/our-impact" className="text-gray-300 hover:text-white transition-colors">Our Impact</a></li>
                   <li><a href="/contact-us" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
-                </ul>
-              </div>
+              </ul>
+            </div>
 
               {/* Products */}
-              <div>
+            <div>
                 <h4 className="text-lg font-semibold mb-4">Products</h4>
                 <ul className="space-y-2">
                   <li><a href="/personal-care" className="text-gray-300 hover:text-white transition-colors">Personal Care</a></li>
@@ -78,7 +78,7 @@ export default function Footer() {
                   <li><a href="/fragrance" className="text-gray-300 hover:text-white transition-colors">Fragrance</a></li>
                   <li><a href="/air-fresheners" className="text-gray-300 hover:text-white transition-colors">Air Fresheners</a></li>
                   <li><a href="/cleaning-products" className="text-gray-300 hover:text-white transition-colors">Cleaning Products</a></li>
-                </ul>
+              </ul>
               </div>
             </div>
           </div>

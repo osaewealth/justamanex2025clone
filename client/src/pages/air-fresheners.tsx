@@ -79,8 +79,8 @@ export default function AirFresheners() {
             </p>
 
             <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-coty-gray mr-3"></div>
-              <span className="text-sm tracking-wide">FRESHEN YOUR SPACE</span>
+              <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
+              <span className="text-sm tracking-wide animate-bounce">FRESHEN YOUR SPACE</span>
             </div>
           </div>
         </div>

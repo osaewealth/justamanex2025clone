@@ -172,15 +172,15 @@ export default function Home() {
             
             <a 
               href="/about-us" 
-              className="bg-white text-coty-navy px-10 py-6 font-medium hover:bg-transparent hover:text-white border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl"
+              className="bg-transparent text-white px-10 py-6 font-medium hover:bg-white hover:text-coty-navy border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl"
             >
               WHO WE ARE
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
 
-            <div className="mt-12 text-white font-medium flex items-center">
-              <div className="w-8 h-px bg-white mr-3"></div>
-              <span className="text-sm tracking-wide">SCROLL DOWN</span>
+            <div className="mt-12 text-white font-medium flex items-center justify-center lg:justify-start">
+              <div className="w-8 h-px bg-white mr-3 animate-pulse"></div>
+              <span className="text-sm tracking-wide animate-bounce">SCROLL DOWN</span>
             </div>
           </div>
         </div>

@@ -221,8 +221,8 @@ export default function Careers() {
               Discover opportunities that match your skills and passion.
             </p>
             <div className="mt-12 text-gray-500 font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-gray-500 mr-3"></div>
-              <span className="text-sm tracking-wide">EXPLORE OPPORTUNITIES</span>
+              <div className="w-8 h-px bg-gray-500 mr-3 animate-pulse"></div>
+              <span className="text-sm tracking-wide animate-bounce">EXPLORE OPPORTUNITIES</span>
             </div>
           </div>
         </div>

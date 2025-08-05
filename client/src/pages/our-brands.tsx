@@ -121,8 +121,8 @@ export default function OurBrands() {
             </p>
 
             <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
-              <div className="w-8 h-px bg-coty-gray mr-3"></div>
-              <span className="text-sm tracking-wide">DISCOVER OUR PRODUCTS</span>
+              <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
+              <span className="text-sm tracking-wide animate-bounce">DISCOVER OUR PRODUCTS</span>
             </div>
           </div>
         </div>
