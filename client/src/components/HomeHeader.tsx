@@ -85,8 +85,8 @@ export default function HomeHeader() {
               {/* Open Positions Button */}
               <a href="/careers" className={`w-fit flex items-center gap-4 px-6 py-3 text-sm font-medium rounded-br-3xl border transition-colors duration-300 ${
                 isScrolled
-                  ? 'bg-coty-navy text-white hover:bg-transparent hover:text-coty-navy border-coty-navy'
-                  : 'bg-white text-coty-navy hover:bg-transparent hover:text-white border-white'
+                  ? 'bg-transparent text-coty-navy hover:bg-coty-navy hover:text-white border-coty-navy'
+                  : 'bg-transparent text-white hover:bg-white hover:text-coty-navy border-white'
               }`}>
                 OPEN POSITIONS
               </a>
@@ -152,7 +152,7 @@ export default function HomeHeader() {
               <a href="/our-impact" className="text-coty-navy font-medium hover:text-coty-gray transition-colors duration-200">Our Impact</a>
               <a href="/contact-us" className="text-coty-navy font-medium hover:text-coty-gray transition-colors duration-200">Contact Us</a>
               <div className="pt-4 border-t border-gray-200">
-                <a href="/careers" className="block w-full text-center px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+                <a href="/careers" className="block w-full text-center px-6 py-3 bg-transparent text-coty-navy text-sm font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border border-coty-navy transition-colors duration-300">
                   OPEN POSITIONS
                 </a>
               </div>

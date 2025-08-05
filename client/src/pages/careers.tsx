@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search, Menu, ArrowRight, X, Phone, Mail, MapPin, Clock, Users, Globe, ArrowUp, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +9,80 @@ import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Careers() {
+  const [isBenefitsVisible, setIsBenefitsVisible] = useState(false);
+  const [isJobsVisible, setIsJobsVisible] = useState(false);
+  const [selectedJob, setSelectedJob] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const benefitsRef = useRef<HTMLDivElement>(null);
+  const jobsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === benefitsRef.current) {
+              setIsBenefitsVisible(true);
+            } else if (entry.target === jobsRef.current) {
+              setIsJobsVisible(true);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (benefitsRef.current) {
+      observer.observe(benefitsRef.current);
+    }
+    if (jobsRef.current) {
+      observer.observe(jobsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToForm = (jobTitle: string) => {
+    setSelectedJob(jobTitle);
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+    
+    // Create email content
+    const emailContent = `
+      New Job Application Submission
+      
+      Name: ${data.firstName} ${data.lastName}
+      Email: ${data.email}
+      Phone: ${data.phone}
+      Position: ${data.position}
+      
+      Cover Letter:
+      ${data.coverLetter}
+      
+      Resume: ${data.resume ? 'Attached' : 'Not provided'}
+    `;
+
+    // Send email to amanexcomltd@gmail.com
+    const mailtoLink = `mailto:amanexcomltd@gmail.com?subject=New Job Application - ${data.position}&body=${encodeURIComponent(emailContent)}`;
+    window.open(mailtoLink);
+    
+    // Show success message
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setSelectedJob("");
+      (e.target as HTMLFormElement).reset();
+    }, 5000);
+  };
+
   const jobOpenings = [
     {
       id: 1,
@@ -108,22 +182,26 @@ export default function Careers() {
     {
       icon: <Users className="h-8 w-8" />,
       title: "Professional Growth",
-      description: "Continuous learning opportunities and career development programs"
+      description: "Continuous learning opportunities and career development programs",
+      color: "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
     },
     {
       icon: <Globe className="h-8 w-8" />,
       title: "Global Exposure",
-      description: "Work with international brands and gain valuable experience"
+      description: "Work with international brands and gain valuable experience",
+      color: "bg-green-100 text-green-600 group-hover:bg-green-200"
     },
     {
       icon: <Briefcase className="h-8 w-8" />,
       title: "Competitive Benefits",
-      description: "Health insurance, paid time off, and performance bonuses"
+      description: "Health insurance, paid time off, and performance bonuses",
+      color: "bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
     },
     {
       icon: <Clock className="h-8 w-8" />,
       title: "Work-Life Balance",
-      description: "Flexible working hours and supportive work environment"
+      description: "Flexible working hours and supportive work environment",
+      color: "bg-purple-100 text-purple-600 group-hover:bg-purple-200"
     }
   ];
 
@@ -151,7 +229,7 @@ export default function Careers() {
       </section>
 
       {/* Company Culture Section */}
-      <section className="py-20 bg-gray-50">
+      <section ref={benefitsRef} className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-6">Why Work With Us?</h2>
@@ -162,24 +240,37 @@ export default function Careers() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-0">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-4 bg-coty-navy text-white rounded-full">
-                      {benefit.icon}
+              <div
+                key={index}
+                className={`transform transition-all duration-700 ease-out ${
+                  isBenefitsVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  transitionDelay: `${index * 150}ms`,
+                  minHeight: '280px'
+                }}
+              >
+                <Card className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group h-full">
+                  <CardContent className="p-0">
+                    <div className="flex justify-center mb-4">
+                      <div className={`p-4 rounded-full transition-all duration-300 group-hover:scale-110 transform ${benefit.color}`}>
+                        {benefit.icon}
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-xl font-medium text-coty-navy mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
+                    <h3 className="text-xl font-medium text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">{benefit.title}</h3>
+                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Job Openings Section */}
-      <section className="py-20">
+      <section ref={jobsRef} className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-6">Current Openings</h2>
@@ -189,135 +280,188 @@ export default function Careers() {
           </div>
           
           <div className="space-y-8">
-            {jobOpenings.map((job) => (
-              <Card key={job.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-coty-navy mb-2">{job.title}</h3>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                        <span className="flex items-center gap-1">
-                          <Briefcase className="h-4 w-4" />
-                          {job.department}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          {job.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          {job.type}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Users className="h-4 w-4" />
-                          {job.experience} experience
-                        </span>
+            {jobOpenings.map((job, index) => (
+              <div
+                key={job.id}
+                className={`transform transition-all duration-700 ease-out ${
+                  isJobsVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  transitionDelay: `${index * 200}ms`
+                }}
+              >
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                      <div>
+                        <h3 className="text-2xl font-bold text-coty-navy mb-2 group-hover:text-coty-navy/80 transition-colors duration-300">{job.title}</h3>
+                        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                          <span className="flex items-center gap-1 group-hover:text-gray-700 transition-colors duration-200">
+                            <div className="p-1.5 rounded-full bg-blue-100 text-blue-600 group-hover:scale-110 transition-transform duration-200">
+                              <Briefcase className="h-4 w-4" />
+                            </div>
+                            {job.department}
+                          </span>
+                          <span className="flex items-center gap-1 group-hover:text-gray-700 transition-colors duration-200">
+                            <div className="p-1.5 rounded-full bg-green-100 text-green-600 group-hover:scale-110 transition-transform duration-200">
+                              <MapPin className="h-4 w-4" />
+                            </div>
+                            {job.location}
+                          </span>
+                          <span className="flex items-center gap-1 group-hover:text-gray-700 transition-colors duration-200">
+                            <div className="p-1.5 rounded-full bg-yellow-100 text-yellow-600 group-hover:scale-110 transition-transform duration-200">
+                              <Clock className="h-4 w-4" />
+                            </div>
+                            {job.type}
+                          </span>
+                          <span className="flex items-center gap-1 group-hover:text-gray-700 transition-colors duration-200">
+                            <div className="p-1.5 rounded-full bg-purple-100 text-purple-600 group-hover:scale-110 transition-transform duration-200">
+                              <Users className="h-4 w-4" />
+                            </div>
+                            {job.experience} experience
+                          </span>
+                        </div>
+                      </div>
+                      <Button 
+                        onClick={() => scrollToForm(job.title)}
+                        className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-all duration-300 mt-4 lg:mt-0 hover:scale-105 group-hover:shadow-lg"
+                      >
+                        APPLY NOW
+                        <ArrowRight className="text-xl group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
+                    </div>
+                    
+                    <p className="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors duration-300">{job.description}</p>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="font-medium text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">Requirements:</h4>
+                        <ul className="space-y-2">
+                          {job.requirements.map((req, reqIndex) => (
+                            <li key={reqIndex} className="flex items-start gap-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-200">
+                              <span className="text-coty-navy mt-1 group-hover:scale-110 transition-transform duration-200">•</span>
+                              {req}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">Responsibilities:</h4>
+                        <ul className="space-y-2">
+                          {job.responsibilities.map((resp, respIndex) => (
+                            <li key={respIndex} className="flex items-start gap-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-200">
+                              <span className="text-coty-navy mt-1 group-hover:scale-110 transition-transform duration-200">•</span>
+                              {resp}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
-                    <Button className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300 mt-4 lg:mt-0">
-                      APPLY NOW
-                      <ArrowRight className="text-xl" />
-                    </Button>
-                  </div>
-                  
-                  <p className="text-gray-600 mb-6">{job.description}</p>
-                  
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-medium text-coty-navy mb-3">Requirements:</h4>
-                      <ul className="space-y-2">
-                        {job.requirements.map((req, index) => (
-                          <li key={index} className="flex items-start gap-2 text-gray-600">
-                            <span className="text-coty-navy mt-1">•</span>
-                            {req}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-coty-navy mb-3">Responsibilities:</h4>
-                      <ul className="space-y-2">
-                        {job.responsibilities.map((resp, index) => (
-                          <li key={index} className="flex items-start gap-2 text-gray-600">
-                            <span className="text-coty-navy mt-1">•</span>
-                            {resp}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Application Form Section */}
-      <section className="py-20 bg-gray-50">
+      <section ref={formRef} className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-coty-navy mb-6">Apply Now</h2>
             <p className="text-xl text-gray-600">
               Ready to join our team? Submit your application and we'll get back to you soon.
             </p>
+            {selectedJob && (
+              <div className="mt-4 p-4 bg-coty-navy/10 border border-coty-navy/20 rounded-lg">
+                <p className="text-coty-navy font-medium">
+                  Applying for: <span className="font-bold">{selectedJob}</span>
+                </p>
+              </div>
+            )}
           </div>
           
           <Card className="border-0 shadow-lg">
             <CardContent className="p-8">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                    <Input type="text" required className="w-full" />
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                    <Input type="text" required className="w-full" />
+                  <h3 className="text-2xl font-bold text-coty-navy mb-2">Application Submitted!</h3>
+                  <p className="text-gray-600 mb-4">
+                    Thank you for your interest in joining our team. We've opened your email client to send your application to amanexcomltd@gmail.com.
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Please complete the email and send it to finalize your application.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                      <Input type="text" name="firstName" required className="w-full" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                      <Input type="text" name="lastName" required className="w-full" />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                    <Input type="email" required className="w-full" />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                      <Input type="email" name="email" required className="w-full" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                      <Input type="tel" name="phone" required className="w-full" />
+                    </div>
                   </div>
+                  
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                    <Input type="tel" required className="w-full" />
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Position Applied For *</label>
+                    <select 
+                      name="position" 
+                      value={selectedJob}
+                      onChange={(e) => setSelectedJob(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-coty-navy focus:border-transparent"
+                    >
+                      <option value="">Select a position</option>
+                      {jobOpenings.map((job) => (
+                        <option key={job.id} value={job.title}>{job.title}</option>
+                      ))}
+                    </select>
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Position Applied For *</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-coty-navy focus:border-transparent">
-                    <option value="">Select a position</option>
-                    {jobOpenings.map((job) => (
-                      <option key={job.id} value={job.id}>{job.title}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Cover Letter *</label>
-                  <Textarea 
-                    placeholder="Tell us why you're interested in this position and what makes you a great fit..."
-                    className="w-full min-h-[120px]"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Resume/CV *</label>
-                  <Input type="file" accept=".pdf,.doc,.docx" required className="w-full" />
-                  <p className="text-sm text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
-                </div>
-                
-                <Button type="submit" className="w-full flex items-center justify-center gap-4 px-8 py-4 bg-coty-navy text-white text-lg font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
-                  SUBMIT APPLICATION
-                  <ArrowRight className="text-2xl" />
-                </Button>
-              </form>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Cover Letter *</label>
+                    <Textarea 
+                      name="coverLetter"
+                      placeholder="Tell us why you're interested in this position and what makes you a great fit..."
+                      className="w-full min-h-[120px]"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Resume/CV *</label>
+                    <Input type="file" name="resume" accept=".pdf,.doc,.docx" required className="w-full" />
+                    <p className="text-sm text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+                  </div>
+                  
+                  <Button type="submit" className="w-full flex items-center justify-center gap-4 px-8 py-4 bg-coty-navy text-white text-lg font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+                    SUBMIT APPLICATION
+                    <ArrowRight className="text-2xl" />
+                  </Button>
+                </form>
+              )}
             </CardContent>
           </Card>
         </div>

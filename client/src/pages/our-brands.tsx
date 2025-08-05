@@ -314,20 +314,6 @@ export default function OurBrands() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-coty-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Experience Quality Today</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Discover our products and experience the quality that has made us a trusted name in personal care and household products.
-          </p>
-          <Button className="w-fit flex items-center gap-4 px-8 py-4 bg-white text-coty-navy text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-white border border-white transition-colors duration-300">
-            EXPLORE PRODUCTS
-            <ArrowRight className="text-2xl" />
-          </Button>
-        </div>
-      </section>
-
       <Footer />
       <ScrollToTop />
     </div>
