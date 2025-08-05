@@ -1,4 +1,5 @@
 import React from 'react';
+import { Phone, Briefcase, Globe } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 export default function Footer() {
