@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Menu, ArrowRight, ChevronDown, X, Phone, Briefcase, Globe, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 export default function HomeHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,9 +14,7 @@ export default function HomeHeader() {
 
     const updateScrollState = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const heroSection = document.querySelector('section');
-      const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
-      setIsScrolled(scrollTop > heroHeight - 100);
+      setIsScrolled(scrollTop > 50);
       ticking = false;
     };
 
@@ -51,7 +50,7 @@ export default function HomeHeader() {
           <div className="flex items-center">
             <a href="/">
               <img
-                src="/src/assets/logo.png"
+                src={logo}
                 alt="Amanex Logo"
                 className="h-16 w-auto"
               />

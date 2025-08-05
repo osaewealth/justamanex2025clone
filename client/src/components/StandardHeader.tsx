@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Menu, ArrowRight, ChevronDown, X, Phone, Briefcase, Globe, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 export default function StandardHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,7 +50,7 @@ export default function StandardHeader() {
           <div className="flex items-center">
             <a href="/">
               <img
-                src="/src/assets/logo.png"
+                src={logo}
                 alt="Amanex Logo"
                 className="h-16 w-auto"
               />

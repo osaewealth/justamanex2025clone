@@ -3,6 +3,7 @@ import { Search, Menu, ArrowRight, X, Phone, Briefcase, Globe, ArrowUp } from "l
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
+import directorImage from "@/assets/Director.jpeg";
 
 export default function About() {
   const purposeRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -153,7 +154,7 @@ export default function About() {
             </div>
             <div className="text-center">
               <img 
-                src="/src/assets/director.jpeg" 
+                src={directorImage} 
                 alt="CEO Portrait" 
                 className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
               />

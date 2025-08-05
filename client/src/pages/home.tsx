@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import HomeHeader from "@/components/HomeHeader";
+import jdImage from "@/assets/jd.png";
+import herobgImage from "@/assets/herobg.jpg";
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
-    '/src/assets/jd.png',
-    '/src/assets/herobg.jpg',
+    jdImage,
+    herobgImage,
   ];
 
   // Auto-slide effect for hero images
