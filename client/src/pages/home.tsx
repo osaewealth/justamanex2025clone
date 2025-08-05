@@ -15,6 +15,10 @@ export default function Home() {
     herobgImage,
   ];
 
+  useEffect(() => {
+    console.log("Home component mounted");
+  }, []);
+
   // Auto-slide effect for hero images
   useEffect(() => {
     const interval = setInterval(() => {

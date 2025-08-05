@@ -19,6 +19,7 @@ import CleaningProducts from "@/pages/cleaning-products";
 import PersonalCare from "@/pages/personal-care";
 import HomeCare from "@/pages/home-care";
 import SearchPage from "@/pages/search";
+import { useState, useEffect } from "react";
 
 function Router() {
   return (
@@ -44,6 +45,23 @@ function Router() {
 }
 
 function App() {
+  const [hasError, setHasError] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    console.log("App component mounted");
+  }, []);
+
+  if (hasError) {
+    return (
+      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+        <h1>Something went wrong</h1>
+        <p>Error: {error?.message}</p>
+        <button onClick={() => window.location.reload()}>Reload Page</button>
+      </div>
+    );
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
