@@ -62,9 +62,46 @@
     @apply border-border;
   }
 
+  html, body {
+    @apply w-full;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  #root {
+    @apply w-full;
+  }
+
+  section {
+    @apply w-full;
+  }
+
+  /* Ensure sections are truly full-width */
+  .blog-section,
+  .full-width-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  /* Blog article expand/collapse animations */
+  .article-content {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .article-expanded {
+    max-height: none;
+    opacity: 1;
+  }
+
+  .article-collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
   }
 }
 

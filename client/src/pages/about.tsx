@@ -40,7 +40,7 @@ export default function About() {
 
       {/* About Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-coty-mint-light to-coty-gray-light pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
               WHO<br />
@@ -58,8 +58,8 @@ export default function About() {
       </section>
 
       {/* Company Overview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Story</h2>
@@ -99,8 +99,8 @@ export default function About() {
       </section>
 
       {/* Our Purpose */}
-      <section className="py-20 bg-coty-gray-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-coty-gray-light w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto text-center">
           <h2 className="text-4xl font-bold text-coty-navy mb-12">Our Purpose</h2>
           <div className="grid md:grid-cols-3 gap-12">
             <div 
@@ -140,8 +140,8 @@ export default function About() {
       </section>
 
       {/* Leadership */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <h2 className="text-4xl font-bold text-coty-navy text-center mb-16">Leadership Team</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div className="text-center">

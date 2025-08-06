@@ -93,7 +93,7 @@ export default function ContactUs() {
           background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%)'
         }}
       >
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
               CONTACT<br />
@@ -114,8 +114,8 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Information Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">Get In Touch</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
@@ -163,7 +163,7 @@ export default function ContactUs() {
 
       {/* Contact Form Section */}
       <section className="py-20 bg-coty-gray-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
@@ -284,7 +284,7 @@ export default function ContactUs() {
 
       {/* Map Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">Visit Our Facility</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
@@ -310,7 +310,7 @@ export default function ContactUs() {
 
       {/* CTA Section */}
       <section className="py-20 bg-coty-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Whether you're looking for our products, interested in partnerships, or have questions, 

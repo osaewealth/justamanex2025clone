@@ -4,8 +4,8 @@ import logo from '@/assets/logo.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-coty-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-coty-navy text-white" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}>
+      <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}

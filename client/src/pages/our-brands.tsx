@@ -108,7 +108,7 @@ export default function OurBrands() {
           background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%)'
         }}
       >
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
               OUR<br />
@@ -130,7 +130,7 @@ export default function OurBrands() {
 
       {/* Our Scientific Expertise Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">OUR PRODUCT CATEGORIES</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
@@ -246,7 +246,7 @@ export default function OurBrands() {
 
       {/* Best Sellers Section */}
       <section className="py-20 bg-coty-gray-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">Our Best Selling Products</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
@@ -285,7 +285,7 @@ export default function OurBrands() {
 
       {/* Quality Promise Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Quality Promise</h2>

@@ -211,7 +211,7 @@ export default function Careers() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-6xl md:text-8xl font-bold text-coty-navy mb-8">
               CAREERS
@@ -230,7 +230,7 @@ export default function Careers() {
 
       {/* Company Culture Section */}
       <section ref={benefitsRef} className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-6">Why Work With Us?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -271,7 +271,7 @@ export default function Careers() {
 
       {/* Job Openings Section */}
       <section ref={jobsRef} className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-6">Current Openings</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">

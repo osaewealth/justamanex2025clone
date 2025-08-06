@@ -203,8 +203,8 @@ export default function Home() {
       </section>
 
       {/* News Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="mb-16">
             <h2 className="text-4xl font-bold text-coty-navy mb-4">IN THE NEWS</h2>
           </div>
@@ -247,8 +247,8 @@ export default function Home() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50 w-full">
+        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-pink-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
