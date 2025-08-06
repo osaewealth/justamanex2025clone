@@ -8,6 +8,16 @@ import ScrollToTop from "@/components/ScrollToTop";
 import jdImage from "@/assets/jd.png";
 import herobgImage from "@/assets/herobg.jpg";
 
+// Import Instagram images
+import instagram1 from '@/assets/instagram/1754494212936.jpeg';
+import instagram2 from '@/assets/instagram/1754494208261.jpeg';
+import instagram3 from '@/assets/instagram/1754494191808.jpeg';
+import instagram4 from '@/assets/instagram/1754493975858.jpeg';
+import instagram5 from '@/assets/instagram/1754493968553.jpeg';
+import instagram6 from '@/assets/instagram/1754493901235 (1).jpeg';
+import instagram7 from '@/assets/instagram/1754493879750.webp';
+import instagram8 from '@/assets/instagram/1754493749820.jpeg';
+
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -61,75 +71,75 @@ export default function Home() {
   const instagramPosts = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram1,
       caption: "Behind the scenes at our manufacturing facility! Quality control in action 🏭✨ #AmanexQuality #ManufacturingExcellence",
       likes: 234,
       comments: 18,
       type: "image",
-      url: "https://www.instagram.com/p/sample1/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram2,
       caption: "Fresh new air freshener collection launching soon! 🌸 Breathe in the difference #FreshAir #NewLaunch",
       likes: 189,
       comments: 12,
       type: "image",
-      url: "https://www.instagram.com/p/sample2/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram3,
       caption: "Our team working hard to bring you the best products! 💪 #TeamAmanex #HardWork",
       likes: 156,
       comments: 8,
       type: "image",
-      url: "https://www.instagram.com/p/sample3/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram4,
       caption: "Innovation meets tradition in our latest product line 🚀 #Innovation #QualityProducts",
       likes: 298,
       comments: 24,
       type: "video",
-      url: "https://www.instagram.com/p/sample4/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram5,
       caption: "Sustainability is at the heart of everything we do 🌱 #Sustainability #EcoFriendly",
       likes: 267,
       comments: 15,
       type: "image",
-      url: "https://www.instagram.com/p/sample5/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 6,
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram6,
       caption: "Customer satisfaction is our priority! Thank you for choosing Amanex 🙏 #CustomerFirst #ThankYou",
       likes: 145,
       comments: 9,
       type: "image",
-      url: "https://www.instagram.com/p/sample6/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 7,
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram7,
       caption: "New product development in progress! Can't wait to share this with you 🔥 #NewProduct #ComingSoon",
       likes: 312,
       comments: 31,
       type: "image",
-      url: "https://www.instagram.com/p/sample7/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     },
     {
       id: 8,
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800",
+      image: instagram8,
       caption: "Quality control testing in action! Every product meets our high standards ✅ #QualityControl #Testing",
       likes: 178,
       comments: 11,
       type: "image",
-      url: "https://www.instagram.com/p/sample8/"
+      url: "https://www.instagram.com/amanexcompanyltd"
     }
   ];
 
@@ -252,9 +262,9 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-pink-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.429 0-1.178.449-2.48 1.197-3.428.749-.949 1.9-1.56 3.197-1.56s2.449.611 3.198 1.56c.748.948 1.197 2.25 1.197 3.428 0 1.179-.449 2.481-1.197 3.429-.749.948-1.901 1.559-3.198 1.559zm7.718-6.988c-.297 0-.54-.242-.54-.54s.243-.54.54-.54.54.242.54.54-.243.54-.54.54zM15.55 12c0 1.961-1.589 3.55-3.55 3.55S8.45 13.961 8.45 12s1.589-3.55 3.55-3.55 3.55 1.589 3.55 3.55z"/>
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
-              <h2 className="text-4xl font-bold text-coty-navy">@amanex_ghana</h2>
+              <h2 className="text-4xl font-bold text-coty-navy">@amanexcompanyltd</h2>
             </div>
             <p className="text-lg text-coty-gray max-w-2xl mx-auto">
               Follow our journey and discover the latest updates, behind-the-scenes moments, and product highlights
@@ -316,10 +326,10 @@ export default function Home() {
           <div className="text-center">
             <Button 
               className="w-fit flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-md font-medium rounded-br-3xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 mx-auto shadow-lg hover:shadow-xl"
-              onClick={() => window.open('https://www.instagram.com/amanex_ghana', '_blank')}
+              onClick={() => window.open('https://www.instagram.com/amanexcompanyltd', '_blank')}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.429 0-1.178.449-2.48 1.197-3.428.749-.949 1.9-1.56 3.197-1.56s2.449.611 3.198 1.56c.748.948 1.197 2.25 1.197 3.428 0 1.179-.449 2.481-1.197 3.429-.749.948-1.901 1.559-3.198 1.559zm7.718-6.988c-.297 0-.54-.242-.54-.54s.243-.54.54-.54.54.242.54.54-.243.54-.54.54zM15.55 12c0 1.961-1.589 3.55-3.55 3.55S8.45 13.961 8.45 12s1.589-3.55 3.55-3.55 3.55 1.589 3.55 3.55z"/>
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
               FOLLOW US ON INSTAGRAM
             </Button>
@@ -330,7 +340,7 @@ export default function Home() {
 
 
       {/* Our Mission Section - Inspired by Homedede */}
-      <section className="bg-yellow-100 py-16 px-4">
+      <section className="bg-red-50 py-16 px-4">
         <div className="flex flex-col md:flex-row items-center md:items-start max-w-7xl mx-auto">
           {/* Image */}
           <div className="w-full md:w-1/2 mb-10 md:mb-0">
@@ -348,7 +358,7 @@ export default function Home() {
               Continuous quality improvement, employment creation,<br />
               and sustainable growth in the manufacturing sector.
             </p>
-            <a href="/blog#mission" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+            <a href="/our-story#mission" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
               Learn More
               <ArrowRight className="text-2xl" />
             </a>
@@ -357,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* Our Vision Section - Inspired by Homedede */}
-      <section className="bg-yellow-100 py-16 px-4">
+      <section className="bg-red-50 py-16 px-4">
         <div className="flex flex-col-reverse md:flex-row items-center md:items-start max-w-7xl mx-auto">
           {/* Text Content */}
           <div className="w-full md:w-1/2 flex flex-col justify-center p-6">
@@ -366,7 +376,7 @@ export default function Home() {
               To become one of Africa's leading household,<br />
               cosmetics, and plastic manufacturers.
             </p>
-            <a href="/blog#vision" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
+            <a href="/our-impact#vision" className="w-fit flex items-center gap-4 mt-8 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
               Learn More
               <ArrowRight className="text-2xl" />
             </a>

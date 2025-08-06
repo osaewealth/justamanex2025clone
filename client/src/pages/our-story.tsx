@@ -62,6 +62,31 @@ export default function OurStory() {
     return () => observer.disconnect();
   }, []);
 
+  // Handle hash navigation for direct section access
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 100);
+        }
+      }
+    };
+
+    // Handle initial load
+    handleHashNavigation();
+
+    // Handle hash changes
+    window.addEventListener('hashchange', handleHashNavigation);
+    return () => window.removeEventListener('hashchange', handleHashNavigation);
+  }, []);
+
 
 
   const milestones = [
@@ -183,7 +208,7 @@ export default function OurStory() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-white">
+      <section id="mission" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -374,7 +399,7 @@ export default function OurStory() {
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Discover our products and experience the quality that has made us a trusted name in personal care and household products.
           </p>
-          <a href="/our-brands" className="w-fit flex items-center gap-4 px-8 py-4 bg-white text-coty-navy text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-white border border-white transition-colors duration-300">
+          <a href="/our-brands" className="w-fit flex items-center gap-4 px-8 py-4 bg-white text-coty-navy text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-white border border-white transition-colors duration-300 mx-auto">
             EXPLORE OUR PRODUCTS
             <ArrowRight className="text-2xl" />
           </a>

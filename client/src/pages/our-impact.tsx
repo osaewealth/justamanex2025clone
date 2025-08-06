@@ -71,6 +71,31 @@ export default function OurImpact() {
     return () => observer.disconnect();
   }, []);
 
+  // Handle hash navigation for direct section access
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 100);
+        }
+      }
+    };
+
+    // Handle initial load
+    handleHashNavigation();
+
+    // Handle hash changes
+    window.addEventListener('hashchange', handleHashNavigation);
+    return () => window.removeEventListener('hashchange', handleHashNavigation);
+  }, []);
+
   const animateStats = () => {
     const targets = {
       countries: 9,
@@ -380,7 +405,7 @@ export default function OurImpact() {
       </section>
 
       {/* Future Vision Section */}
-      <section className="py-20 bg-coty-navy text-white">
+      <section id="vision" className="py-20 bg-coty-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Our Vision for the Future</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
