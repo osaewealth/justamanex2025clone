@@ -263,3 +263,101 @@
 .animation-delay-1600 {
   animation-delay: 1.6s;
 }
+
+/* Mobile-first centering for hero sub-texts */
+@media (max-width: 1023px) {
+  .text-center.lg\:text-left {
+    text-align: center !important;
+  }
+  
+  .flex.items-center.justify-center.lg\:justify-start {
+    justify-content: center !important;
+  }
+  
+  .flex.items-center.justify-center.lg\:justify-start > div {
+    margin: 0 auto;
+  }
+}
+
+/* Ensure sub-texts are always centered on mobile */
+@media (max-width: 768px) {
+  .animate-fade-in-up {
+    text-align: center;
+  }
+  
+  .flex.items-center.justify-center.lg\:justify-start {
+    width: 100%;
+    justify-content: center !important;
+  }
+}
+
+/* Force center alignment for scroll indicators on mobile */
+@media (max-width: 640px) {
+  .flex.items-center.justify-center.lg\:justify-start {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .flex.items-center.justify-center.lg\:justify-start > div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Additional mobile centering for scroll indicators */
+@media (max-width: 768px) {
+  .mt-12.text-white.font-medium.flex.items-center.justify-center.lg\:justify-start,
+  .mt-12.text-coty-gray.font-medium.flex.items-center.justify-center.lg\:justify-start {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  
+  .mt-12.text-white.font-medium.flex.items-center.justify-center.lg\:justify-start > div,
+  .mt-12.text-coty-gray.font-medium.flex.items-center.justify-center.lg\:justify-start > div {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+/* Mobile-first centering utility class */
+.mobile-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-center {
+    justify-content: flex-start !important;
+    width: auto !important;
+  }
+}
+
+/* Home page specific mobile centering */
+@media (max-width: 1023px) {
+  .text-center.lg\:text-left {
+    text-align: center !important;
+  }
+  
+  .text-center.lg\:text-left h1,
+  .text-center.lg\:text-left p {
+    text-align: center !important;
+  }
+  
+  .text-center.lg\:text-left a {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .text-center.lg\:text-left .flex.items-center.justify-center {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}

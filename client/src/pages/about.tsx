@@ -49,7 +49,7 @@ export default function About() {
             <p className="text-xl lg:text-2xl text-coty-gray max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">
               Fearless. Forward. You. We are one of the world's largest beauty companies with iconic brands across fragrance, color cosmetics, and skin & body care.
             </p>
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
+            <div className="mt-12 text-coty-gray font-medium mobile-center animate-fade-in-up animation-delay-1200">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">DISCOVER OUR STORY</span>
             </div>

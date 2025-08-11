@@ -174,27 +174,27 @@ export default function Home() {
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-        <div className="relative z-10 flex items-center h-full pl-16">
-          <div className="text-left">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+          <div className="text-center lg:text-left w-full">
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8 animate-fade-in-up animation-delay-800">
               WE ARE<br />
               <span className="text-white">AMANEX</span>
             </h1>
             
-            <p className="text-xl text-white mb-8 opacity-90 max-w-2xl animate-fade-in-up animation-delay-0">
+            <p className="text-xl text-white mb-8 opacity-90 max-w-2xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">
               Discover our diverse selection of products, meticulously crafted to bring convenience, 
               freshness, and luxury into your home.
             </p>
             
             <a 
               href="/about-us" 
-              className="bg-transparent text-white px-10 py-6 font-medium hover:bg-white hover:text-coty-navy border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl animate-fade-in-up animation-delay-1200"
+              className="bg-transparent text-white px-10 py-6 font-medium hover:bg-white hover:text-coty-navy border-2 border-white transition-all duration-300 flex items-center group w-fit mx-auto lg:mx-0 rounded-br-3xl animate-fade-in-up animation-delay-1200 hover:scale-105"
             >
               WHO WE ARE
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
 
-            <div className="mt-12 text-white font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1600">
+            <div className="mt-12 text-white font-medium flex items-center justify-center animate-fade-in-up animation-delay-1600">
               <div className="w-8 h-px bg-white mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">SCROLL DOWN</span>
             </div>

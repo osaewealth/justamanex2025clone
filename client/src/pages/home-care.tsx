@@ -50,7 +50,7 @@ export default function HomeCare() {
               Keep your home comfortable and protected with our range of home care products. From fabric softeners that make your clothes feel luxurious to insecticide sprays that keep your home pest-free.
             </p>
 
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
+            <div className="mt-12 text-coty-gray font-medium mobile-center animate-fade-in-up animation-delay-1200">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">PROTECT YOUR HOME</span>
             </div>
