@@ -7,6 +7,9 @@ import HomeHeader from "@/components/HomeHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 import jdImage from "@/assets/jd.png";
 import herobgImage from "@/assets/herobg.jpg";
+import banner1Image from "@/assets/Banner1.jpg";
+import banner2Image from "@/assets/Banner2.jpg";
+import banner3Image from "@/assets/Banner3.jpg";
 
 // Import Instagram images
 import instagram1 from '@/assets/instagram/1754494212936.jpeg';
@@ -22,8 +25,11 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
-    jdImage,
-    herobgImage,
+  
+    banner1Image,
+    banner2Image,
+    banner3Image,
+    jdImage
   ];
 
   useEffect(() => {
@@ -148,7 +154,7 @@ export default function Home() {
       <HomeHeader />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden animate-fade-in">
         {/* Background Images with Auto-Slide */}
         {heroImages.map((image, index) => (
           <div
@@ -170,25 +176,25 @@ export default function Home() {
 
         <div className="relative z-10 flex items-center h-full pl-16">
           <div className="text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8 animate-fade-in-up animation-delay-800">
               WE ARE<br />
               <span className="text-white">AMANEX</span>
             </h1>
             
-            <p className="text-xl text-white mb-8 opacity-90 max-w-2xl">
+            <p className="text-xl text-white mb-8 opacity-90 max-w-2xl animate-fade-in-up animation-delay-0">
               Discover our diverse selection of products, meticulously crafted to bring convenience, 
               freshness, and luxury into your home.
             </p>
             
             <a 
               href="/about-us" 
-              className="bg-transparent text-white px-10 py-6 font-medium hover:bg-white hover:text-coty-navy border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl"
+              className="bg-transparent text-white px-10 py-6 font-medium hover:bg-white hover:text-coty-navy border-2 border-white transition-all duration-300 flex items-center group w-fit rounded-br-3xl animate-fade-in-up animation-delay-1200"
             >
               WHO WE ARE
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
 
-            <div className="mt-12 text-white font-medium flex items-center justify-center lg:justify-start">
+            <div className="mt-12 text-white font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1600">
               <div className="w-8 h-px bg-white mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">SCROLL DOWN</span>
             </div>
@@ -196,7 +202,7 @@ export default function Home() {
         </div>
 
         {/* Navigation Dots */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20 animate-fade-in-up animation-delay-1200">
           {heroImages.map((_, index) => (
             <button
               key={index}

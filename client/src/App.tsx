@@ -12,7 +12,7 @@ import OurImpact from "@/pages/our-impact";
 import ContactUs from "@/pages/contact-us";
 import Careers from "@/pages/careers";
 import Blog from "@/pages/blog";
-import Fragrance from "@/pages/fragrance";
+import AllProducts from "@/pages/all-products";
 import AirFresheners from "@/pages/air-fresheners";
 import PerfumesBodyCare from "@/pages/perfumes-body-care";
 import CleaningProducts from "@/pages/cleaning-products";
@@ -32,7 +32,7 @@ function Router() {
       <Route path="/contact-us" component={ContactUs} />
       <Route path="/careers" component={Careers} />
       <Route path="/blog" component={Blog} />
-      <Route path="/fragrance" component={Fragrance} />
+      <Route path="/all-products" component={AllProducts} />
       <Route path="/air-fresheners" component={AirFresheners} />
       <Route path="/perfumes-body-care" component={PerfumesBodyCare} />
       <Route path="/cleaning-products" component={CleaningProducts} />

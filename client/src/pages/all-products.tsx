@@ -171,14 +171,14 @@ export default function Fragrance() {
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
-            <h1 className="text-6xl md:text-8xl font-bold text-coty-navy mb-8 animate-fade-in-up animation-delay-800">
+            <h1 className="text-6xl md:text-8xl font-bold text-coty-navy mb-8">
               ALL PRODUCTS
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up animation-delay-0">
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto lg:mx-0 mb-12 leading-relaxed">
               Discover our comprehensive range of products including fragrances, cleaning solutions, personal care items, and home care essentials. 
               From air fresheners to shower gels, each product is carefully formulated to provide freshness, cleanliness, and comfort for your home and personal care needs.
             </p>
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">EXPLORE OUR PRODUCTS</span>
             </div>

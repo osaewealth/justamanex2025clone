@@ -108,19 +108,19 @@ export default function OurBrands() {
           background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%)'
         }}
       >
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
+            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
               OUR<br />
               <span className="text-coty-navy">BRANDS</span>
             </h1>
             
-            <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0">
+            <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">
               Explore our diverse selection of products, meticulously crafted to bring convenience, 
               freshness, and luxury into your home.
             </p>
 
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">DISCOVER OUR PRODUCTS</span>
             </div>
@@ -225,7 +225,7 @@ export default function OurBrands() {
             </div>
 
             {/* View All Products Card */}
-            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/fragrance'}>
+            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/all-products'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 

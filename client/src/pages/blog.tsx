@@ -19,7 +19,7 @@ export default function Blog() {
     setExpandedArticles(newExpanded);
   };
 
-  // Sample blog articles data
+  
   const blogArticles = [
     {
       id: 1,
@@ -146,15 +146,15 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center" style={{ paddingTop: '4rem', width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100"></div>
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-red-800 mb-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-6xl md:text-8xl font-bold text-red-800 mb-8 animate-fade-in-up animation-delay-800">
             OUR BLOG
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed animate-fade-in-up animation-delay-0">
             Discover the latest insights, company updates, and stories from Amanex Ghana. 
             Stay connected with our journey of innovation and growth.
           </p>
-          <p className="text-lg text-gray-500">SCROLL TO EXPLORE</p>
+          <p className="text-lg text-gray-500 animate-fade-in-up animation-delay-1200">SCROLL TO EXPLORE</p>
         </div>
       </section>
 

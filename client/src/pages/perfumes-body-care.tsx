@@ -41,16 +41,16 @@ export default function PerfumesBodyCare() {
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
+            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
               PERFUMES &<br />
               <span className="text-coty-navy">BODY CARE</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto lg:mx-0 mb-12 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up animation-delay-0">
               Discover our luxurious perfumes and refreshing body care products designed to enhance your personal style and keep you feeling confident throughout the day.
             </p>
 
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">ELEVATE YOUR STYLE</span>
             </div>

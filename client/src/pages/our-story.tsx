@@ -189,17 +189,17 @@ export default function OurStory() {
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8">
+            <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
               OUR<br />
               <span className="text-coty-navy">STORY</span>
             </h1>
             
-            <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0">
+            <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">
               From humble beginnings to becoming a trusted name in personal care and household products, 
               our journey is one of passion, innovation, and unwavering commitment to quality.
             </p>
 
-            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start">
+            <div className="mt-12 text-coty-gray font-medium flex items-center justify-center lg:justify-start animate-fade-in-up animation-delay-1200">
               <div className="w-8 h-px bg-coty-gray mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">SCROLL TO EXPLORE</span>
             </div>
