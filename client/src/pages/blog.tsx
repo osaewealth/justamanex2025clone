@@ -6,6 +6,12 @@ import Footer from '@/components/Footer';
 import StandardHeader from '@/components/StandardHeader';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import blog images
+import yesperfumesblog from "@/assets/productimages/yesperfumesblog.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.png";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
+
 export default function Blog() {
   const [expandedArticles, setExpandedArticles] = useState<Set<number>>(new Set());
 
@@ -23,115 +29,288 @@ export default function Blog() {
   const blogArticles = [
     {
       id: 1,
-      title: "5 Simple Tips to Keep Your Home Smelling Fresh All Day Long",
-      excerpt: "A fresh-smelling home is not only inviting but also uplifting. Discover five simple tips to maintain a pleasant environment that feels inviting and clean throughout your home.",
+      title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
+      excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
       content: `
-        <p>A fresh-smelling home is not only inviting but also uplifting. Whether you're expecting guests or just want to enjoy a pleasant environment, maintaining a fresh scent throughout your home can make all the difference. Here are five simple tips to keep your home smelling fresh all day long.</p>
+        <p>In the heart of West Africa, Amanex Ghana has emerged as a beacon of excellence in personal care and home care products. Since our establishment, we've been committed to transforming everyday routines into luxurious experiences, one product at a time. Our journey from a local startup to a trusted household name reflects our unwavering dedication to quality, innovation, and customer satisfaction.</p>
         
-        <h3>1. Choose the Right Air Fresheners</h3>
-        <p>The first step to a consistently fresh home is selecting the right air fresheners. Opt for high-quality products that offer long-lasting scents and are suitable for the different areas of your home. For living rooms and bedrooms, go for subtle and calming scents like lavender or vanilla. For kitchens and bathrooms, citrus or fresh linen scents can neutralize odors effectively. Make sure to place air fresheners in key areas like entryways, hallways, and near garbage bins.</p>
+        <h3>The Amanex Story: From Vision to Reality</h3>
+        <p>Founded with a simple yet powerful vision – to make premium personal care and home care products accessible to every Ghanaian household – Amanex Ghana has grown into a comprehensive lifestyle brand. We recognized that quality shouldn't be a luxury, and that every family deserves products that not only clean and care but also enhance their daily living experience.</p>
         
-        <h3>2. Regularly Clean Your Air Filters and Vents</h3>
-        <p>Your HVAC system circulates air throughout your home, and if the filters are dirty, they can spread unpleasant odors. Regularly cleaning or replacing air filters ensures that only clean, fresh air is circulated. Additionally, don't forget to clean your vents and ducts, as dust and debris can accumulate there, leading to stale or musty smells.</p>
+        <p>Our product development philosophy centers around understanding the unique needs of West African consumers. From the humid coastal regions to the dry savannah areas, we've crafted solutions that work effectively in diverse environmental conditions while maintaining the highest standards of quality and safety.</p>
         
-        <h3>3. Use Natural Deodorizers</h3>
-        <p>Sometimes, natural options can be just as effective as commercial products. Baking soda is a fantastic natural deodorizer that can be placed in various areas like closets, refrigerators, and shoe racks to absorb odors. Activated charcoal bags are another great option, especially for neutralizing odors in larger spaces like basements or garages.</p>
+        <h3>Our Product Portfolio: A Symphony of Care</h3>
+        <p>At Amanex, we've curated a comprehensive range of products that cater to every aspect of personal and home care:</p>
         
-        <h3>4. Keep Fabrics Fresh</h3>
-        <p>Fabrics in your home, such as curtains, cushions, and carpets, can trap odors over time. To keep them fresh, make it a habit to wash or vacuum these items regularly. For a quick refresh, you can spritz them with a fabric refresher spray. Consider adding a few drops of essential oil to your laundry for an extra burst of fragrance that lingers on your fabrics.</p>
+        <h4>Personal Care Excellence</h4>
+        <p>Our personal care line represents the pinnacle of self-care innovation. The BREEZE shower gel collection, available in multiple sizes including our popular 500ml and 1000ml variants, offers a luxurious bathing experience with fragrances as beautiful as international brands. Each variant – from refreshing Coconut to invigorating Blue Sky – is formulated to nourish skin while providing an unforgettable sensory experience.</p>
         
-        <h3>5. Ventilate Your Home</h3>
-        <p>Fresh air is one of the simplest and most effective ways to keep your home smelling great. Open windows regularly to allow fresh air to circulate and push out stale, odor-laden air. Even in cooler months, a few minutes of ventilation can make a significant difference in your home's overall freshness.</p>
+        <p>Our hand sanitizer range, featuring both 60ml and 350ml options, ensures protection meets portability. Formulated to kill 99.9% of germs without drying out your skin, these products have become essential companions for health-conscious individuals across Ghana.</p>
+        
+        <h4>Fragrance & Style</h4>
+        <p>The YES perfume collection embodies sophistication and elegance, with fragrances like Pure Passion, Seduction, and Golden Island. Our body splash range, including the beloved Garden of Rose and Berry Mellow variants, offers a light, refreshing touch perfect for Ghana's warm climate.</p>
+        
+        <h4>Home Care Innovation</h4>
+        <p>Our home care solutions address the unique challenges of West African households. The BREEZE fabric softener range, available in 500ml and 1000ml sizes, transforms laundry from a chore into a pleasure, leaving clothes soft, fresh, and beautifully scented. Our multipurpose liquid soap collection, ranging from 200ml to 5-liter options, provides versatile cleaning solutions for every surface in your home.</p>
+        
+        <h4>Air Care Mastery</h4>
+        <p>Understanding the importance of fresh, inviting spaces, we've developed an extensive air freshener collection. From our signature BREEZE air fresheners in Oceanic, Vanilla, and Strawberry scents to our gel air fresheners perfect for cars and small spaces, we ensure every environment feels welcoming and refreshing.</p>
+        
+        <h3>Quality That Speaks for Itself</h3>
+        <p>Every Amanex product undergoes rigorous quality control processes, from ingredient selection to final packaging. We partner with leading suppliers to source the finest raw materials, ensuring our formulations meet international standards while remaining accessible to local consumers.</p>
+        
+        <p>Our commitment to quality extends beyond product formulation. We've invested in state-of-the-art manufacturing facilities and implemented comprehensive quality assurance protocols that guarantee consistency in every batch. This dedication has earned us the trust of millions of Ghanaian families and positioned us as a quality benchmark in the industry.</p>
+        
+        <h3>Innovation at the Core</h3>
+        <p>Innovation isn't just a buzzword at Amanex – it's our driving force. We continuously research and develop new formulations that address emerging consumer needs while maintaining our commitment to safety and effectiveness. Our R&D team works tirelessly to create products that not only meet current standards but anticipate future trends.</p>
+        
+        <p>From eco-friendly formulations to advanced fragrance technology, we're constantly pushing boundaries to deliver products that exceed expectations. This forward-thinking approach has resulted in several industry-first innovations that have set new standards in personal and home care.</p>
+        
+        <h3>Community Impact and Sustainability</h3>
+        <p>Beyond business success, Amanex Ghana is deeply committed to making a positive impact in our communities. We actively support local initiatives, create employment opportunities, and contribute to Ghana's economic development. Our sustainability efforts focus on reducing environmental impact through responsible packaging, eco-friendly formulations, and waste reduction programs.</p>
+        
+        <p>We believe that true success comes from creating value not just for our customers, but for society as a whole. This philosophy guides every decision we make, from product development to business operations.</p>
+        
+        <h3>Looking Forward: The Future of Care</h3>
+        <p>As we look to the future, Amanex Ghana remains committed to our founding principles while embracing new opportunities for growth and innovation. We're expanding our product portfolio, exploring new markets, and developing cutting-edge solutions that will continue to enhance the lives of our customers.</p>
+        
+        <p>Our vision extends beyond Ghana's borders, as we work to establish Amanex as a leading personal care brand across West Africa. We're building partnerships, expanding distribution networks, and creating products that resonate with diverse African consumers.</p>
+        
+        <h3>Join the Amanex Family</h3>
+        <p>Whether you're discovering Amanex for the first time or have been part of our journey from the beginning, we invite you to experience the difference that quality, innovation, and care can make in your daily life. Our products are more than just cleaning solutions – they're tools for creating the life you deserve.</p>
+        
+        <p>From our family to yours, thank you for choosing Amanex Ghana. Together, we're building a future where every home is a haven of comfort, every routine is a moment of luxury, and every day brings the promise of something better.</p>
         
         <h3>Conclusion</h3>
-        <p>Maintaining a fresh-smelling home doesn't have to be a challenge. By incorporating these simple tips into your routine, you can enjoy a consistently pleasant environment that feels inviting and clean. Whether you choose the perfect air freshener or rely on natural deodorizers, your home will always be ready to welcome you with a refreshing scent.</p>
+        <p>Amanex Ghana's journey from a local startup to a trusted household name is a testament to the power of vision, quality, and community. As we continue to grow and innovate, our commitment to excellence remains unwavering. We're not just selling products – we're creating experiences, building relationships, and contributing to a better future for all Ghanaians.</p>
       `,
-      category: "Home Care Tips",
-      date: "March 15, 2024",
+      category: "Company News",
+      date: "January 15, 2025",
       author: "Amanex Team",
-      readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+      readTime: "8 min read",
+      image: yesperfumesblog
     },
     {
       id: 2,
-      title: "How to Choose the Perfect Perfume for Any Occasion",
-      excerpt: "Selecting the right perfume can be a daunting task. Discover how to choose the perfect fragrance for any occasion, ensuring you always leave a lasting impression.",
+      title: "Transform Your Home with Amanex: The Complete Guide to Fresh Living",
+      excerpt: "Learn how to create a fresh, inviting home environment using Amanex's comprehensive range of air fresheners, cleaning products, and fabric care solutions.",
       content: `
-        <p>Selecting the right perfume can be a daunting task, especially with the myriad of fragrances available. Whether you're getting ready for a formal event, a casual day out, or a romantic evening, the perfume you choose can significantly enhance your overall presence. Here's a guide to help you choose the perfect perfume for any occasion, ensuring you always leave a lasting impression.</p>
+        <p>Your home is your sanctuary – a place where you should feel comfortable, relaxed, and refreshed. At Amanex Ghana, we understand that creating this perfect environment requires more than just basic cleaning. It's about crafting an experience that engages all your senses and makes every moment at home truly special.</p>
         
-        <h3>1. Understand Fragrance Families</h3>
-        <p>Perfumes are generally categorized into different fragrance families, each evoking a specific mood or vibe. Understanding these categories can help you narrow down your choices:</p>
+        <h3>The Art of Fresh Living</h3>
+        <p>Creating a fresh, inviting home isn't about masking odors – it's about establishing an environment that naturally feels clean, comfortable, and welcoming. This requires a strategic approach that combines effective cleaning with thoughtful fragrance placement and fabric care.</p>
+        
+        <h3>Air Fresheners: Your Home's Signature Scent</h3>
+        <p>Our BREEZE air freshener collection is designed to transform any space into a fragrant haven. Each variant serves a specific purpose:</p>
+        
         <ul>
-          <li><strong>Floral:</strong> Romantic and feminine, ideal for weddings, dates, or any event where you want to feel elegant.</li>
-          <li><strong>Citrus:</strong> Fresh and invigorating, perfect for daytime wear, work environments, or casual outings.</li>
-          <li><strong>Woody:</strong> Warm and earthy, suitable for evening events, formal occasions, or when you want to exude sophistication.</li>
-          <li><strong>Oriental:</strong> Exotic and sensual, best for nights out, parties, or intimate settings.</li>
-          <li><strong>Fresh:</strong> Light and clean, great for everyday wear, especially in warmer weather or informal gatherings.</li>
+          <li><strong>Oceanic:</strong> Perfect for living rooms and bedrooms, this fresh, aquatic scent creates a calming atmosphere that promotes relaxation and mental clarity.</li>
+          <li><strong>Vanilla:</strong> Ideal for kitchens and dining areas, this warm, comforting fragrance makes your home feel cozy and inviting, especially during family gatherings.</li>
+          <li><strong>Strawberry:</strong> Perfect for bathrooms and entryways, this sweet, uplifting scent creates a positive, energizing environment that welcomes guests and family members alike.</li>
         </ul>
         
-        <h3>2. Match the Occasion</h3>
-        <p>The occasion plays a crucial role in determining the type of perfume you should wear. Here are some suggestions based on different events:</p>
+        <p>For smaller spaces like cars, bathrooms, or closets, our gel air fresheners provide long-lasting fragrance in a convenient, mess-free format. Available in scents like Blue Berry, Summer, and Lavender, these products ensure every corner of your home smells delightful.</p>
+        
+        <h3>Cleaning Excellence: Beyond Basic Clean</h3>
+        <p>True freshness starts with effective cleaning. Our multipurpose liquid soap collection, available in sizes from 200ml to 5 liters, provides versatile cleaning solutions for every surface in your home:</p>
+        
         <ul>
-          <li><strong>Work/Business Meetings:</strong> Opt for subtle, professional scents like fresh or citrus fragrances. These are not overpowering and create a clean, approachable impression.</li>
-          <li><strong>Casual Outings:</strong> For a relaxed day with friends or running errands, go for light and refreshing scents like floral or fresh fragrances. They're easygoing and pleasant.</li>
-          <li><strong>Evening Events:</strong> For dinners, parties, or formal events, choose something bold and memorable like woody or oriental perfumes. These richer scents add depth and sophistication to your presence.</li>
-          <li><strong>Romantic Dates:</strong> A romantic occasion calls for something intimate and alluring. Floral and oriental fragrances work well here, as they are both captivating and elegant.</li>
+          <li><strong>Kitchen Excellence:</strong> From greasy stovetops to dirty dishes, our lemon-scented formula cuts through grime while leaving a fresh, citrus fragrance.</li>
+          <li><strong>Bathroom Brilliance:</strong> Transform your bathroom into a spa-like retreat with our rose-scented variant, perfect for tiles, sinks, and shower areas.</li>
+          <li><strong>General Household:</strong> Our ocean-scented formula works wonders on floors, walls, and general surfaces, creating a clean, fresh environment throughout your home.</li>
         </ul>
         
-        <h3>3. Consider the Season</h3>
-        <p>The time of year can influence how a perfume smells on your skin. Here's how to choose based on the season:</p>
+        <p>For specialized cleaning needs, our Glass Shine cleaner delivers streak-free results on windows, mirrors, and glass surfaces, ensuring your home sparkles with cleanliness.</p>
+        
+        <h3>Fabric Care: The Foundation of Fresh Living</h3>
+        <p>Fabrics are the unsung heroes of home freshness. Curtains, upholstery, and clothing can trap odors and affect your home's overall atmosphere. Our BREEZE fabric softener range transforms laundry from a basic necessity into a luxurious experience:</p>
+        
         <ul>
-          <li><strong>Spring:</strong> Embrace the bloom of the season with floral fragrances. Light, airy scents work best during this time.</li>
-          <li><strong>Summer:</strong> Go for citrus or fresh scents that are refreshing and energizing, perfect for hot weather.</li>
-          <li><strong>Fall:</strong> As the weather cools down, opt for woody or spicy fragrances that complement the crisp air.</li>
-          <li><strong>Winter:</strong> In colder months, oriental and woody perfumes with warm, deep notes are ideal, providing a comforting presence.</li>
+          <li><strong>Long-lasting Freshness:</strong> Our advanced formula ensures that the fresh scent lingers on your fabrics for days, not just hours.</li>
+          <li><strong>Fabric Protection:</strong> Beyond fragrance, our softeners protect fabric fibers, reducing wear and tear while maintaining the quality of your favorite items.</li>
+          <li><strong>Static Control:</strong> Eliminate static cling for a more comfortable wearing experience, especially important in Ghana's varied climate.</li>
         </ul>
         
-        <h3>4. Test Before You Invest</h3>
-        <p>Before committing to a perfume, it's essential to test it on your skin. A fragrance can smell different on you than it does in the bottle or on a test strip. Apply a small amount on your wrist and wait a few hours to see how it develops. Pay attention to how it interacts with your skin's natural oils and how the scent evolves over time. If it feels like a good fit, then it's likely the right choice for you.</p>
+        <h3>Creating Your Fresh Living Routine</h3>
+        <p>To maximize the effectiveness of your Amanex products, consider this daily routine:</p>
         
-        <h3>5. Create a Signature Scent</h3>
-        <p>While it's great to have a variety of perfumes for different occasions, consider finding one signature scent that truly represents you. This scent should make you feel confident and comfortable, no matter the occasion. Once you find your signature scent, you can build a collection around it, adding complementary fragrances for specific events.</p>
+        <h4>Morning Refresh (6:00 AM - 8:00 AM)</h4>
+        <ul>
+          <li>Open windows for natural ventilation</li>
+          <li>Apply air freshener in high-traffic areas</li>
+          <li>Use multipurpose soap for quick kitchen cleanup</li>
+        </ul>
+        
+        <h4>Midday Maintenance (12:00 PM - 2:00 PM)</h4>
+        <ul>
+          <li>Refresh bathroom air with gel air freshener</li>
+          <li>Wipe down frequently touched surfaces</li>
+          <li>Check and refresh fabric softener in laundry</li>
+        </ul>
+        
+        <h4>Evening Wind-down (6:00 PM - 8:00 PM)</h4>
+        <ul>
+          <li>Apply calming scents in bedrooms</li>
+          <li>Complete thorough cleaning tasks</li>
+          <li>Prepare fresh linens with fabric softener</li>
+        </ul>
+        
+        <h3>Seasonal Fresh Living Tips</h3>
+        <p>Adapt your fresh living approach to Ghana's seasons:</p>
+        
+        <h4>Harmattan Season (November - March)</h4>
+        <p>During this dry, dusty period, focus on air purification and fabric protection. Use our air fresheners more frequently and ensure proper fabric care to combat the dry conditions.</p>
+        
+        <h4>Rainy Season (April - October)</h4>
+        <p>Humidity can lead to musty odors. Our deodorizing air fresheners and antibacterial cleaning products help maintain freshness despite the challenging weather conditions.</p>
+        
+        <h3>Beyond Products: The Amanex Experience</h3>
+        <p>At Amanex, we believe that fresh living is about more than just products – it's about creating a lifestyle. Our commitment to quality ensures that every product not only performs effectively but also enhances your daily experience.</p>
+        
+        <p>We're constantly researching and developing new formulations that address the unique challenges of West African living while maintaining international quality standards. From eco-friendly options to advanced fragrance technology, we're committed to providing solutions that make your home the best it can be.</p>
+        
+        <h3>Join the Fresh Living Movement</h3>
+        <p>Transform your home from a basic living space into a fragrant, inviting sanctuary. With Amanex Ghana's comprehensive range of products, you have everything you need to create the fresh, comfortable environment your family deserves.</p>
+        
+        <p>Start your fresh living journey today. Visit our product pages to explore our complete range, and discover how small changes can make a big difference in your home's atmosphere and your family's quality of life.</p>
         
         <h3>Conclusion</h3>
-        <p>Choosing the perfect perfume for any occasion is all about understanding the different fragrance families, considering the event and season, and testing the scent on your skin. With these tips in mind, you'll be able to find the right perfume that not only suits the occasion but also enhances your unique style and personality. Whether it's a light, refreshing scent for a sunny day or a deep, alluring fragrance for an evening out, the perfect perfume is out there waiting for you.</p>
+        <p>Fresh living isn't a luxury – it's a choice. With Amanex Ghana's innovative products and your commitment to creating a better home environment, you can transform your living space into a haven of comfort, cleanliness, and delightful fragrance. Your home deserves the best, and so do you.</p>
       `,
-      category: "Fragrance Guide",
-      date: "March 10, 2024",
+      category: "Home Care Tips",
+      date: "January 10, 2025",
       author: "Amanex Team",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+      readTime: "7 min read",
+      image: airfreshers
     },
     {
       id: 3,
-      title: "The Benefits of Using Multipurpose Liquid Soap",
-      excerpt: "In a world filled with specialized cleaning products, multipurpose liquid soap stands out as a versatile and efficient solution for all your cleaning needs. Discover why it's a must-have in any household.",
+      title: "The Science of Clean: How Amanex Products Keep Your Home Healthier",
+      excerpt: "Discover the scientific approach behind Amanex's cleaning and personal care products, and learn how they contribute to a healthier, safer home environment.",
       content: `
-        <p>In a world filled with specialized cleaning products, multipurpose liquid soap stands out as a versatile and efficient solution for all your cleaning needs. Whether you're tackling dirty dishes, wiping down surfaces, or even doing laundry, multipurpose liquid soap offers a range of benefits that make it a must-have in any household. Here's why you should consider incorporating this all-in-one cleaner into your daily routine.</p>
+        <p>In today's world, cleanliness isn't just about appearance – it's about health, safety, and well-being. At Amanex Ghana, we understand that effective cleaning requires more than just removing visible dirt. It's about creating an environment that actively promotes health and prevents the spread of harmful microorganisms.</p>
         
-        <h3>1. Cost-Effective and Convenient</h3>
-        <p>One of the biggest advantages of using multipurpose liquid soap is its cost-effectiveness. Instead of purchasing multiple products for different cleaning tasks, a single bottle of multipurpose soap can handle it all. This not only saves you money but also reduces clutter in your cleaning supply cabinet. With just one product, you can tackle various cleaning challenges, making your shopping trips more convenient and your budget more manageable.</p>
+        <h3>The Hidden Dangers in Your Home</h3>
+        <p>Your home, despite being your sanctuary, can harbor numerous health risks that aren't visible to the naked eye. From kitchen surfaces that come into contact with raw food to bathroom areas that can harbor bacteria, every surface in your home requires proper cleaning and disinfection.</p>
         
-        <h3>2. Gentle Yet Effective Cleaning</h3>
-        <p>Multipurpose liquid soap is formulated to be tough on dirt and grime while being gentle on surfaces. Whether you're cleaning countertops, floors, or delicate items like glass and stainless steel, this versatile soap provides effective cleaning without causing damage. It's also safe to use on various materials, making it ideal for households with diverse cleaning needs.</p>
+        <p>Common household bacteria include:</p>
+        <ul>
+          <li><strong>E. coli:</strong> Often found in kitchens, especially on cutting boards and countertops</li>
+          <li><strong>Staphylococcus aureus:</strong> Common on frequently touched surfaces like doorknobs and light switches</li>
+          <li><strong>Salmonella:</strong> Can be present in kitchen areas where raw food is prepared</li>
+          <li><strong>Mold spores:</strong> Thrive in humid environments like bathrooms and basements</li>
+        </ul>
         
-        <h3>3. Environmentally Friendly</h3>
-        <p>Many multipurpose liquid soaps are designed with eco-friendliness in mind. They often contain biodegradable ingredients that break down naturally, reducing their impact on the environment. By choosing an environmentally friendly multipurpose soap, you're not only keeping your home clean but also doing your part to protect the planet. Plus, using a single product reduces packaging waste, as you're not buying multiple bottles of different cleaners.</p>
+        <h3>How Amanex Products Combat These Threats</h3>
+        <p>Our product formulations are developed with scientific precision to address these health concerns effectively:</p>
         
-        <h3>4. Easy to Use</h3>
-        <p>Simplicity is key when it comes to cleaning, and multipurpose liquid soap delivers just that. With clear instructions and no need for complicated mixing or diluting, it's easy to use for anyone. Just apply the soap to a sponge, cloth, or directly onto the surface you want to clean, and wipe away the dirt. Its versatility means you can seamlessly move from one cleaning task to another without switching products, saving you time and effort.</p>
+        <h4>Multipurpose Liquid Soap: The First Line of Defense</h4>
+        <p>Our multipurpose liquid soap isn't just about removing visible dirt – it's formulated to break down the molecular bonds that allow bacteria to adhere to surfaces. The key ingredients work together to:</p>
         
-        <h3>5. Versatile Applications</h3>
-        <p>The name says it all—multipurpose liquid soap is incredibly versatile. Use it in the kitchen to wash dishes and clean countertops, in the bathroom to scrub tiles and sinks, or even in the laundry room to pre-treat stains on clothes. Some formulations are also safe for handwashing, making them a great option for busy households. No matter the cleaning task, this soap has you covered.</p>
+        <ul>
+          <li><strong>Emulsify oils and fats:</strong> Breaking down grease and food residues that can harbor bacteria</li>
+          <li><strong>Penetrate surface pores:</strong> Reaching bacteria that may be embedded in microscopic surface irregularities</li>
+          <li><strong>Create a protective barrier:</strong> Preventing immediate recontamination after cleaning</li>
+        </ul>
+        
+        <p>Available in sizes from 200ml for daily use to 5-liter containers for commercial applications, our multipurpose soap provides consistent cleaning power for every need.</p>
+        
+        <h4>Hand Sanitizers: Personal Protection Technology</h4>
+        <p>Our hand sanitizer formulations represent the cutting edge of personal hygiene technology. Formulated to kill 99.9% of germs, our products work through multiple mechanisms:</p>
+        
+        <ul>
+          <li><strong>Alcohol-based formulation:</strong> Effectively denatures proteins in bacterial cell walls</li>
+          <li><strong>Moisturizing agents:</strong> Prevent the drying effects common in many sanitizers</li>
+          <li><strong>Fast-acting formula:</strong> Provides protection in seconds, not minutes</li>
+        </ul>
+        
+        <p>Available in convenient 60ml and 350ml sizes, our hand sanitizers ensure protection is always within reach, whether you're at home, at work, or on the go.</p>
+        
+        <h4>Air Fresheners: Beyond Fragrance</h4>
+        <p>Our air freshener technology goes beyond simply masking odors. We've developed formulations that actively neutralize odor molecules while providing long-lasting fragrance:</p>
+        
+        <ul>
+          <li><strong>Molecular neutralization:</strong> Our products don't just cover odors – they break down the molecules that cause them</li>
+          <li><strong>Long-lasting effectiveness:</strong> Unlike many air fresheners that fade quickly, our formulations provide consistent freshness</li>
+          <li><strong>Environmentally conscious:</strong> Formulated to be safe for use around children and pets</li>
+        </ul>
+        
+        <h3>The Science of Fabric Care</h3>
+        <p>Our fabric softener technology addresses more than just softness – it's about fabric health and longevity:</p>
+        
+        <h4>Fiber Protection Technology</h4>
+        <p>Our BREEZE fabric softeners use advanced polymer technology to:</p>
+        <ul>
+          <li><strong>Reduce fiber friction:</strong> Minimizing wear and tear during washing and wearing</li>
+          <li><strong>Maintain fabric integrity:</strong> Preserving the original texture and appearance of your clothes</li>
+          <li><strong>Provide long-lasting freshness:</strong> Ensuring your fabrics smell clean and fresh for days</li>
+        </ul>
+        
+        <h4>Static Control Technology</h4>
+        <p>Static electricity isn't just annoying – it can damage delicate fabrics and cause discomfort. Our formulations include:</p>
+        <ul>
+          <li><strong>Anti-static agents:</strong> Preventing the build-up of static electricity</li>
+          <li><strong>Fabric-friendly ingredients:</strong> Safe for all types of fabrics, including delicate materials</li>
+        </ul>
+        
+        <h3>Quality Assurance: Our Commitment to Safety</h3>
+        <p>Every Amanex product undergoes rigorous testing to ensure it meets the highest safety standards:</p>
+        
+        <h4>Ingredient Selection</h4>
+        <p>We carefully select every ingredient based on:</p>
+        <ul>
+          <li><strong>Safety profile:</strong> All ingredients are tested for human and environmental safety</li>
+          <li><strong>Effectiveness:</strong> Each ingredient must contribute to the product's cleaning or care performance</li>
+          <li><strong>Sustainability:</strong> We prioritize ingredients that are environmentally responsible</li>
+        </ul>
+        
+        <h4>Formulation Testing</h4>
+        <p>Our products undergo extensive testing including:</p>
+        <ul>
+          <li><strong>Efficacy testing:</strong> Ensuring products perform as intended</li>
+          <li><strong>Safety testing:</strong> Verifying products are safe for intended use</li>
+          <li><strong>Stability testing:</strong> Confirming products maintain quality over time</li>
+        </ul>
+        
+        <h3>Creating a Healthier Home Environment</h3>
+        <p>To maximize the health benefits of our products, consider this comprehensive cleaning approach:</p>
+        
+        <h4>Daily Cleaning Routine</h4>
+        <ul>
+          <li><strong>Kitchen surfaces:</strong> Clean with multipurpose soap after each meal preparation</li>
+          <li><strong>Bathroom fixtures:</strong> Regular cleaning prevents bacterial build-up</li>
+          <li><strong>Frequently touched surfaces:</strong> Regular disinfection reduces germ transmission</li>
+        </ul>
+        
+        <h4>Weekly Deep Cleaning</h4>
+        <ul>
+          <li><strong>Floor cleaning:</strong> Remove accumulated dirt and bacteria</li>
+          <li><strong>Fabric care:</strong> Launder linens and curtains with fabric softener</li>
+          <li><strong>Air quality:</strong> Refresh air fresheners and ensure proper ventilation</li>
+        </ul>
+        
+        <h3>The Future of Clean Technology</h3>
+        <p>At Amanex, we're constantly researching and developing new technologies that will make your home even healthier:</p>
+        
+        <ul>
+          <li><strong>Eco-friendly formulations:</strong> Developing products that are effective yet environmentally responsible</li>
+          <li><strong>Advanced disinfection:</strong> Researching new methods to eliminate harmful microorganisms</li>
+          <li><strong>Smart cleaning solutions:</strong> Exploring technology that makes cleaning more efficient and effective</li>
+        </ul>
+        
+        <h3>Your Health, Our Priority</h3>
+        <p>When you choose Amanex products, you're choosing more than just cleaning solutions – you're choosing products that actively contribute to your family's health and well-being. Our commitment to scientific excellence ensures that every product not only meets your cleaning needs but exceeds your health expectations.</p>
+        
+        <p>Join the thousands of Ghanaian families who trust Amanex for their health and cleaning needs. Experience the difference that science-based cleaning can make in your home.</p>
         
         <h3>Conclusion</h3>
-        <p>Multipurpose liquid soap is a game-changer for anyone looking to simplify their cleaning routine without compromising on effectiveness. Its cost-saving, environmentally friendly, and versatile nature makes it an essential product for every household. By incorporating multipurpose liquid soap into your cleaning arsenal, you can enjoy a cleaner home with less effort and fewer products. Make the switch today and experience the benefits for yourself!</p>
+        <p>Cleanliness is health, and health is wealth. With Amanex Ghana's scientifically formulated products, you can create a home environment that actively promotes your family's well-being. Our commitment to scientific excellence ensures that every product contributes to a healthier, safer home.</p>
       `,
-      category: "Cleaning Tips",
-      date: "March 5, 2024",
+      category: "Health & Wellness",
+      date: "January 5, 2025",
       author: "Amanex Team",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+      readTime: "6 min read",
+      image: liquidsoup
     }
   ];
 
@@ -145,14 +324,14 @@ export default function Blog() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center" style={{ paddingTop: '4rem', width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-coty-mint-light to-coty-gray-light"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-red-800 mb-8 animate-fade-in-up animation-delay-800">
-            OUR BLOG
+          <h1 className="text-6xl md:text-8xl font-bold text-coty-navy mb-8 animate-fade-in-up animation-delay-800">
+            AMANEX INSIGHTS
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed animate-fade-in-up animation-delay-0">
-            Discover the latest insights, company updates, and stories from Amanex Ghana. 
-            Stay connected with our journey of innovation and growth.
+            Discover expert tips, company updates, and insights from Amanex Ghana. 
+            Learn how our products transform everyday routines into luxurious experiences.
           </p>
           <p className="text-lg text-gray-500 animate-fade-in-up animation-delay-1200">SCROLL TO EXPLORE</p>
         </div>

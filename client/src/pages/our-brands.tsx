@@ -8,26 +8,31 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 // Import product images
 import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.jpg";
 import airfreshersviolet from "@/assets/productimages/airfreshersviolet.jpg";
 import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
 import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
 import showergel from "@/assets/productimages/showergel.jpg";
 import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
 import showergelyellow from "@/assets/productimages/showergelyellow.jpg";
 import insecticide from "@/assets/productimages/insecticide.jpg";
 import classcleaner from "@/assets/productimages/classcleaner.jpg";
 import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
 import airfresher12 from "@/assets/productimages/airfresher12.jpg";
-import allproducts from "@/assets/productimages/allproducts.png";
-import perfumes from "@/assets/productimages/perfumes.png";
+import allproducts from "@/assets/productimages/allproducts.jpg";
+import perfumes from "@/assets/productimages/perfumes.jpg";
 import redperf from "@/assets/productimages/redperf.png";
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
+import sanitizer350ml from "@/assets/productimages/sanitizer-350ml.png";
 
 export default function OurBrands() {
   const productCategories = [
     {
       name: "AIR FRESHENER",
       description: "Transform your living spaces with our invigorating air fresheners that create a welcoming atmosphere.",
-      image: airfreshersgroup,
+      image: airfreshers,
       features: ["Long-lasting fragrance", "Natural ingredients", "Multiple scents available"]
     },
     {
@@ -39,7 +44,7 @@ export default function OurBrands() {
     {
       name: "LIQUID SOAP",
       description: "Multipurpose liquid soaps that provide effective cleaning while being gentle on your skin.",
-      image: liquidsoupyellow,
+      image: liquidsoup,
       features: ["Gentle formula", "Antibacterial protection", "Moisturizing properties"]
     },
     {
@@ -63,13 +68,13 @@ export default function OurBrands() {
     {
       name: "FABRIC SOFTENER",
       description: "Gentle fabric softeners that keep your clothes soft, fresh, and beautifully scented.",
-      image: fabricsoftener,
+      image: fabricsoftenergroup,
       features: ["Softens fabrics", "Long-lasting freshness", "Color-safe formula"]
     },
     {
       name: "SANITIZER",
       description: "Protective hand sanitizers that keep you feeling refreshed and protected throughout the day.",
-      image: airfresher12,
+      image: sanitizer60ml,
       features: ["99.9% germ protection", "Non-drying formula", "Portable design"]
     }
   ];
@@ -331,7 +336,7 @@ export default function OurBrands() {
             </div>
             <div className="relative">
               <img 
-                src={classcleaner}
+                src={allproducts}
                 alt="Quality Products" 
                 className="rounded-lg shadow-xl"
               />

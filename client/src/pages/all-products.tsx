@@ -8,19 +8,24 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 // Import product images
 import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.png";
 import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
 import airfresher12 from "@/assets/productimages/airfresher12.jpg";
 import airfresherblack from "@/assets/productimages/airfresherblack.jpg";
 import airfresherblue from "@/assets/productimages/airfresherblue.jpg";
 import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
 import perfumes from "@/assets/productimages/perfumes.png";
 import bodysplash from "@/assets/productimages/bodysplash.png";
 import insecticide from "@/assets/productimages/insecticide.jpg";
 import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import liquidsoap750ml from "@/assets/productimages/liquidsoap750 ml.jpg";
 import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
 import showergel from "@/assets/productimages/showergel.jpg";
 import classcleaner from "@/assets/productimages/classcleaner.jpg";
-import sanitizer from "@/assets/productimages/sanitizer.png";
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
+import sanitizer350ml from "@/assets/productimages/sanitizer-350ml.png";
 
 export default function Fragrance() {
   const fragranceProducts = [
@@ -31,7 +36,7 @@ export default function Fragrance() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "250ml",
-      image: airfreshersgroup
+      image: airfreshers
     },
     {
       id: 2,
@@ -76,7 +81,7 @@ export default function Fragrance() {
       description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
       variants: ["4 Variants"],
       size: "500ml, 1,000ml",
-      image: fabricsoftener
+      image: fabricsoftenergroup
     },
     {
       id: 7,
@@ -112,7 +117,7 @@ export default function Fragrance() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "200ml, 500ml, 750ml",
-      image: liquidsoupyellow
+      image: liquidsoap750ml
     },
     {
       id: 11,
@@ -121,7 +126,7 @@ export default function Fragrance() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "5 Litre",
-      image: liquidsoupyellow
+      image: liquidsoup
     },
     {
       id: 12,
@@ -130,7 +135,7 @@ export default function Fragrance() {
       description: "Wash your hand with our original hand wash soap, a powerful yet gentle formula that tackles dirt and grime on your hands. Ideal for kitchens, restaurants, and more, this versatile cleaner leaves your hands clean and fresh.",
       variants: ["3 Variants"],
       size: "350ml",
-      image: liquidsoupyellow
+      image: liquidsoup
     },
     {
       id: 13,
@@ -166,7 +171,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "60ml, 100ml",
-      image: sanitizer
+      image: sanitizer60ml
     },
     {
       id: 17,
@@ -175,7 +180,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "350ml",
-      image: sanitizer
+      image: sanitizer350ml
     }
   ];
 

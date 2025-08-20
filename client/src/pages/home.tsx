@@ -11,6 +11,12 @@ import banner1Image from "@/assets/Banner1.jpg";
 import banner2Image from "@/assets/Banner2.jpg";
 import banner3Image from "@/assets/Banner3.jpg";
 
+// Import blog images
+import yesperfumesblog from "@/assets/productimages/yesperfumesblog.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.png";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import donation1 from "@/assets/productimages/donation-1.jpg";
+
 // Import Instagram images
 import instagram1 from '@/assets/instagram/1754494212936.jpeg';
 import instagram2 from '@/assets/instagram/1754494208261.jpeg';
@@ -50,27 +56,27 @@ export default function Home() {
   const newsArticles = [
     {
       id: 1,
-      category: "PRESS RELEASE",
-      date: "JULY 16, 2025",
-      title: "INTRODUCING YES SKINCARE, we have a new variety of skincare products for everyone",
-      excerpt: "Coty, Inc. unveils Origen, a new Consumer Beauty fragrance brand inspired by the spirit of discovery and scent stories from around the world.",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+      category: "Company News",
+      date: "January 15, 2025",
+      title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
+      excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
+      image: yesperfumesblog
     },
     {
       id: 2,
-      category: "PRESS RELEASE",
-      date: "JUNE 10, 2025",
-      title: "INTRODUCING ADIDAS VIBES FRAGRANCE HAIR & BODY MISTS",
-      excerpt: "Building on the success of the 'Vibes' Eau de Parfum collection, Coty launches new mood-boosting sportswear scents.",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+      category: "Home Care Tips",
+      date: "January 10, 2025",
+      title: "Transform Your Home with Amanex: The Complete Guide to Fresh Living",
+      excerpt: "Learn how to create a fresh, inviting home environment using Amanex's comprehensive range of air fresheners, cleaning products, and fabric care solutions.",
+      image: airfreshers
     },
     {
       id: 3,
-      category: "PRESS RELEASE",
-      date: "JUNE 3, 2025",
-      title: "Marc Jacobs celebrates anniversary at Maison Orveda",
-      excerpt: "Maison Orveda hosted an intimate fireside conversation between Marc Jacobs and Bridget Foley in New York.",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+      category: "Health & Wellness",
+      date: "January 5, 2025",
+      title: "The Science of Clean: How Amanex Products Keep Your Home Healthier",
+      excerpt: "Discover the scientific approach behind Amanex's cleaning and personal care products, and learn how they contribute to a healthier, safer home environment.",
+      image: liquidsoup
     }
   ];
 
@@ -222,7 +228,10 @@ export default function Home() {
       <section className="py-20 bg-white w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="mb-16">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">IN THE NEWS</h2>
+            <h2 className="text-4xl font-bold text-coty-navy mb-4">AMANEX INSIGHTS</h2>
+            <p className="text-lg text-coty-gray max-w-3xl mx-auto">
+              Discover expert tips, company updates, and insights from Amanex Ghana. Learn how our products transform everyday routines into luxurious experiences.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
@@ -255,7 +264,7 @@ export default function Home() {
 
           <div className="text-center">
             <a href="/blog" className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-coty-navy text-md font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border border-coty-navy transition-colors duration-300">
-              READ ALL NEWS
+              READ ALL INSIGHTS
               <ArrowRight className="text-2xl" />
             </a>
           </div>
@@ -391,7 +400,7 @@ export default function Home() {
           {/* Image */}
           <div className="w-full md:w-1/2 mb-10 md:mb-0">
             <img 
-              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              src={donation1} 
               alt="Our Vision" 
               className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
             />

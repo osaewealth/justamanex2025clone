@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 // Import air freshener images
 import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.jpg";
 import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
 import airfresher12 from "@/assets/productimages/airfresher12.jpg";
 import airfresherblack from "@/assets/productimages/airfresherblack.jpg";
@@ -22,7 +23,7 @@ export default function AirFresheners() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "250ml",
-      image: airfreshersgroup
+      image: airfreshers
     },
     {
       id: 2,

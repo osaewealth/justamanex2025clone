@@ -9,6 +9,8 @@ import ScrollToTop from '@/components/ScrollToTop';
 // Import product images
 import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
 import airfresher12 from "@/assets/productimages/airfresher12.jpg";
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
+import sanitizer350ml from "@/assets/productimages/sanitizer-350ml.png";
 
 export default function PersonalCare() {
   const personalCareProducts = [
@@ -37,7 +39,7 @@ export default function PersonalCare() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "60ml, 100ml",
-      image: airfresher12
+      image: sanitizer60ml
     },
     {
       id: 4,
@@ -46,7 +48,7 @@ export default function PersonalCare() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "350ml",
-      image: airfresher12
+      image: sanitizer350ml
     }
   ];
 

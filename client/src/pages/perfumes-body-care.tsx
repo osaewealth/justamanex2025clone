@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
 // Import product images
-import perfumes from "@/assets/productimages/perfumes.png";
+import perfumes from "@/assets/productimages/perfumes.jpg";
 import bodysplash from "@/assets/productimages/bodysplash.png";
 
 export default function PerfumesBodyCare() {

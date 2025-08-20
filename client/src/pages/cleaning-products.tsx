@@ -8,6 +8,8 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 // Import product images
 import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import liquidsoap750ml from "@/assets/productimages/liquidsoap750 ml.jpg";
 import classcleaner from "@/assets/productimages/classcleaner.jpg";
 
 export default function CleaningProducts() {
@@ -19,7 +21,7 @@ export default function CleaningProducts() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "200ml, 500ml, 750ml",
-      image: liquidsoupyellow
+      image: liquidsoap750ml
     },
     {
       id: 2,
@@ -28,7 +30,7 @@ export default function CleaningProducts() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "5 Litre",
-      image: liquidsoupyellow
+      image: liquidsoup
     },
     {
       id: 3,
@@ -37,7 +39,7 @@ export default function CleaningProducts() {
       description: "Wash your hand with our original hand wash soap, a powerful yet gentle formula that tackles dirt and grime on your hands. Ideal for kitchens, restaurants, and more, this versatile cleaner leaves your hands clean and fresh.",
       variants: ["3 Variants"],
       size: "350ml",
-      image: liquidsoupyellow
+      image: liquidsoup
     },
     {
       id: 4,

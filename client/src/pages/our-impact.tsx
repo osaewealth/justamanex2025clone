@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import donation1 from "@/assets/productimages/donation-1.jpg";
 
 export default function OurImpact() {
   const [animatedStats, setAnimatedStats] = useState({
@@ -342,7 +343,7 @@ export default function OurImpact() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src={donation1} 
                 alt="Community Impact" 
                 className="rounded-lg shadow-xl"
               />

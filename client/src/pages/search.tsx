@@ -6,6 +6,14 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
+import sanitizer350ml from "@/assets/productimages/sanitizer-350ml.png";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import liquidsoap750ml from "@/assets/productimages/liquidsoap750 ml.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.png";
+
 // All products data from across the site
 const allProducts = [
   // Air Fresheners
@@ -88,7 +96,7 @@ const allProducts = [
     description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
     variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
     size: "200ml, 500ml, 750ml",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: liquidsoap750ml,
     page: "/cleaning-products"
   },
   {
@@ -98,7 +106,7 @@ const allProducts = [
     description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
     variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
     size: "5 Litre",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: liquidsoup,
     page: "/cleaning-products"
   },
   {
@@ -108,7 +116,7 @@ const allProducts = [
     description: "Wash your hand with our original hand wash soap, a powerful yet gentle formula that tackles dirt and grime on your hands. Ideal for kitchens, restaurants, and more, this versatile cleaner leaves your hands clean and fresh.",
     variants: ["3 Variants"],
     size: "350ml",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: liquidsoup,
     page: "/cleaning-products"
   },
   {
@@ -149,7 +157,7 @@ const allProducts = [
     description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
     variants: ["1 Variant"],
     size: "60ml, 100ml",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: sanitizer60ml,
     page: "/personal-care"
   },
   {
@@ -159,7 +167,7 @@ const allProducts = [
     description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
     variants: ["1 Variant"],
     size: "350ml",
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: sanitizer350ml,
     page: "/personal-care"
   },
   // Home Care
@@ -170,7 +178,7 @@ const allProducts = [
     description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
     variants: ["4 Variants"],
     size: "500ml, 1,000ml",
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: fabricsoftenergroup,
     page: "/home-care"
   },
   {

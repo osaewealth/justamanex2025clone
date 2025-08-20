@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 // Import product images
 import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
 import insecticide from "@/assets/productimages/insecticide.jpg";
 
 export default function HomeCare() {
@@ -19,7 +20,7 @@ export default function HomeCare() {
       description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
       variants: ["4 Variants"],
       size: "500ml, 1,000ml",
-      image: fabricsoftener
+      image: fabricsoftenergroup
     },
     {
       id: 2,

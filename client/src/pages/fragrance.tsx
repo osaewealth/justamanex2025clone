@@ -6,6 +6,20 @@ import Footer from '@/components/Footer';
 import StandardHeader from '@/components/StandardHeader';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
+import sanitizer350ml from "@/assets/productimages/sanitizer-350ml.png";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
+import liquidsoup from "@/assets/productimages/liquidsoup.png";
+import liquidsoap750ml from "@/assets/productimages/liquidsoap750 ml.jpg";
+import airfreshers from "@/assets/productimages/airfreshers.png";
+import perfumes from "@/assets/productimages/perfumes.png";
+import bodysplash from "@/assets/productimages/bodysplash.png";
+import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
+import showergel from "@/assets/productimages/showergel.jpg";
+import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import insecticide from "@/assets/productimages/insecticide.jpg";
+
 export default function Fragrance() {
   const fragranceProducts = [
     {
@@ -60,7 +74,7 @@ export default function Fragrance() {
       description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
       variants: ["4 Variants"],
       size: "500ml, 1,000ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: fabricsoftenergroup
     },
     {
       id: 7,
@@ -69,7 +83,7 @@ export default function Fragrance() {
       description: "Indulge in the luxury of our premium perfumes, each bottle a blend of exquisite, long-lasting notes that captivate and linger. Designed to complement your unique style, our perfumes offer an elegant touch for any occasion, leaving a memorable impression.",
       variants: ["PURE PASSION", "SEDUCTION", "ISLAND BOND", "MOTION", "GOLDEN ISLAND"],
       size: "50ml",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: perfumes
     },
     {
       id: 8,
@@ -78,7 +92,7 @@ export default function Fragrance() {
       description: "Experience the light, invigorating touch of our body splash, perfect for a quick refresh throughout the day. With its delicate scent and hydrating formula, our body splash keeps you feeling revitalized and confident, wherever you go. It is smooth on the skin and keeps your confidence up all day long.",
       variants: ["GARDEN OF ROSE", "BERRY MELLOW", "LAVENDER DRAMS", "PEACH FUZZ"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: bodysplash
     },
     {
       id: 9,
@@ -96,7 +110,7 @@ export default function Fragrance() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "200ml, 500ml, 750ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoap750ml
     },
     {
       id: 11,
@@ -150,7 +164,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "60ml, 100ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: sanitizer60ml
     },
     {
       id: 17,
@@ -159,7 +173,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "350ml",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: sanitizer350ml
     }
   ];
 
