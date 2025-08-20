@@ -6,6 +6,10 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import classcleaner from "@/assets/productimages/classcleaner.jpg";
+
 export default function CleaningProducts() {
   const cleaningProducts = [
     {
@@ -15,7 +19,7 @@ export default function CleaningProducts() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "200ml, 500ml, 750ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 2,
@@ -24,7 +28,7 @@ export default function CleaningProducts() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "5 Litre",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 3,
@@ -33,7 +37,7 @@ export default function CleaningProducts() {
       description: "Wash your hand with our original hand wash soap, a powerful yet gentle formula that tackles dirt and grime on your hands. Ideal for kitchens, restaurants, and more, this versatile cleaner leaves your hands clean and fresh.",
       variants: ["3 Variants"],
       size: "350ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 4,
@@ -42,7 +46,7 @@ export default function CleaningProducts() {
       description: "Achieve a crystal-clear shine with our streak-free glass cleaner, expertly formulated to remove smudges and fingerprints. Ideal for windows, mirrors, and glass surfaces, this cleaner leaves behind nothing but a spotless, sparkling finish. No matter what type of glass you've got or any diet surfaces, Glass Shine will leave your glasses and surfaces squeaky clean every time. Get your ultimate clean and be the glass Hero with Glass Shine.",
       variants: ["1 Variant"],
       size: "750ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: classcleaner
     }
   ];
 

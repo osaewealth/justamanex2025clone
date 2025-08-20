@@ -6,54 +6,70 @@ import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 
+// Import product images
+import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfreshersviolet from "@/assets/productimages/airfreshersviolet.jpg";
+import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
+import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import showergel from "@/assets/productimages/showergel.jpg";
+import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
+import showergelyellow from "@/assets/productimages/showergelyellow.jpg";
+import insecticide from "@/assets/productimages/insecticide.jpg";
+import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import airfresher12 from "@/assets/productimages/airfresher12.jpg";
+import allproducts from "@/assets/productimages/allproducts.png";
+import perfumes from "@/assets/productimages/perfumes.png";
+import redperf from "@/assets/productimages/redperf.png";
+
 export default function OurBrands() {
   const productCategories = [
     {
       name: "AIR FRESHENER",
       description: "Transform your living spaces with our invigorating air fresheners that create a welcoming atmosphere.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: airfreshersgroup,
       features: ["Long-lasting fragrance", "Natural ingredients", "Multiple scents available"]
     },
     {
       name: "PERFUME & BODY SPLASH",
       description: "Luxurious perfumes and body splashes that define your personal style and leave lasting impressions.",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: airfresherspray,
       features: ["Premium fragrances", "Long-lasting scent", "Elegant packaging"]
     },
     {
       name: "LIQUID SOAP",
       description: "Multipurpose liquid soaps that provide effective cleaning while being gentle on your skin.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: liquidsoupyellow,
       features: ["Gentle formula", "Antibacterial protection", "Moisturizing properties"]
     },
     {
       name: "SHOWER GEL",
       description: "Moisturizing shower gels that keep you feeling refreshed and protected all day long.",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: showergel2colors,
       features: ["Deep cleansing", "Skin nourishment", "Refreshing scents"]
     },
     {
       name: "INSECTICIDE SPRAY",
       description: "Effective insecticide sprays that ensure your home is always immaculate and safe.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: insecticide,
       features: ["Powerful protection", "Safe for family use", "Long-lasting effect"]
     },
     {
       name: "GLASS CLEANER",
       description: "Professional-grade glass cleaners that deliver streak-free shine and crystal-clear results.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: classcleaner,
       features: ["Streak-free formula", "Quick drying", "Safe for all surfaces"]
     },
     {
       name: "FABRIC SOFTENER",
       description: "Gentle fabric softeners that keep your clothes soft, fresh, and beautifully scented.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: fabricsoftener,
       features: ["Softens fabrics", "Long-lasting freshness", "Color-safe formula"]
     },
     {
       name: "SANITIZER",
       description: "Protective hand sanitizers that keep you feeling refreshed and protected throughout the day.",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: airfresher12,
       features: ["99.9% germ protection", "Non-drying formula", "Portable design"]
     }
   ];
@@ -63,37 +79,43 @@ export default function OurBrands() {
       name: "BR4",
       category: "Air Freshener",
       rating: 4.8,
-      price: "₵25.00"
+      price: "₵25.00",
+      image: airfreshersviolet
     },
     {
       name: "BR11",
       category: "Perfume",
       rating: 4.9,
-      price: "₵45.00"
+      price: "₵45.00",
+      image: redperf
     },
     {
       name: "BR7",
       category: "Liquid Soap",
       rating: 4.7,
-      price: "₵18.00"
+      price: "₵18.00",
+      image: liquidsoupyellow
     },
     {
       name: "BR1",
       category: "Shower Gel",
       rating: 4.8,
-      price: "₵22.00"
+      price: "₵22.00",
+      image: showergelyellow
     },
     {
       name: "BR2",
       category: "Glass Cleaner",
       rating: 4.6,
-      price: "₵15.00"
+      price: "₵15.00",
+      image: classcleaner
     },
     {
       name: "BR5",
       category: "Fabric Softener",
       rating: 4.7,
-      price: "₵20.00"
+      price: "₵20.00",
+      image: fabricsoftener
     }
   ];
 
@@ -143,7 +165,7 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={airfreshersgroup}
                   alt="Air Fresheners" 
                   className="w-full h-full object-cover"
                 />
@@ -160,7 +182,7 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/perfumes-body-care'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={perfumes}
                   alt="Perfumes & Body Care" 
                   className="w-full h-full object-cover"
                 />
@@ -177,7 +199,7 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={classcleaner}
                   alt="Cleaning Products" 
                   className="w-full h-full object-cover"
                 />
@@ -194,9 +216,9 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={showergel2colors}
                   alt="Personal Care" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">PERSONAL CARE</h3>
@@ -211,7 +233,7 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/home-care'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={fabricsoftener}
                   alt="Home Care" 
                   className="w-full h-full object-cover"
                 />
@@ -228,7 +250,7 @@ export default function OurBrands() {
             <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/all-products'}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  src={allproducts}
                   alt="View All Products" 
                   className="w-full h-full object-cover"
                 />
@@ -258,8 +280,12 @@ export default function OurBrands() {
             {bestSellers.map((product, index) => (
               <Card key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
                 <div className="text-center mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold text-lg">{product.name}</span>
+                  <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-lg font-bold text-coty-navy mb-2 group-hover:text-coty-navy/80 transition-colors duration-300">{product.name}</h3>
                   <p className="text-coty-gray text-sm mb-3">{product.category}</p>
@@ -305,7 +331,7 @@ export default function OurBrands() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src={classcleaner}
                 alt="Quality Products" 
                 className="rounded-lg shadow-xl"
               />

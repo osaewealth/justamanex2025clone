@@ -6,6 +6,10 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import insecticide from "@/assets/productimages/insecticide.jpg";
+
 export default function HomeCare() {
   const homeCareProducts = [
     {
@@ -15,7 +19,7 @@ export default function HomeCare() {
       description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
       variants: ["4 Variants"],
       size: "500ml, 1,000ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: fabricsoftener
     },
     {
       id: 2,
@@ -24,7 +28,7 @@ export default function HomeCare() {
       description: "Breeze Insecticide Spray, Multipurpose Insect Killer for Indoor & Perimeter with Comfort Wand kills mosquitoes, ants, cockroaches, spiders, fleas, ticks and other listed bugs; the formula is odor free with sweet scented fragrance, won't stain, and keeps listed bugs out. This spray can be used indoors and out, leaves no residue, and has no odor; people and pets may re-enter treated areas after spray has dried. Protect your home with our fast-acting insecticide spray, designed to effectively eliminate pests while being safe for your family. Its potent formula targets a wide range of insects, providing long-lasting protection and peace of mind.",
       variants: ["3 Variants"],
       size: "400ml",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: insecticide
     }
   ];
 

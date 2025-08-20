@@ -6,6 +6,10 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import perfumes from "@/assets/productimages/perfumes.png";
+import bodysplash from "@/assets/productimages/bodysplash.png";
+
 export default function PerfumesBodyCare() {
   const perfumesBodyCareProducts = [
     {
@@ -15,7 +19,7 @@ export default function PerfumesBodyCare() {
       description: "Indulge in the luxury of our premium perfumes, each bottle a blend of exquisite, long-lasting notes that captivate and linger. Designed to complement your unique style, our perfumes offer an elegant touch for any occasion, leaving a memorable impression.",
       variants: ["PURE PASSION", "SEDUCTION", "ISLAND BOND", "MOTION", "GOLDEN ISLAND"],
       size: "50ml",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: perfumes
     },
     {
       id: 2,
@@ -24,7 +28,7 @@ export default function PerfumesBodyCare() {
       description: "Experience the light, invigorating touch of our body splash, perfect for a quick refresh throughout the day. With its delicate scent and hydrating formula, our body splash keeps you feeling revitalized and confident, wherever you go. It is smooth on the skin and keeps your confidence up all day long.",
       variants: ["GARDEN OF ROSE", "BERRY MELLOW", "LAVENDER DRAMS", "PEACH FUZZ"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: bodysplash
     }
   ];
 

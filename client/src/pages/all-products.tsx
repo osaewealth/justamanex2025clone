@@ -6,6 +6,22 @@ import Footer from '@/components/Footer';
 import StandardHeader from '@/components/StandardHeader';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
+import airfresher12 from "@/assets/productimages/airfresher12.jpg";
+import airfresherblack from "@/assets/productimages/airfresherblack.jpg";
+import airfresherblue from "@/assets/productimages/airfresherblue.jpg";
+import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import perfumes from "@/assets/productimages/perfumes.png";
+import bodysplash from "@/assets/productimages/bodysplash.png";
+import insecticide from "@/assets/productimages/insecticide.jpg";
+import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
+import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
+import showergel from "@/assets/productimages/showergel.jpg";
+import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import sanitizer from "@/assets/productimages/sanitizer.png";
+
 export default function Fragrance() {
   const fragranceProducts = [
     {
@@ -15,7 +31,7 @@ export default function Fragrance() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfreshersgroup
     },
     {
       id: 2,
@@ -24,7 +40,7 @@ export default function Fragrance() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherspray
     },
     {
       id: 3,
@@ -33,7 +49,7 @@ export default function Fragrance() {
       description: "Breeze Gel Air fresheners are great at masking unpleasant odors while infusing your car or space with a fresh clean scent. It keeps your space fresh and inviting with our range of air fresheners, available in multiple scents to suit every preference.",
       variants: ["BLUE BERRY", "SUMMER", "LEMON", "LAVENDER", "PEACH", "STRAWBERRY", "FLORA", "TUITY FRUITY", "VANILLA", "BLACK BERRY"],
       size: "100g",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresher12
     },
     {
       id: 4,
@@ -42,7 +58,7 @@ export default function Fragrance() {
       description: "Yes Air fresheners are a great way to make your home smell beautiful. Yes Air fresheners are great at masking unpleasant odors while infusing your space with a fresh clean scent.",
       variants: ["GOLDEN ISLAND", "SANDAL WOOD", "ARABIAN ROSE"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherblack
     },
     {
       id: 5,
@@ -51,7 +67,7 @@ export default function Fragrance() {
       description: "Original Air fresheners are great at masking unpleasant odors while infusing your space with a fresh clean scent.",
       variants: ["LAVENDER", "STRAWBERRY", "PEACH", "SUMMER", "VANILLA"],
       size: "300ml",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherblue
     },
     {
       id: 6,
@@ -60,7 +76,7 @@ export default function Fragrance() {
       description: "Enhance the softness and freshness of your laundry with our premium fabric softener. Designed to reduce wrinkles, eliminate static, and leave your clothes with a long-lasting, delightful scent, our fabric softener ensures that every wash feels luxurious. Perfect for all fabrics, it adds a touch of comfort to your clothes while preserving their quality.",
       variants: ["4 Variants"],
       size: "500ml, 1,000ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: fabricsoftener
     },
     {
       id: 7,
@@ -69,7 +85,7 @@ export default function Fragrance() {
       description: "Indulge in the luxury of our premium perfumes, each bottle a blend of exquisite, long-lasting notes that captivate and linger. Designed to complement your unique style, our perfumes offer an elegant touch for any occasion, leaving a memorable impression.",
       variants: ["PURE PASSION", "SEDUCTION", "ISLAND BOND", "MOTION", "GOLDEN ISLAND"],
       size: "50ml",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: perfumes
     },
     {
       id: 8,
@@ -78,7 +94,7 @@ export default function Fragrance() {
       description: "Experience the light, invigorating touch of our body splash, perfect for a quick refresh throughout the day. With its delicate scent and hydrating formula, our body splash keeps you feeling revitalized and confident, wherever you go. It is smooth on the skin and keeps your confidence up all day long.",
       variants: ["GARDEN OF ROSE", "BERRY MELLOW", "LAVENDER DRAMS", "PEACH FUZZ"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: bodysplash
     },
     {
       id: 9,
@@ -87,7 +103,7 @@ export default function Fragrance() {
       description: "Breeze Insecticide Spray, Multipurpose Insect Killer for Indoor & Perimeter with Comfort Wand kills mosquitoes, ants, cockroaches, spiders, fleas, ticks and other listed bugs; the formula is odor free with sweet scented fragrance, won't stain, and keeps listed bugs out. This spray can be used indoors and out, leaves no residue, and has no odor; people and pets may re-enter treated areas after spray has dried. Protect your home with our fast-acting insecticide spray, designed to effectively eliminate pests while being safe for your family. Its potent formula targets a wide range of insects, providing long-lasting protection and peace of mind.",
       variants: ["3 Variants"],
       size: "400ml",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: insecticide
     },
     {
       id: 10,
@@ -96,7 +112,7 @@ export default function Fragrance() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "200ml, 500ml, 750ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 11,
@@ -105,7 +121,7 @@ export default function Fragrance() {
       description: "Keep your home spotless with our multipurpose liquid soap, a powerful yet gentle formula that tackles dirt and grime on any surface. Ideal for kitchens, bathrooms, and more, this versatile cleaner leaves everything sparkling clean and fresh. Breeze Multipurpose Liquid Soap will leave your dishes and surfaces squeaky clean every time. Get your ultimate clean and be the house Hero with Breeze Multipurpose Liquid Soap.",
       variants: ["LEMON", "FANTASY", "ROSE", "OCEAN"],
       size: "5 Litre",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 12,
@@ -114,7 +130,7 @@ export default function Fragrance() {
       description: "Wash your hand with our original hand wash soap, a powerful yet gentle formula that tackles dirt and grime on your hands. Ideal for kitchens, restaurants, and more, this versatile cleaner leaves your hands clean and fresh.",
       variants: ["3 Variants"],
       size: "350ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: liquidsoupyellow
     },
     {
       id: 13,
@@ -123,7 +139,7 @@ export default function Fragrance() {
       description: "Pamper your skin with our luxurious shower gel, enriched with nourishing ingredients that cleanse and moisturize. Infused with a captivating fragrance, it transforms your daily shower into a spa-like experience, leaving your skin soft and smooth. Dive into the long-lasting, refreshing scent of watery hyacinth, sandalwood, and freesia in Breeze Shower Gel that will leave you feeling fresh long after you shower. This moisturizing body wash/shower gel is made with fragrances as beautiful as Bath and Body Works.",
       variants: ["COCONUT", "BLUE SKY", "LEMON", "VANILLA"],
       size: "1000ml",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: showergel2colors
     },
     {
       id: 14,
@@ -132,7 +148,7 @@ export default function Fragrance() {
       description: "Pamper your skin with our luxurious shower gel, enriched with nourishing ingredients that cleanse and moisturize. Infused with a captivating fragrance, it transforms your daily shower into a spa-like experience, leaving your skin soft and smooth. Dive into the long-lasting, refreshing scent of watery hyacinth, sandalwood, and freesia in Breeze Shower Gel that will leave you feeling fresh long after you shower. This moisturizing body wash/shower gel is made with fragrances as beautiful as Bath and Body Works.",
       variants: ["COCONUT", "BLUE SKY", "LEMON", "VANILLA"],
       size: "500ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: showergel
     },
     {
       id: 15,
@@ -141,7 +157,7 @@ export default function Fragrance() {
       description: "Achieve a crystal-clear shine with our streak-free glass cleaner, expertly formulated to remove smudges and fingerprints. Ideal for windows, mirrors, and glass surfaces, this cleaner leaves behind nothing but a spotless, sparkling finish. No matter what type of glass you've got or any diet surfaces, Glass Shine will leave your glasses and surfaces squeaky clean every time. Get your ultimate clean and be the glass Hero with Glass Shine.",
       variants: ["1 Variant"],
       size: "750ml",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: classcleaner
     },
     {
       id: 16,
@@ -150,7 +166,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "60ml, 100ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: sanitizer
     },
     {
       id: 17,
@@ -159,7 +175,7 @@ export default function Fragrance() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "350ml",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: sanitizer
     }
   ];
 

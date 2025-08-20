@@ -6,6 +6,13 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import air freshener images
+import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
+import airfresher12 from "@/assets/productimages/airfresher12.jpg";
+import airfresherblack from "@/assets/productimages/airfresherblack.jpg";
+import airfresherblue from "@/assets/productimages/airfresherblue.jpg";
+
 export default function AirFresheners() {
   const airFreshenerProducts = [
     {
@@ -15,7 +22,7 @@ export default function AirFresheners() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfreshersgroup
     },
     {
       id: 2,
@@ -24,7 +31,7 @@ export default function AirFresheners() {
       description: "Breeze Air Fresheners is formulated to freshen rooms and enclosed places by releasing fragrances to combat undesirable odors and smells. Breeze Air Freshers are long-lasting air fresheners, expertly crafted to eliminate odors and fill your home with a refreshing, inviting scent. Available in a variety of fragrances, our air fresheners ensure that every room feels clean and vibrant, day after day.",
       variants: ["OCEANIC", "VANILLA", "STRAWBERRY", "ORIENTAL ROSE", "BOUQUET", "BREEZER", "ICEY"],
       size: "275ml",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherspray
     },
     {
       id: 3,
@@ -33,7 +40,7 @@ export default function AirFresheners() {
       description: "Breeze Gel Air fresheners are great at masking unpleasant odors while infusing your car or space with a fresh clean scent. It keeps your space fresh and inviting with our range of air fresheners, available in multiple scents to suit every preference.",
       variants: ["BLUE BERRY", "SUMMER", "LEMON", "LAVENDER", "PEACH", "STRAWBERRY", "FLORA", "TUITY FRUITY", "VANILLA", "BLACK BERRY"],
       size: "100g",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresher12
     },
     {
       id: 4,
@@ -42,7 +49,7 @@ export default function AirFresheners() {
       description: "Yes Air fresheners are a great way to make your home smell beautiful. Yes Air fresheners are great at masking unpleasant odors while infusing your space with a fresh clean scent.",
       variants: ["GOLDEN ISLAND", "SANDAL WOOD", "ARABIAN ROSE"],
       size: "250ml",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherblack
     },
     {
       id: 5,
@@ -51,7 +58,7 @@ export default function AirFresheners() {
       description: "Original Air fresheners are great at masking unpleasant odors while infusing your space with a fresh clean scent.",
       variants: ["LAVENDER", "STRAWBERRY", "PEACH", "SUMMER", "VANILLA"],
       size: "300ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresherblue
     }
   ];
 

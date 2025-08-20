@@ -6,6 +6,10 @@ import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
+// Import product images
+import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
+import airfresher12 from "@/assets/productimages/airfresher12.jpg";
+
 export default function PersonalCare() {
   const personalCareProducts = [
     {
@@ -15,7 +19,7 @@ export default function PersonalCare() {
       description: "Pamper your skin with our luxurious shower gel, enriched with nourishing ingredients that cleanse and moisturize. Infused with a captivating fragrance, it transforms your daily shower into a spa-like experience, leaving your skin soft and smooth. Dive into the long-lasting, refreshing scent of watery hyacinth, sandalwood, and freesia in Breeze Shower Gel that will leave you feeling fresh long after you shower. This moisturizing body wash/shower gel is made with fragrances as beautiful as Bath and Body Works.",
       variants: ["COCONUT", "BLUE SKY", "LEMON", "VANILLA"],
       size: "1000ml",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: showergel2colors
     },
     {
       id: 2,
@@ -24,7 +28,7 @@ export default function PersonalCare() {
       description: "Pamper your skin with our luxurious shower gel, enriched with nourishing ingredients that cleanse and moisturize. Infused with a captivating fragrance, it transforms your daily shower into a spa-like experience, leaving your skin soft and smooth. Dive into the long-lasting, refreshing scent of watery hyacinth, sandalwood, and freesia in Breeze Shower Gel that will leave you feeling fresh long after you shower. This moisturizing body wash/shower gel is made with fragrances as beautiful as Bath and Body Works.",
       variants: ["COCONUT", "BLUE SKY", "LEMON", "VANILLA"],
       size: "500ml",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: showergel2colors
     },
     {
       id: 3,
@@ -33,7 +37,7 @@ export default function PersonalCare() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "60ml, 100ml",
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresher12
     },
     {
       id: 4,
@@ -42,7 +46,7 @@ export default function PersonalCare() {
       description: "Stay protected with our hand sanitizer, formulated to kill 99.9% of germs without drying out your skin. Its fast-absorbing, non-sticky formula makes it the perfect on-the-go solution for maintaining hygiene and safety anytime, anywhere.",
       variants: ["1 Variant"],
       size: "350ml",
-      image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: airfresher12
     }
   ];
 
