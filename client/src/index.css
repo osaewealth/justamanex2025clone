@@ -361,3 +361,203 @@
     width: 100% !important;
   }
 }
+
+/* Mobile Menu Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-enter,
+  .mobile-menu-exit,
+  .mobile-overlay-enter,
+  .mobile-overlay-exit {
+    animation: none;
+    transition: none;
+  }
+  
+  .mobile-menu-button {
+    transition: none;
+  }
+  
+  .mobile-menu-item::before {
+    transition: none;
+  }
+}
+
+/* Enhanced Mobile Menu Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile Menu Enhanced Styles */
+.mobile-menu-enhanced {
+  animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mobile-menu-item-enhanced {
+  animation: fadeInUp 0.3s ease-out forwards;
+  animation-delay: calc(var(--item-index) * 0.1s);
+  opacity: 0;
+}
+
+.mobile-menu-item-enhanced:nth-child(1) { --item-index: 1; }
+.mobile-menu-item-enhanced:nth-child(2) { --item-index: 2; }
+.mobile-menu-item-enhanced:nth-child(3) { --item-index: 3; }
+.mobile-menu-item-enhanced:nth-child(4) { --item-index: 4; }
+.mobile-menu-item-enhanced:nth-child(5) { --item-index: 5; }
+.mobile-menu-item-enhanced:nth-child(6) { --item-index: 6; }
+
+/* Mobile Menu Button Enhanced */
+.mobile-menu-button-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu-button-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(158, 64, 52, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.mobile-menu-button-enhanced:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* Mobile Menu Panel Enhanced */
+.mobile-menu-panel-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu-panel-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.mobile-menu-panel-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Mobile Menu Item Hover Effects Enhanced */
+.mobile-menu-item-hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-item-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(158, 64, 52, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.mobile-menu-item-hover:hover::before {
+  left: 100%;
+}
+
+.mobile-menu-item-hover:hover {
+  background: rgba(158, 64, 52, 0.05);
+  transform: translateX(5px);
+}
+
+/* Mobile Menu Backdrop Enhanced */
+.mobile-backdrop-enhanced {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mobile-backdrop-enhanced:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Menu Responsive Enhancements */
+@media (max-width: 640px) {
+  .mobile-menu-panel-enhanced {
+    margin: 0.5rem;
+    border-radius: 1rem;
+  }
+  
+  .mobile-menu-item-hover {
+    font-size: 1.125rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Mobile Menu Loading States */
+.mobile-menu-loading {
+  animation: pulse 2s infinite;
+}
+
+/* Mobile Menu Success States */
+.mobile-menu-success {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Mobile Menu Focus States */
+.mobile-menu-item-hover:focus {
+  outline: 2px solid rgba(158, 64, 52, 0.5);
+  outline-offset: 2px;
+}
+
+/* Mobile Menu Active States */
+.mobile-menu-item-hover.active {
+  background: rgba(158, 64, 52, 0.1);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Mobile Menu Disabled States */
+.mobile-menu-item-hover:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

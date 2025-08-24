@@ -13,9 +13,19 @@ export default function Careers() {
   const [isJobsVisible, setIsJobsVisible] = useState(false);
   const [selectedJob, setSelectedJob] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [jobOpenings, setJobOpenings] = useState<any[]>([]);
   const benefitsRef = useRef<HTMLDivElement>(null);
   const jobsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  // Load job openings from admin dashboard
+  useEffect(() => {
+    const savedJobs = localStorage.getItem('amanexJobs');
+    if (savedJobs) {
+      setJobOpenings(JSON.parse(savedJobs));
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,13 +34,17 @@ export default function Careers() {
           if (entry.isIntersecting) {
             if (entry.target === benefitsRef.current) {
               setIsBenefitsVisible(true);
+              setActiveSection("benefits");
             } else if (entry.target === jobsRef.current) {
               setIsJobsVisible(true);
+              setActiveSection("jobs");
+            } else if (entry.target === formRef.current) {
+              setActiveSection("form");
             }
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
     if (benefitsRef.current) {
@@ -39,12 +53,16 @@ export default function Careers() {
     if (jobsRef.current) {
       observer.observe(jobsRef.current);
     }
+    if (formRef.current) {
+      observer.observe(formRef.current);
+    }
 
     return () => observer.disconnect();
   }, []);
 
   const scrollToForm = (jobTitle: string) => {
     setSelectedJob(jobTitle);
+    setActiveSection("form");
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -83,101 +101,6 @@ export default function Careers() {
     }, 5000);
   };
 
-  const jobOpenings = [
-    {
-      id: 1,
-      title: "Sales Representative",
-      department: "Sales & Marketing",
-      location: "Accra, Ghana",
-      type: "Full-time",
-      experience: "2-3 years",
-      description: "We're looking for a dynamic Sales Representative to join our team and help drive growth in the Ghanaian market.",
-      requirements: [
-        "Bachelor's degree in Business, Marketing, or related field",
-        "2-3 years of sales experience in FMCG industry",
-        "Strong communication and negotiation skills",
-        "Proven track record of meeting sales targets",
-        "Knowledge of the local market and consumer behavior"
-      ],
-      responsibilities: [
-        "Develop and maintain relationships with key clients",
-        "Achieve monthly and quarterly sales targets",
-        "Conduct market research and competitor analysis",
-        "Present product demonstrations and training sessions",
-        "Prepare sales reports and forecasts"
-      ]
-    },
-    {
-      id: 2,
-      title: "Marketing Coordinator",
-      department: "Marketing",
-      location: "Accra, Ghana",
-      type: "Full-time",
-      experience: "1-2 years",
-      description: "Join our marketing team to help create compelling campaigns that connect with our customers.",
-      requirements: [
-        "Bachelor's degree in Marketing, Communications, or related field",
-        "1-2 years of marketing experience",
-        "Proficiency in digital marketing tools and platforms",
-        "Creative thinking and problem-solving skills",
-        "Experience with social media management"
-      ],
-      responsibilities: [
-        "Assist in developing marketing campaigns and strategies",
-        "Manage social media accounts and content creation",
-        "Coordinate with external agencies and vendors",
-        "Track and analyze campaign performance metrics",
-        "Support event planning and execution"
-      ]
-    },
-    {
-      id: 3,
-      title: "Supply Chain Specialist",
-      department: "Operations",
-      location: "Accra, Ghana",
-      type: "Full-time",
-      experience: "3-5 years",
-      description: "Help optimize our supply chain operations to ensure efficient product distribution across Ghana.",
-      requirements: [
-        "Bachelor's degree in Supply Chain Management, Logistics, or related field",
-        "3-5 years of supply chain experience",
-        "Knowledge of inventory management systems",
-        "Strong analytical and problem-solving skills",
-        "Experience with ERP systems"
-      ],
-      responsibilities: [
-        "Manage inventory levels and forecasting",
-        "Coordinate with suppliers and logistics partners",
-        "Optimize warehouse operations and distribution",
-        "Monitor and improve supply chain performance",
-        "Ensure compliance with quality standards"
-      ]
-    },
-    {
-      id: 4,
-      title: "Customer Service Representative",
-      department: "Customer Service",
-      location: "Accra, Ghana",
-      type: "Full-time",
-      experience: "1-2 years",
-      description: "Be the voice of our company and help deliver exceptional customer experiences.",
-      requirements: [
-        "High school diploma or equivalent",
-        "1-2 years of customer service experience",
-        "Excellent communication skills in English and local languages",
-        "Patient and empathetic approach to customer issues",
-        "Ability to work in shifts"
-      ],
-      responsibilities: [
-        "Handle customer inquiries and complaints",
-        "Process orders and track shipments",
-        "Provide product information and support",
-        "Maintain customer records and update databases",
-        "Escalate complex issues to appropriate departments"
-      ]
-    }
-  ];
-
   const benefits = [
     {
       icon: <Users className="h-8 w-8" />,
@@ -212,19 +135,115 @@ export default function Careers() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
-          <div className="text-center lg:text-left">
-            <h1 className="text-6xl md:text-8xl font-bold text-coty-navy mb-8">
-              CAREERS
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto lg:mx-0 mb-12 leading-relaxed">
+          <div className="text-center w-full">
+            {/* Main Heading with Enhanced Typography */}
+            <div className="mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-coty-navy leading-tight mb-4">
+                CAREERS
+              </h1>
+              <div className="w-24 h-1 bg-coty-navy mx-auto rounded-full"></div>
+            </div>
+            
+            {/* Enhanced Description */}
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed">
               Join our dynamic team and be part of a company that's shaping the future of manufacturing in Ghana. 
               Discover opportunities that match your skills and passion.
             </p>
-            <div className="mt-12 text-gray-500 font-medium flex items-center justify-center lg:justify-start">
+            
+            {/* Call to Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <Button 
+                onClick={() => {
+                  jobsRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  setActiveSection("jobs");
+                }}
+                className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-lg font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border-2 border-coty-navy transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                VIEW OPENINGS
+                <ArrowRight className="text-xl group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+              <Button 
+                onClick={() => {
+                  benefitsRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  setActiveSection("benefits");
+                }}
+                className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-coty-navy text-lg font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border-2 border-coty-navy transition-all duration-300 hover:scale-105"
+              >
+                LEARN MORE
+                <ArrowUp className="text-xl" />
+              </Button>
+            </div>
+            
+            {/* Enhanced Scroll Indicator */}
+            <div className="mt-8 text-gray-500 font-medium flex items-center justify-center">
               <div className="w-8 h-px bg-gray-500 mr-3 animate-pulse"></div>
               <span className="text-sm tracking-wide animate-bounce">EXPLORE OPPORTUNITIES</span>
+              <div className="w-8 h-px bg-gray-500 ml-3 animate-pulse"></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Navigation Menu */}
+      <section className="py-8 bg-white border-b border-gray-100 sticky top-20 z-40 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-4">
+            <p className="text-sm text-gray-500 font-medium">Quick Navigation</p>
+          </div>
+          <nav className="flex flex-wrap justify-center gap-4">
+            <button 
+              onClick={() => {
+                benefitsRef.current?.scrollIntoView({ behavior: 'smooth' });
+                setActiveSection("benefits");
+              }}
+              className={`px-6 py-3 font-medium rounded-full border-2 transition-all duration-300 hover:scale-105 ${
+                activeSection === "benefits" 
+                  ? "bg-coty-navy text-white border-coty-navy shadow-lg" 
+                  : "text-coty-navy border-coty-navy hover:bg-coty-navy hover:text-white hover:shadow-md"
+              }`}
+            >
+              Why Work With Us
+            </button>
+            <button 
+              onClick={() => {
+                jobsRef.current?.scrollIntoView({ behavior: 'smooth' });
+                setActiveSection("jobs");
+              }}
+              className={`px-6 py-3 font-medium rounded-full border-2 transition-all duration-300 hover:scale-105 ${
+                activeSection === "jobs" 
+                  ? "bg-coty-navy text-white border-coty-navy shadow-lg" 
+                  : "text-coty-navy border-coty-navy hover:bg-coty-navy hover:text-white hover:shadow-md"
+              }`}
+            >
+              Job Openings
+            </button>
+            <button 
+              onClick={() => {
+                formRef.current?.scrollIntoView({ behavior: 'smooth' });
+                setActiveSection("form");
+              }}
+              className={`px-6 py-3 font-medium rounded-full border-2 transition-all duration-300 hover:scale-105 ${
+                activeSection === "form" 
+                  ? "bg-coty-navy text-white border-coty-navy shadow-lg" 
+                  : "text-coty-navy border-coty-navy hover:bg-coty-navy hover:text-white hover:shadow-md"
+              }`}
+            >
+              Apply Now
+            </button>
+            <button 
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setActiveSection("hero");
+              }}
+              className={`px-6 py-3 font-medium rounded-full border-2 transition-all duration-300 hover:scale-105 ${
+                activeSection === "hero" 
+                  ? "bg-coty-navy text-white border-coty-navy shadow-lg" 
+                  : "text-coty-navy border-coty-navy hover:bg-coty-navy hover:text-white hover:shadow-md"
+              }`}
+            >
+              Back to Top
+            </button>
+          </nav>
         </div>
       </section>
 
@@ -326,7 +345,7 @@ export default function Careers() {
                       </div>
                       <Button 
                         onClick={() => scrollToForm(job.title)}
-                        className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-all duration-300 mt-4 lg:mt-0 hover:scale-105 group-hover:shadow-lg"
+                        className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-coty-mint hover:text-coty-navy border border-coty-navy transition-all duration-300 mt-4 lg:mt-0 hover:scale-105 group-hover:shadow-lg shadow-md"
                       >
                         APPLY NOW
                         <ArrowRight className="text-xl group-hover:translate-x-1 transition-transform duration-200" />

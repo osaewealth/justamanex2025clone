@@ -10,6 +10,7 @@ import herobgImage from "@/assets/herobg.jpg";
 import banner1Image from "@/assets/Banner1.jpg";
 import banner2Image from "@/assets/Banner2.jpg";
 import banner3Image from "@/assets/Banner3.jpg";
+import banner4Image from "@/assets/productimages/Banner4.jpg";
 
 // Import blog images
 import yesperfumesblog from "@/assets/productimages/yesperfumesblog.jpg";
@@ -202,7 +203,7 @@ export default function Home() {
 
             <div className="mt-12 text-white font-medium flex items-center justify-center animate-fade-in-up animation-delay-1600">
               <div className="w-8 h-px bg-white mr-3 animate-pulse"></div>
-              <span className="text-sm tracking-wide animate-bounce">SCROLL DOWN</span>
+              <span className="text-sm tracking-wide animate-bounce">SCROLL UP</span>
             </div>
           </div>
         </div>
@@ -360,7 +361,7 @@ export default function Home() {
           {/* Image */}
           <div className="w-full md:w-1/2 mb-10 md:mb-0">
             <img 
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              src={banner4Image} 
               alt="Our Mission" 
               className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
             />
