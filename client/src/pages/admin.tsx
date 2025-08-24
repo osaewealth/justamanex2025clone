@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -32,7 +32,7 @@ interface BlogPost {
 }
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'jobs' | 'blog'>('jobs');
+  const [activeTab, setActiveTab] = useState<'jobs' | 'blog' | 'settings'>('jobs');
   const [jobs, setJobs] = useState<JobOpening[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [editingJob, setEditingJob] = useState<JobOpening | null>(null);
@@ -41,25 +41,175 @@ export default function AdminDashboard() {
   const [showBlogForm, setShowBlogForm] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState('');
 
   // Simple authentication (you can enhance this later)
-  const ADMIN_PASSWORD = 'amanex2025';
+  const [adminPassword, setAdminPassword] = useState('amanex2025');
+
+  // Default job openings data
+  const defaultJobs: JobOpening[] = [
+    {
+      id: 1,
+      title: "Sales Representative",
+      department: "Sales & Marketing",
+      location: "Accra, Ghana",
+      type: "Full-time",
+      experience: "2-3 years",
+      description: "We're looking for a dynamic Sales Representative to join our team and help drive growth in the Ghanaian market.",
+      requirements: [
+        "Bachelor's degree in Business, Marketing, or related field",
+        "2-3 years of sales experience in FMCG industry",
+        "Strong communication and negotiation skills",
+        "Proven track record of meeting sales targets",
+        "Knowledge of the local market and consumer behavior"
+      ],
+      responsibilities: [
+        "Develop and maintain relationships with key clients",
+        "Achieve monthly and quarterly sales targets",
+        "Conduct market research and competitor analysis",
+        "Present product demonstrations and training sessions",
+        "Prepare sales reports and forecasts"
+      ]
+    },
+    {
+      id: 2,
+      title: "Marketing Coordinator",
+      department: "Marketing",
+      location: "Accra, Ghana",
+      type: "Full-time",
+      experience: "1-2 years",
+      description: "Join our marketing team to help create compelling campaigns that connect with our customers.",
+      requirements: [
+        "Bachelor's degree in Marketing, Communications, or related field",
+        "1-2 years of marketing experience",
+        "Proficiency in digital marketing tools and platforms",
+        "Creative thinking and problem-solving skills",
+        "Experience with social media management"
+      ],
+      responsibilities: [
+        "Assist in developing marketing campaigns and strategies",
+        "Manage social media accounts and content creation",
+        "Coordinate with external agencies and vendors",
+        "Track and analyze campaign performance metrics",
+        "Support event planning and execution"
+      ]
+    },
+    {
+      id: 3,
+      title: "Supply Chain Specialist",
+      department: "Operations",
+      location: "Accra, Ghana",
+      type: "Full-time",
+      experience: "3-5 years",
+      description: "Help optimize our supply chain operations to ensure efficient product distribution across Ghana.",
+      requirements: [
+        "Bachelor's degree in Supply Chain Management, Logistics, or related field",
+        "3-5 years of supply chain experience",
+        "Knowledge of inventory management systems",
+        "Strong analytical and problem-solving skills",
+        "Experience with ERP systems"
+      ],
+      responsibilities: [
+        "Manage inventory levels and forecasting",
+        "Coordinate with suppliers and logistics partners",
+        "Optimize warehouse operations and distribution",
+        "Monitor and improve supply chain performance",
+        "Ensure compliance with quality standards"
+      ]
+    },
+    {
+      id: 4,
+      title: "Customer Service Representative",
+      department: "Customer Service",
+      location: "Accra, Ghana",
+      type: "Full-time",
+      experience: "1-2 years",
+      description: "Be the voice of our company and help deliver exceptional customer experiences.",
+      requirements: [
+        "High school diploma or equivalent",
+        "1-2 years of customer service experience",
+        "Excellent communication skills in English and local languages",
+        "Patient and empathetic approach to customer issues",
+        "Ability to work in shifts"
+      ],
+      responsibilities: [
+        "Handle customer inquiries and complaints",
+        "Process orders and track shipments",
+        "Provide product information and support",
+        "Maintain customer records and update databases",
+        "Escalate complex issues to appropriate departments"
+      ]
+    }
+  ];
+
+  // Default blog posts data
+  const defaultBlogs: BlogPost[] = [
+    {
+      id: 1,
+      title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
+      excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
+      content: "In the heart of West Africa, Amanex Ghana has emerged as a beacon of excellence in personal care and home care products. Since our establishment, we've been committed to transforming everyday routines into luxurious experiences, one product at a time. Our journey from a local startup to a trusted household name reflects our unwavering dedication to quality, innovation, and customer satisfaction.",
+      category: "Company News",
+      date: "2025-01-15",
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      published: true
+    },
+    {
+      id: 2,
+      title: "Transform Your Home with Amanex: The Complete Guide to Fresh Living",
+      excerpt: "Learn how to create a fresh, inviting home environment using Amanex's comprehensive range of air fresheners, cleaning products, and fabric care solutions.",
+      content: "Your home is your sanctuary – a place where you should feel comfortable, relaxed, and refreshed. At Amanex Ghana, we understand that creating this perfect environment requires more than just basic cleaning. It's about crafting an experience that engages all your senses and makes every moment at home truly special.",
+      category: "Home Care Tips",
+      date: "2025-01-10",
+      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      published: true
+    },
+    {
+      id: 3,
+      title: "The Science of Clean: How Amanex Products Keep Your Home Healthier",
+      excerpt: "Discover the scientific approach behind Amanex's cleaning and personal care products, and learn how they contribute to a healthier, safer home environment.",
+      content: "In today's world, cleanliness isn't just about appearance – it's about health, safety, and well-being. At Amanex Ghana, we understand that effective cleaning requires more than just removing visible dirt. It's about creating an environment that actively promotes health and prevents the spread of harmful microorganisms.",
+      category: "Health & Wellness",
+      date: "2025-01-05",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      published: true
+    }
+  ];
 
   useEffect(() => {
-    // Load existing data from localStorage
+    // Load existing data from localStorage or initialize with defaults
     const savedJobs = localStorage.getItem('amanexJobs');
     const savedBlogs = localStorage.getItem('amanexBlogs');
+    const savedPassword = localStorage.getItem('amanexAdminPassword');
     
     if (savedJobs) {
       setJobs(JSON.parse(savedJobs));
+    } else {
+      // Initialize with default data if no saved data exists
+      setJobs(defaultJobs);
+      localStorage.setItem('amanexJobs', JSON.stringify(defaultJobs));
     }
+    
     if (savedBlogs) {
       setBlogPosts(JSON.parse(savedBlogs));
+    } else {
+      // Initialize with default data if no saved data exists
+      setBlogPosts(defaultBlogs);
+      localStorage.setItem('amanexBlogs', JSON.stringify(defaultBlogs));
+    }
+
+    // Load saved admin password
+    if (savedPassword) {
+      setAdminPassword(savedPassword);
     }
   }, []);
 
   const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) {
+    if (password === adminPassword) {
       setIsAuthenticated(true);
       setPassword('');
     } else {
@@ -185,6 +335,17 @@ export default function AdminDashboard() {
                 <FileText className="inline w-5 h-5 mr-2" />
                 Blog Posts
               </button>
+              <button
+                onClick={() => setActiveTab('settings')}
+                className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+                  activeTab === 'settings'
+                    ? 'bg-coty-navy text-white shadow-md'
+                    : 'text-gray-600 hover:text-coty-navy'
+                }`}
+              >
+                <Settings className="inline w-5 h-5 mr-2" />
+                Settings
+              </button>
             </div>
           </div>
 
@@ -200,7 +361,7 @@ export default function AdminDashboard() {
               showForm={showJobForm}
               setShowForm={setShowJobForm}
             />
-          ) : (
+          ) : activeTab === 'blog' ? (
             <BlogManagement 
               blogPosts={blogPosts}
               onAdd={addBlog}
@@ -210,6 +371,21 @@ export default function AdminDashboard() {
               setEditingBlog={setEditingBlog}
               showForm={showBlogForm}
               setShowForm={setShowBlogForm}
+            />
+          ) : (
+            <Settings 
+              adminPassword={adminPassword}
+              setAdminPassword={setAdminPassword}
+              showPasswordForm={showPasswordForm}
+              setShowPasswordForm={setShowPasswordForm}
+              currentPassword={currentPassword}
+              setCurrentPassword={setCurrentPassword}
+              newPassword={newPassword}
+              setNewPassword={setNewPassword}
+              confirmPassword={confirmPassword}
+              setConfirmPassword={setConfirmPassword}
+              passwordMessage={passwordMessage}
+              setPasswordMessage={setPasswordMessage}
             />
           )}
         </div>
@@ -725,6 +901,272 @@ function BlogManagement({
           </Card>
         )}
       </div>
+    </div>
+  );
+}
+
+// Settings Component
+function Settings({ 
+  adminPassword, 
+  setAdminPassword, 
+  showPasswordForm, 
+  setShowPasswordForm, 
+  currentPassword, 
+  setCurrentPassword, 
+  newPassword, 
+  setNewPassword, 
+  confirmPassword, 
+  setConfirmPassword, 
+  passwordMessage, 
+  setPasswordMessage 
+}: {
+  adminPassword: string;
+  setAdminPassword: (password: string) => void;
+  showPasswordForm: boolean;
+  setShowPasswordForm: (show: boolean) => void;
+  currentPassword: string;
+  setCurrentPassword: (password: string) => void;
+  newPassword: string;
+  setNewPassword: (password: string) => void;
+  confirmPassword: string;
+  setConfirmPassword: (password: string) => void;
+  passwordMessage: string;
+  setPasswordMessage: (message: string) => void;
+}) {
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handlePasswordChange = () => {
+    if (currentPassword === adminPassword) {
+      if (newPassword === confirmPassword) {
+        if (newPassword.length < 6) {
+          setPasswordMessage('Password must be at least 6 characters long.');
+          return;
+        }
+        setAdminPassword(newPassword);
+        localStorage.setItem('amanexAdminPassword', newPassword);
+        setPasswordMessage('Password changed successfully!');
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        setTimeout(() => setPasswordMessage(''), 3000);
+      } else {
+        setPasswordMessage('New password and confirm password do not match.');
+        setTimeout(() => setPasswordMessage(''), 3000);
+      }
+    } else {
+      setPasswordMessage('Current password is incorrect.');
+      setTimeout(() => setPasswordMessage(''), 3000);
+    }
+  };
+
+  const resetToDefaults = () => {
+    if (confirm('Are you sure you want to reset all content to defaults? This will remove all custom jobs and blog posts.')) {
+      // Reset jobs to defaults
+      const defaultJobs = [
+        {
+          id: 1,
+          title: "Sales Representative",
+          department: "Sales & Marketing",
+          location: "Accra, Ghana",
+          type: "Full-time",
+          experience: "2-3 years",
+          description: "We're looking for a dynamic Sales Representative to join our team and help drive growth in the Ghanaian market.",
+          requirements: [
+            "Bachelor's degree in Business, Marketing, or related field",
+            "2-3 years of sales experience in FMCG industry",
+            "Strong communication and negotiation skills",
+            "Proven track record of meeting sales targets",
+            "Knowledge of the local market and consumer behavior"
+          ],
+          responsibilities: [
+            "Develop and maintain relationships with key clients",
+            "Achieve monthly and quarterly sales targets",
+            "Conduct market research and competitor analysis",
+            "Present product demonstrations and training sessions",
+            "Prepare sales reports and forecasts"
+          ]
+        },
+        {
+          id: 2,
+          title: "Marketing Coordinator",
+          department: "Marketing",
+          location: "Accra, Ghana",
+          type: "Full-time",
+          experience: "1-2 years",
+          description: "Join our marketing team to help create compelling campaigns that connect with our customers.",
+          requirements: [
+            "Bachelor's degree in Marketing, Communications, or related field",
+            "1-2 years of marketing experience",
+            "Proficiency in digital marketing tools and platforms",
+            "Creative thinking and problem-solving skills",
+            "Experience with social media management"
+          ],
+          responsibilities: [
+            "Assist in developing marketing campaigns and strategies",
+            "Manage social media accounts and content creation",
+            "Coordinate with external agencies and vendors",
+            "Track and analyze campaign performance metrics",
+            "Support event planning and execution"
+          ]
+        }
+      ];
+
+      // Reset blogs to defaults
+      const defaultBlogs = [
+        {
+          id: 1,
+          title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
+          excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
+          content: "In the heart of West Africa, Amanex Ghana has emerged as a beacon of excellence in personal care and home care products. Since our establishment, we've been committed to transforming everyday routines into luxurious experiences, one product at a time. Our journey from a local startup to a trusted household name reflects our unwavering dedication to quality, innovation, and customer satisfaction.",
+          category: "Company News",
+          date: "2025-01-15",
+          image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+          published: true
+        }
+      ];
+
+      localStorage.setItem('amanexJobs', JSON.stringify(defaultJobs));
+      localStorage.setItem('amanexBlogs', JSON.stringify(defaultBlogs));
+      
+      // Reset password to default
+      setAdminPassword('amanex2025');
+      localStorage.setItem('amanexAdminPassword', 'amanex2025');
+      
+      setPasswordMessage('All content has been reset to defaults. Please refresh the page.');
+      setTimeout(() => setPasswordMessage(''), 5000);
+    }
+  };
+
+  return (
+    <div>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-coty-navy mb-4">Admin Settings</h2>
+        <p className="text-gray-600">Manage your admin password and system settings</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Password Management */}
+        <div>
+          <h3 className="text-xl font-semibold text-coty-navy mb-4">Password Management</h3>
+          
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between text-lg">
+                <span>Change Admin Password</span>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                >
+                  {showCurrentPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                <Input
+                  type={showCurrentPassword ? 'text' : 'password'}
+                  placeholder="Enter current password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                <Input
+                  type={showNewPassword ? 'text' : 'password'}
+                  placeholder="Enter new password (min 6 characters)"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                  className="mt-1"
+                >
+                  {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </Button>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                <Input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm new password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="mt-1"
+                >
+                  {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </Button>
+              </div>
+              
+              <Button 
+                onClick={handlePasswordChange}
+                className="w-full bg-coty-navy hover:bg-coty-navy/90"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                Change Password
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* System Settings */}
+        <div>
+          <h3 className="text-xl font-semibold text-coty-navy mb-4">System Settings</h3>
+          
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="text-lg">Reset to Defaults</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 mb-4">
+                This will reset all jobs, blog posts, and admin password to their default values. 
+                <strong>This action cannot be undone.</strong>
+              </p>
+              <Button 
+                onClick={resetToDefaults}
+                variant="outline"
+                className="border-red-300 text-red-600 hover:bg-red-50"
+              >
+                Reset All Content to Defaults
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Current System Info</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm text-gray-600">
+              <p><strong>Admin Password:</strong> {adminPassword === 'amanex2025' ? 'Default' : 'Custom'}</p>
+              <p><strong>Data Storage:</strong> Browser Local Storage</p>
+              <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {passwordMessage && (
+        <div className={`mt-6 p-4 rounded-lg ${
+          passwordMessage.includes('successfully') || passwordMessage.includes('reset') 
+            ? 'bg-green-50 border border-green-200 text-green-700' 
+            : 'bg-red-50 border border-red-200 text-red-700'
+        }`}>
+          <p className="font-medium">{passwordMessage}</p>
+        </div>
+      )}
     </div>
   );
 }
