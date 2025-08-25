@@ -29,6 +29,14 @@ import instagram8 from '@/assets/instagram/1754493749820.jpeg';
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [typewriterIndex, setTypewriterIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  
+  const heroText = "WE ARE\nAMANEX";
+  const typewriterSpeed = 200; // Slower, smoother typing speed
+  const typewriterDelay = 15000; // 15 seconds between cycles
+  
+
 
   const heroImages = [
   
@@ -52,6 +60,48 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  // Typewriter effect for hero text
+  useEffect(() => {
+    if (!isTyping) return;
+
+    const typeInterval = setInterval(() => {
+      setTypewriterIndex((prevIndex) => {
+        if (prevIndex < heroText.length) {
+          // Add pause between "WE ARE" and "AMANEX"
+          if (prevIndex === 5) { // After "WE ARE"
+            setTimeout(() => {
+              setTypewriterIndex(prevIndex + 1);
+            }, 800); // Wait 800ms before starting "AMANEX"
+            return prevIndex;
+          }
+          return prevIndex + 1;
+        } else {
+          // Finished typing, wait then reset
+          setTimeout(() => {
+            setTypewriterIndex(0);
+          }, 1500); // Wait 1.5 seconds before restarting
+          return prevIndex;
+        }
+      });
+    }, typewriterSpeed);
+
+    return () => clearInterval(typeInterval);
+  }, [isTyping, heroText, typewriterSpeed]);
+
+  // Reset typewriter every 15 seconds with smoother transition
+  useEffect(() => {
+    const resetInterval = setInterval(() => {
+      // Smooth transition: reset typewriter index
+      setIsTyping(false);
+      setTimeout(() => {
+        setTypewriterIndex(0);
+        setIsTyping(true);
+      }, 200); // Reduced delay to 200ms for smoother transition
+    }, typewriterDelay);
+
+    return () => clearInterval(resetInterval);
+  }, [typewriterDelay]);
 
   const newsArticles = [
     {
@@ -183,8 +233,29 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left w-full">
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8 animate-fade-in-up animation-delay-800">
-              WE ARE<br />
-              <span className="text-white">AMANEX</span>
+              <div className="typewriter-text min-h-[1.2em]">
+                {heroText.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex} className="typewriter-line mb-2">
+                    {line.split('').map((char, charIndex) => {
+                      const totalCharIndex = lineIndex === 0 ? charIndex : lineIndex * line.length + charIndex;
+                      const isTyped = totalCharIndex < typewriterIndex;
+                      return (
+                        <span 
+                          key={charIndex} 
+                          className={`typewriter-char ${
+                            isTyped 
+                              ? 'typed text-white opacity-100' 
+                              : 'text-white opacity-20'
+                          }`}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+
+                  </div>
+                ))}
+              </div>
             </h1>
             
             <p className="text-xl text-white mb-8 opacity-90 max-w-2xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">

@@ -8,7 +8,9 @@ const rootElement = document.getElementById("root");
 
 if (!rootElement) {
   console.error("Root element not found");
-  document.body.innerHTML = "<h1>Error: Root element not found</h1>";
+        const errorDiv = document.createElement('div');
+      errorDiv.innerHTML = "<h1>Error: Root element not found</h1>";
+      document.body.appendChild(errorDiv);
 } else {
   try {
     const root = createRoot(rootElement);
@@ -16,12 +18,23 @@ if (!rootElement) {
     console.log("App rendered successfully");
   } catch (error) {
     console.error("Error rendering app:", error);
-    rootElement.innerHTML = `
-      <div style="padding: 20px; font-family: Arial, sans-serif;">
-        <h1>Error Loading App</h1>
-        <p>${error instanceof Error ? error.message : 'Unknown error'}</p>
-        <button onclick="window.location.reload()">Reload Page</button>
-      </div>
-    `;
+          const errorDiv = document.createElement('div');
+      errorDiv.style.padding = '20px';
+      errorDiv.style.fontFamily = 'Arial, sans-serif';
+      
+      const errorTitle = document.createElement('h1');
+      errorTitle.textContent = 'Error Loading App';
+      errorDiv.appendChild(errorTitle);
+      
+      const errorMessage = document.createElement('p');
+      errorMessage.textContent = error instanceof Error ? error.message : 'Unknown error';
+      errorDiv.appendChild(errorMessage);
+      
+      const reloadButton = document.createElement('button');
+      reloadButton.textContent = 'Reload Page';
+      reloadButton.addEventListener('click', () => window.location.reload());
+      errorDiv.appendChild(reloadButton);
+      
+      rootElement.appendChild(errorDiv);
   }
 }

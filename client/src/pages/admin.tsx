@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings as SettingsIcon } from 'lucide-react';
+
+// Input sanitization utility
+const sanitizeInput = (input: string): string => {
+  return input.trim().replace(/[<>]/g, '');
+};
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -239,11 +244,12 @@ export default function AdminDashboard() {
     setEditingJob(null);
   };
 
+  const [showDeleteJobConfirm, setShowDeleteJobConfirm] = useState<number | null>(null);
+
   const deleteJob = (id: number) => {
-    if (confirm('Are you sure you want to delete this job opening?')) {
-      const newJobs = jobs.filter(job => job.id !== id);
-      saveJobs(newJobs);
-    }
+    const newJobs = jobs.filter(job => job.id !== id);
+    saveJobs(newJobs);
+    setShowDeleteJobConfirm(null);
   };
 
   const addBlog = (blog: Omit<BlogPost, 'id'>) => {
@@ -258,11 +264,12 @@ export default function AdminDashboard() {
     setEditingBlog(null);
   };
 
+  const [showDeleteBlogConfirm, setShowDeleteBlogConfirm] = useState<number | null>(null);
+
   const deleteBlog = (id: number) => {
-    if (confirm('Are you sure you want to delete this blog post?')) {
-      const newBlogs = blogPosts.filter(blog => blog.id !== id);
-      saveBlogs(newBlogs);
-    }
+    const newBlogs = blogPosts.filter(blog => blog.id !== id);
+    saveBlogs(newBlogs);
+    setShowDeleteBlogConfirm(null);
   };
 
   if (!isAuthenticated) {
@@ -457,10 +464,22 @@ function JobManagement({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Sanitize all input fields
+    const sanitizedData = {
+      title: sanitizeInput(formData.title),
+      department: sanitizeInput(formData.department),
+      location: sanitizeInput(formData.location),
+      type: sanitizeInput(formData.type),
+      experience: sanitizeInput(formData.experience),
+      description: sanitizeInput(formData.description),
+      requirements: formData.requirements.split('\n').filter(r => sanitizeInput(r).trim()),
+      responsibilities: formData.responsibilities.split('\n').filter(r => sanitizeInput(r).trim())
+    };
+    
     const jobData = {
-      ...formData,
-      requirements: formData.requirements.split('\n').filter(r => r.trim()),
-      responsibilities: formData.responsibilities.split('\n').filter(r => r.trim())
+      ...sanitizedData,
+      requirements: sanitizedData.requirements.filter(r => r.trim()),
+      responsibilities: sanitizedData.responsibilities.filter(r => r.trim())
     };
 
     if (editingJob) {
@@ -732,12 +751,23 @@ function BlogManagement({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Sanitize all input fields
+    const sanitizedData = {
+      title: sanitizeInput(formData.title),
+      excerpt: sanitizeInput(formData.excerpt),
+      content: sanitizeInput(formData.content),
+      category: sanitizeInput(formData.category),
+      date: formData.date,
+      image: sanitizeInput(formData.image),
+      published: formData.published
+    };
+    
     if (editingBlog) {
-      onUpdate({ ...editingBlog, ...formData });
+      onUpdate({ ...editingBlog, ...sanitizedData });
       setEditingBlog(null);
       setShowForm(false);
     } else {
-      onAdd(formData);
+      onAdd(sanitizedData);
       setFormData({
         title: '',
         excerpt: '',

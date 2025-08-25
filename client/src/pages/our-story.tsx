@@ -7,7 +7,7 @@ import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export default function OurStory() {
-  // Custom CSS for 3D effects
+  // Custom CSS for 3D effects and certificate animations
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
@@ -19,6 +19,22 @@ export default function OurStory() {
       }
       .preserve-3d {
         transform-style: preserve-3d;
+      }
+      
+      /* Certificate hover effects */
+      .certificate-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, box-shadow;
+      }
+      
+      /* Achievement badge subtle glow */
+      .achievement-badge {
+        transition: all 0.3s ease-in-out;
+      }
+      
+      /* Smooth icon transitions */
+      .floating-icon {
+        transition: all 0.3s ease-in-out;
       }
     `;
     document.head.appendChild(style);
@@ -93,27 +109,42 @@ export default function OurStory() {
     {
       year: "2010",
       title: "Company Founded",
-      description: "Amanex Company Limited was established with a vision to create high-quality personal care and household products."
+      description: "Amanex Company Limited was established with a vision to create high-quality personal care and household products.",
+      achievement: "Foundation",
+      icon: "🏢",
+      color: "from-blue-500 to-blue-600"
     },
     {
       year: "2015",
       title: "Product Expansion",
-      description: "Launched our first line of air fresheners and perfumes, marking the beginning of our fragrance journey."
+      description: "Launched our first line of air fresheners and perfumes, marking the beginning of our fragrance journey.",
+      achievement: "Innovation",
+      icon: "✨",
+      color: "from-purple-500 to-purple-600"
     },
     {
       year: "2018",
       title: "Market Growth",
-      description: "Expanded our product range to include liquid soaps, shower gels, and cleaning solutions."
+      description: "Expanded our product range to include liquid soaps, shower gels, and cleaning solutions.",
+      achievement: "Growth",
+      icon: "📈",
+      color: "from-green-500 to-green-600"
     },
     {
       year: "2020",
       title: "Quality Certification",
-      description: "Achieved international quality standards and expanded our distribution network across Ghana."
+      description: "Achieved international quality standards and expanded our distribution network across Ghana.",
+      achievement: "Excellence",
+      icon: "🏆",
+      color: "from-yellow-500 to-yellow-600"
     },
     {
       year: "2023",
       title: "Innovation Hub",
-      description: "Established our state-of-the-art facility in Oshiyie, Greater Accra, Ghana."
+      description: "Established our state-of-the-art facility in Oshiyie, Greater Accra, Ghana.",
+      achievement: "Leadership",
+      icon: "🚀",
+      color: "from-red-500 to-red-600"
     }
   ];
 
@@ -293,101 +324,88 @@ export default function OurStory() {
           }`}>
             <h2 className="text-4xl font-bold text-coty-navy mb-4">Our Journey</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
-              From our founding to today, here are the key milestones that shaped our company.
+              From our founding to today, here are the key milestones and achievements that shaped our company.
             </p>
           </div>
 
-          <div className="relative">
-            {/* Animated Timeline Line - Hidden on mobile, visible on desktop */}
-            <div className={`hidden lg:block absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-coty-navy via-coty-gold to-coty-navy transition-all duration-2000 ease-out ${
-              isTimelineVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
-            }`} style={{ transformOrigin: 'top' }}></div>
-            
-            {/* Mobile Timeline Line - Vertical line on mobile */}
-            <div className={`lg:hidden absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-coty-navy via-coty-gold to-coty-navy transition-all duration-2000 ease-out ${
-              isTimelineVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
-            }`} style={{ transformOrigin: 'top' }}></div>
-            
-            <div className="space-y-16">
-              {milestones.map((milestone, index) => (
-                <div 
-                  key={index} 
-                  className={`relative flex flex-col lg:flex-row items-center ${
-                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  } transition-all duration-1000 ease-out ${
-                    isTimelineVisible && index <= activeMilestone 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-12'
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 300}ms`
-                  }}
-                >
-                  {/* Animated Timeline Dot - Desktop */}
-                  <div className={`hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white shadow-lg transition-all duration-500 ease-out ${
-                    isTimelineVisible && index <= activeMilestone
-                      ? 'scale-100 bg-coty-gold' 
-                      : 'scale-0 bg-coty-navy'
-                  }`} style={{
-                    transitionDelay: `${index * 300 + 200}ms`
-                  }}>
-                    <div className="absolute inset-0 bg-coty-gold rounded-full animate-ping opacity-75"></div>
-                  </div>
-                  
-                  {/* Animated Timeline Dot - Mobile */}
-                  <div className={`lg:hidden absolute left-8 transform -translate-x-1/2 w-4 h-4 rounded-full border-3 border-white shadow-lg transition-all duration-500 ease-out ${
-                    isTimelineVisible && index <= activeMilestone
-                      ? 'scale-100 bg-coty-gold' 
-                      : 'scale-0 bg-coty-navy'
-                  }`} style={{
-                    transitionDelay: `${index * 300 + 200}ms`
-                  }}>
-                    <div className="absolute inset-0 bg-coty-gold rounded-full animate-ping opacity-75"></div>
-                  </div>
-                  
-                  {/* Content Card with Hover-triggered 3D Rotation Effect */}
-                  <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'} mt-8 lg:mt-0 ml-16 lg:ml-0`}>
-                    <div 
-                      className={`transform transition-all duration-700 ease-out ${
-                        isTimelineVisible && index <= activeMilestone
-                          ? 'opacity-100 translate-y-0' 
-                          : 'opacity-0 translate-y-12'
-                      } ${
-                        hoveredCard === index ? 'rotate-y-12 scale-105' : 'rotate-y-0 scale-100'
-                      }`} 
-                      style={{
-                        transitionDelay: `${index * 300 + 400}ms`,
-                        transformStyle: 'preserve-3d'
-                      }}
-                      onMouseEnter={() => setHoveredCard(index)}
-                      onMouseLeave={() => setHoveredCard(null)}
-                      onTouchStart={() => setHoveredCard(index)}
-                      onTouchEnd={() => setHoveredCard(null)}
-                    >
-                      <Card className="bg-white rounded-xl p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 border-l-4 border-coty-gold cursor-pointer active:scale-95 lg:active:scale-100">
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="text-coty-gold font-bold text-xl lg:text-2xl">{milestone.year}</div>
-                          <div className="w-6 h-6 lg:w-8 lg:h-8 bg-gradient-to-br from-coty-gold to-yellow-400 rounded-full flex items-center justify-center">
-                            <div className="w-2 h-2 lg:w-3 lg:h-3 bg-white rounded-full"></div>
-                          </div>
-                        </div>
-                        <h3 className="text-lg lg:text-xl font-bold text-coty-navy mb-3 lg:mb-4">{milestone.title}</h3>
-                        <p className="text-sm lg:text-base text-coty-gray leading-relaxed">{milestone.description}</p>
-                        
-                        {/* Animated Progress Bar */}
-                        <div className="mt-4 lg:mt-6 h-1 bg-gray-200 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r from-coty-gold to-yellow-400 transition-all duration-1000 ease-out ${
-                            isTimelineVisible && index <= activeMilestone ? 'w-full' : 'w-0'
-                          }`} style={{
-                            transitionDelay: `${index * 300 + 600}ms`
-                          }}></div>
-                        </div>
-                      </Card>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {milestones.map((milestone, index) => (
+              <div 
+                key={index} 
+                className={`transform transition-all duration-1000 ease-out ${
+                  isTimelineVisible && index <= activeMilestone 
+                    ? 'opacity-100 translate-y-0 scale-100' 
+                    : 'opacity-0 translate-y-12 scale-95'
+                }`}
+                style={{
+                  transitionDelay: `${index * 300}ms`
+                }}
+              >
+                                                    {/* Certificate-Style Card */}
+                  <div 
+                    className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 cursor-pointer overflow-hidden border border-gray-100 hover:border-transparent ${
+                      hoveredCard === index ? 'ring-2 ring-coty-gold' : ''
+                    }`}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    onTouchStart={() => setHoveredCard(index)}
+                    onTouchEnd={() => setHoveredCard(null)}
+                  >
+                    {/* Certificate Header with Gradient */}
+                    <div className={`relative h-20 sm:h-24 bg-gradient-to-r ${milestone.color} rounded-t-2xl overflow-hidden transition-all duration-300`}>
+                      {/* Decorative Elements */}
+                      <div className="absolute top-2 right-2 w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-20 rounded-full transition-all duration-300"></div>
+                      <div className="absolute bottom-2 left-2 w-6 h-6 sm:w-8 sm:h-8 bg-white bg-opacity-20 rounded-full transition-all duration-300"></div>
+                      
+                      {/* Achievement Badge */}
+                      <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-white bg-opacity-95 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 shadow-sm transition-all duration-300 group-hover:bg-opacity-100 group-hover:shadow-md">
+                        <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">
+                          {milestone.achievement}
+                        </span>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 text-3xl sm:text-4xl transition-all duration-300">
+                        {milestone.icon}
+                      </div>
                     </div>
+                    
+                    {/* Certificate Content */}
+                    <div className="p-4 sm:p-6 relative z-10 bg-white">
+                      {/* Year Badge */}
+                      <div className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-bold mb-4 transition-all duration-300 group-hover:shadow-lg shadow-md">
+                        {milestone.year}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-lg sm:text-xl font-bold text-coty-navy mb-3 leading-tight transition-colors duration-300 group-hover:text-coty-navy">
+                        {milestone.title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 transition-colors duration-300 group-hover:text-gray-700">
+                        {milestone.description}
+                      </p>
+                      
+                      {/* Certificate Footer */}
+                      <div className="flex items-center justify-between pt-4 border-t border-gray-100 group-hover:border-gray-200 transition-colors duration-300">
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-coty-gold rounded-full animate-pulse"></div>
+                          <span className="text-xs text-gray-500 uppercase tracking-wider group-hover:text-gray-600">Milestone Achieved</span>
+                        </div>
+                        
+                        {/* Achievement Icon */}
+                        <div className="w-8 h-8 bg-gradient-to-br from-coty-gold to-yellow-400 rounded-full flex items-center justify-center transition-all duration-300 group-hover:shadow-md">
+                          <div className="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Subtle Hover Glow Effect */}
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${milestone.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
                   </div>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

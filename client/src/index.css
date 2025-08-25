@@ -561,3 +561,41 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+
+/* Typewriter Effect Styles */
+.typewriter-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typewriter-text {
+  white-space: pre-wrap;
+  overflow: hidden;
+  border-right: 2px solid transparent;
+  will-change: opacity;
+  font-family: inherit;
+}
+
+.typewriter-line {
+  display: block;
+  min-height: 1.2em;
+}
+
+/* Smooth fade transition for typewriter reset */
+.typewriter-fade {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Enhanced typewriter character transitions */
+.typewriter-char {
+  transition: all 0.15s ease-in-out;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.typewriter-char.typed {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
