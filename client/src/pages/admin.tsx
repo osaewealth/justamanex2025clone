@@ -723,6 +723,39 @@ function BlogManagement({
     image: '',
     published: true
   });
+  const [imagePreview, setImagePreview] = useState<string>('');
+
+  // Image upload handler
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // Check file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Image size must be less than 5MB');
+        return;
+      }
+      
+      // Check file type
+      if (!file.type.startsWith('image/')) {
+        alert('Please select an image file');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setFormData({...formData, image: result});
+        setImagePreview(result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Clear image preview
+  const clearImage = () => {
+    setFormData({...formData, image: ''});
+    setImagePreview('');
+  };
 
   useEffect(() => {
     if (editingBlog) {
@@ -735,6 +768,7 @@ function BlogManagement({
         image: editingBlog.image,
         published: editingBlog.published
       });
+      setImagePreview(editingBlog.image);
     } else {
       setFormData({
         title: '',
@@ -745,39 +779,65 @@ function BlogManagement({
         image: '',
         published: true
       });
+      setImagePreview('');
     }
   }, [editingBlog]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Sanitize all input fields
-    const sanitizedData = {
+    const newBlog: BlogPost = {
+      id: editingBlog ? editingBlog.id : Date.now(),
       title: sanitizeInput(formData.title),
       excerpt: sanitizeInput(formData.excerpt),
       content: sanitizeInput(formData.content),
       category: sanitizeInput(formData.category),
       date: formData.date,
-      image: sanitizeInput(formData.image),
+      image: formData.image, // Keep image as is (base64 or URL)
       published: formData.published
     };
-    
+
     if (editingBlog) {
-      onUpdate({ ...editingBlog, ...sanitizedData });
+      setBlogPosts(prev => prev.map(blog => 
+        blog.id === editingBlog.id ? newBlog : blog
+      ));
       setEditingBlog(null);
-      setShowForm(false);
     } else {
-      onAdd(sanitizedData);
-      setFormData({
-        title: '',
-        excerpt: '',
-        content: '',
-        category: '',
-        date: new Date().toISOString().split('T')[0],
-        image: '',
-        published: true
-      });
+      setBlogPosts(prev => [...prev, newBlog]);
     }
+
+    setShowForm(false);
+    resetForm(); // Reset form and image preview
+  };
+
+  // Reset form data
+  const resetForm = () => {
+    setFormData({
+      title: '',
+      excerpt: '',
+      content: '',
+      category: '',
+      date: new Date().toISOString().split('T')[0],
+      image: '',
+      published: false
+    });
+    setImagePreview('');
+  };
+
+  // Handle edit blog
+  const handleEditBlog = (blog: BlogPost) => {
+    setEditingBlog(blog);
+    setFormData({
+      title: blog.title,
+      excerpt: blog.excerpt,
+      content: blog.content,
+      category: blog.category,
+      date: blog.date,
+      image: blog.image,
+      published: blog.published
+    });
+    setImagePreview(blog.image);
+    setShowForm(true);
   };
 
   return (
@@ -797,6 +857,7 @@ function BlogManagement({
               image: '',
               published: true
             });
+            setImagePreview('');
           }}
           className="bg-coty-navy hover:bg-coty-navy/90"
         >
@@ -817,6 +878,7 @@ function BlogManagement({
                 onClick={() => {
                   setShowForm(false);
                   setEditingBlog(null);
+                  resetForm(); // Reset form data and image preview
                 }}
               >
                 <X className="w-5 h-5" />
@@ -844,12 +906,76 @@ function BlogManagement({
                   onChange={(e) => setFormData({...formData, date: e.target.value})}
                   required
                 />
-                <Input
-                  placeholder="Image URL"
-                  value={formData.image}
-                  onChange={(e) => setFormData({...formData, image: e.target.value})}
-                  required
-                />
+              </div>
+
+              {/* Image Upload Section */}
+              <div className="space-y-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Blog Image
+                </label>
+                
+                {/* Image Preview */}
+                {imagePreview && (
+                  <div className="relative inline-block">
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview" 
+                      className="w-32 h-32 object-cover rounded-lg border-2 border-gray-200"
+                    />
+                    <button
+                      type="button"
+                      onClick={clearImage}
+                      className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Current Image Display (when editing) */}
+                {!imagePreview && formData.image && editingBlog && (
+                  <div className="relative inline-block">
+                    <img 
+                      src={formData.image} 
+                      alt="Current Image" 
+                      className="w-32 h-32 object-cover rounded-lg border-2 border-gray-200"
+                    />
+                    <div className="text-xs text-gray-500 mt-1">Current image</div>
+                  </div>
+                )}
+
+                {/* File Upload Input */}
+                <div className="flex items-center gap-4">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-coty-navy file:text-white hover:file:bg-coty-navy/90 file:cursor-pointer"
+                    required={!editingBlog}
+                  />
+                  {formData.image && !imagePreview && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setImagePreview(formData.image)}
+                    >
+                      <Eye className="w-4 h-4 mr-2" />
+                      Preview
+                    </Button>
+                  )}
+                </div>
+                
+                {/* Fallback URL Input */}
+                <div className="text-sm text-gray-500">
+                  <p>Or enter an image URL:</p>
+                  <Input
+                    placeholder="Image URL (optional if uploading file)"
+                    value={formData.image}
+                    onChange={(e) => setFormData({...formData, image: e.target.value})}
+                    className="mt-1"
+                  />
+                </div>
               </div>
               
               <Textarea
@@ -891,6 +1017,7 @@ function BlogManagement({
                   onClick={() => {
                     setShowForm(false);
                     setEditingBlog(null);
+                    resetForm(); // Reset form data and image preview
                   }}
                 >
                   Cancel
@@ -934,10 +1061,7 @@ function BlogManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => {
-                      setEditingBlog(blog);
-                      setShowForm(true);
-                    }}
+                    onClick={() => handleEditBlog(blog)}
                   >
                     <Edit className="w-4 h-4" />
                   </Button>

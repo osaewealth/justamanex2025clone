@@ -329,28 +329,28 @@ export default function OurStory() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {milestones.map((milestone, index) => (
-              <div 
-                key={index} 
+              {milestones.map((milestone, index) => (
+                <div 
+                  key={index} 
                 className={`transform transition-all duration-1000 ease-out ${
-                  isTimelineVisible && index <= activeMilestone 
+                    isTimelineVisible && index <= activeMilestone 
                     ? 'opacity-100 translate-y-0 scale-100' 
                     : 'opacity-0 translate-y-12 scale-95'
-                }`}
-                style={{
-                  transitionDelay: `${index * 300}ms`
-                }}
-              >
+                  }`}
+                  style={{
+                    transitionDelay: `${index * 300}ms`
+                  }}
+                >
                                                     {/* Certificate-Style Card */}
                   <div 
                     className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 cursor-pointer overflow-hidden border border-gray-100 hover:border-transparent ${
                       hoveredCard === index ? 'ring-2 ring-coty-gold' : ''
                     }`}
-                    onMouseEnter={() => setHoveredCard(index)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                    onTouchStart={() => setHoveredCard(index)}
-                    onTouchEnd={() => setHoveredCard(null)}
-                  >
+                      onMouseEnter={() => setHoveredCard(index)}
+                      onMouseLeave={() => setHoveredCard(null)}
+                      onTouchStart={() => setHoveredCard(index)}
+                      onTouchEnd={() => setHoveredCard(null)}
+                    >
                     {/* Certificate Header with Gradient */}
                     <div className={`relative h-20 sm:h-24 bg-gradient-to-r ${milestone.color} rounded-t-2xl overflow-hidden transition-all duration-300`}>
                       {/* Decorative Elements */}
@@ -375,7 +375,7 @@ export default function OurStory() {
                       {/* Year Badge */}
                       <div className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-bold mb-4 transition-all duration-300 group-hover:shadow-lg shadow-md">
                         {milestone.year}
-                      </div>
+                          </div>
                       
                       {/* Title */}
                       <h3 className="text-lg sm:text-xl font-bold text-coty-navy mb-3 leading-tight transition-colors duration-300 group-hover:text-coty-navy">
@@ -404,8 +404,8 @@ export default function OurStory() {
                     {/* Subtle Hover Glow Effect */}
                     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${milestone.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
                   </div>
-              </div>
-            ))}
+                </div>
+              ))}
           </div>
         </div>
       </section>

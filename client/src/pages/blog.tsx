@@ -16,11 +16,59 @@ export default function Blog() {
   const [expandedArticles, setExpandedArticles] = useState<Set<number>>(new Set());
   const [blogArticles, setBlogArticles] = useState<any[]>([]);
 
-  // Load blog posts from admin dashboard
+  // Default blog articles
+  const defaultBlogArticles = [
+    {
+      id: 1,
+      category: "Company News",
+      date: "January 15, 2025",
+      title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
+      excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
+      content: `
+        <p>Amanex Ghana has established itself as a cornerstone of personal care and home care excellence in West Africa. Our journey began with a simple mission: to provide premium quality products that enhance the daily lives of families across the region.</p>
+        <p>Through continuous innovation and unwavering commitment to quality, we have developed a comprehensive range of products that meet the diverse needs of our customers. From air fresheners that transform living spaces to personal care products that promote wellness, every item in our portfolio is crafted with care and precision.</p>
+        <p>Our success is built on three core principles: quality, innovation, and customer satisfaction. We invest heavily in research and development to ensure our products not only meet but exceed international standards.</p>
+      `,
+      author: "Amanex Team",
+      image: yesperfumesblog
+    },
+    {
+      id: 2,
+      category: "Home Care Tips",
+      date: "January 10, 2025",
+      title: "Transform Your Home with Amanex: The Complete Guide to Fresh Living",
+      excerpt: "Learn how to create a fresh, inviting home environment using Amanex's comprehensive range of air fresheners, cleaning products, and fabric care solutions.",
+      content: `
+        <p>Creating a fresh and inviting home environment is essential for your well-being and the comfort of your family. With Amanex's comprehensive range of products, achieving this goal has never been easier.</p>
+        <p>Our air fresheners are designed to eliminate odors and create pleasant atmospheres that last throughout the day. Whether you prefer floral, citrus, or woody scents, we have options to suit every preference and space.</p>
+        <p>For cleaning, our products are formulated to be effective yet gentle, ensuring your surfaces remain spotless without damage. Our fabric care solutions keep your clothes and linens fresh, soft, and beautifully scented.</p>
+      `,
+      author: "Home Care Expert",
+      image: airfreshers
+    },
+    {
+      id: 3,
+      category: "Health & Wellness",
+      date: "January 5, 2025",
+      title: "The Science of Clean: How Amanex Products Keep Your Home Healthier",
+      excerpt: "Discover the scientific approach behind Amanex's cleaning and personal care products, and learn how they contribute to a healthier, safer home environment.",
+      content: `
+        <p>Cleanliness is not just about appearance—it's about health and safety. At Amanex, we understand the science behind effective cleaning and have developed our products accordingly.</p>
+        <p>Our cleaning formulations are designed to target specific types of dirt, bacteria, and viruses, ensuring comprehensive protection for your family. We use advanced technology to create products that are both powerful and safe for everyday use.</p>
+        <p>Regular use of our products helps maintain a healthy indoor environment, reducing the risk of illness and creating a more comfortable living space. Our commitment to safety means all our products meet or exceed health and safety standards.</p>
+      `,
+      author: "Health Specialist",
+      image: liquidsoup
+    }
+  ];
+
+  // Load blog posts from admin dashboard or use defaults
   useEffect(() => {
     const savedBlogs = localStorage.getItem('amanexBlogs');
-    if (savedBlogs) {
+    if (savedBlogs && JSON.parse(savedBlogs).length > 0) {
       setBlogArticles(JSON.parse(savedBlogs));
+    } else {
+      setBlogArticles(defaultBlogArticles);
     }
   }, []);
 

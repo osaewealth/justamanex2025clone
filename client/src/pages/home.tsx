@@ -11,9 +11,13 @@ import banner2Image from "@/assets/Banner2.jpg";
 import banner3Image from "@/assets/Banner3.jpg";
 import banner4Image from "@/assets/productimages/Banner4.jpg";
 
-// Import blog images
-import yesperfumesblog from "@/assets/productimages/yesperfumesblog.jpg";
+// Import product images
 import airfreshers from "@/assets/productimages/airfreshers.png";
+import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
+import perfumes from "@/assets/productimages/perfumes.jpg";
+import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
+import redperf from "@/assets/productimages/redperf.png";
 import liquidsoup from "@/assets/productimages/liquidsoup.png";
 import donation1 from "@/assets/productimages/donation-1.jpg";
 
@@ -103,32 +107,7 @@ export default function Home() {
     return () => clearInterval(resetInterval);
   }, [typewriterDelay]);
 
-  const newsArticles = [
-    {
-      id: 1,
-      category: "Company News",
-      date: "January 15, 2025",
-      title: "Amanex Ghana: Pioneering Personal Care Excellence in West Africa",
-      excerpt: "Discover how Amanex Ghana has become a leading force in personal care and home care products, bringing premium quality and innovative solutions to homes across West Africa.",
-      image: yesperfumesblog
-    },
-    {
-      id: 2,
-      category: "Home Care Tips",
-      date: "January 10, 2025",
-      title: "Transform Your Home with Amanex: The Complete Guide to Fresh Living",
-      excerpt: "Learn how to create a fresh, inviting home environment using Amanex's comprehensive range of air fresheners, cleaning products, and fabric care solutions.",
-      image: airfreshers
-    },
-    {
-      id: 3,
-      category: "Health & Wellness",
-      date: "January 5, 2025",
-      title: "The Science of Clean: How Amanex Products Keep Your Home Healthier",
-      excerpt: "Discover the scientific approach behind Amanex's cleaning and personal care products, and learn how they contribute to a healthier, safer home environment.",
-      image: liquidsoup
-    }
-  ];
+
 
   const instagramPosts = [
     {
@@ -295,48 +274,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* News Section */}
+      {/* Product Categories Section */}
       <section className="py-20 bg-white w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">AMANEX INSIGHTS</h2>
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-bold text-coty-navy mb-4">OUR TOP PRODUCTS</h2>
             <p className="text-lg text-coty-gray max-w-3xl mx-auto">
-              Discover expert tips, company updates, and insights from Amanex Ghana. Learn how our products transform everyday routines into luxurious experiences.
+              Discover our specialized product categories that bring freshness, cleanliness, and comfort to your home and personal care needs.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {newsArticles.map((article) => (
-              <Card key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {/* Air Fresheners Card */}
+            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
                 <img 
-                  src={article.image} 
-                  alt={article.title} 
-                  className="w-full h-48 object-cover"
+                  src={airfreshersgroup}
+                  alt="Air Fresheners" 
+                  className="w-full h-full object-cover"
                 />
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-coty-gray text-sm font-medium">{article.category}</span>
-                    <span className="text-coty-gray text-sm">{article.date}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-coty-navy mb-3 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-coty-gray mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  <a href={`/blog#article-${article.id}`} className="w-fit flex items-center gap-4 px-6 py-3 bg-coty-navy text-white text-sm font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
-                    READ MORE
-                    <ArrowRight className="text-xl" />
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">AIR FRESHENERS</h3>
+              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
+                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Perfumes & Body Care Card */}
+            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/perfumes-body-care'}>
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                <img 
+                  src={perfumes}
+                  alt="Perfumes & Body Care" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">PERFUMES & BODY CARE</h3>
+              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
+                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Cleaning Products Card */}
+            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                <img 
+                  src={classcleaner}
+                  alt="Cleaning Products" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">CLEANING PRODUCTS</h3>
+              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
+                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Personal Care Card */}
+            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                <img 
+                  src={showergel2colors}
+                  alt="Personal Care" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">PERSONAL CARE</h3>
+              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
+                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center">
-            <a href="/blog" className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-coty-navy text-md font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border border-coty-navy transition-colors duration-300">
-              READ ALL INSIGHTS
-              <ArrowRight className="text-2xl" />
+          <div className="text-right">
+            <a href="/our-brands" className="inline-flex items-center gap-2 text-coty-navy hover:text-coty-gold font-medium transition-colors duration-300 group">
+              VIEW ALL PRODUCTS
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
         </div>
