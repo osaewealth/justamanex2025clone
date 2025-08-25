@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings as SettingsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -343,7 +343,7 @@ export default function AdminDashboard() {
                     : 'text-gray-600 hover:text-coty-navy'
                 }`}
               >
-                <Settings className="inline w-5 h-5 mr-2" />
+                <SettingsIcon className="inline w-5 h-5 mr-2" />
                 Settings
               </button>
             </div>
@@ -465,20 +465,21 @@ function JobManagement({
 
     if (editingJob) {
       onUpdate({ ...editingJob, ...jobData });
+      setEditingJob(null);
+      setShowForm(false);
     } else {
       onAdd(jobData);
+      setFormData({
+        title: '',
+        department: '',
+        location: '',
+        type: '',
+        experience: '',
+        description: '',
+        requirements: '',
+        responsibilities: ''
+      });
     }
-    
-    setFormData({
-      title: '',
-      department: '',
-      location: '',
-      type: '',
-      experience: '',
-      description: '',
-      requirements: '',
-      responsibilities: ''
-    });
   };
 
   return (
@@ -486,7 +487,20 @@ function JobManagement({
       {/* Add Job Button */}
       <div className="mb-6">
         <Button 
-          onClick={() => setShowForm(true)}
+          onClick={() => {
+            setShowForm(true);
+            setEditingJob(null);
+            setFormData({
+              title: '',
+              department: '',
+              location: '',
+              type: '',
+              experience: '',
+              description: '',
+              requirements: '',
+              responsibilities: ''
+            });
+          }}
           className="bg-coty-navy hover:bg-coty-navy/90"
         >
           <Plus className="w-5 h-5 mr-2" />
@@ -627,7 +641,10 @@ function JobManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setEditingJob(job)}
+                    onClick={() => {
+                      setEditingJob(job);
+                      setShowForm(true);
+                    }}
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
@@ -717,19 +734,20 @@ function BlogManagement({
     
     if (editingBlog) {
       onUpdate({ ...editingBlog, ...formData });
+      setEditingBlog(null);
+      setShowForm(false);
     } else {
       onAdd(formData);
+      setFormData({
+        title: '',
+        excerpt: '',
+        content: '',
+        category: '',
+        date: new Date().toISOString().split('T')[0],
+        image: '',
+        published: true
+      });
     }
-    
-    setFormData({
-      title: '',
-      excerpt: '',
-      content: '',
-      category: '',
-      date: new Date().toISOString().split('T')[0],
-      image: '',
-      published: true
-    });
   };
 
   return (
@@ -737,7 +755,19 @@ function BlogManagement({
       {/* Add Blog Button */}
       <div className="mb-6">
         <Button 
-          onClick={() => setShowForm(true)}
+          onClick={() => {
+            setShowForm(true);
+            setEditingBlog(null);
+            setFormData({
+              title: '',
+              excerpt: '',
+              content: '',
+              category: '',
+              date: new Date().toISOString().split('T')[0],
+              image: '',
+              published: true
+            });
+          }}
           className="bg-coty-navy hover:bg-coty-navy/90"
         >
           <Plus className="w-5 h-5 mr-2" />
@@ -874,7 +904,10 @@ function BlogManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setEditingBlog(blog)}
+                    onClick={() => {
+                      setEditingBlog(blog);
+                      setShowForm(true);
+                    }}
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
