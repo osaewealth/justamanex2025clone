@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import HomeHeader from "@/components/HomeHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 import jdImage from "@/assets/jd.png";
-import herobgImage from "@/assets/herobg.jpg";
 import banner1Image from "@/assets/Banner1.jpg";
 import banner2Image from "@/assets/Banner2.jpg";
 import banner3Image from "@/assets/Banner3.jpg";
