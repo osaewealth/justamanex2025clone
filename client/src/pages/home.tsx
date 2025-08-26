@@ -10,6 +10,7 @@ import banner1Image from "@/assets/Banner1.jpg";
 import banner2Image from "@/assets/Banner2.jpg";
 import banner3Image from "@/assets/Banner3.jpg";
 import banner4Image from "@/assets/productimages/Banner4.jpg";
+import banner5Image from "@/assets/Banner5.jpg";
 
 // Import product images
 import airfreshers from "@/assets/productimages/airfreshers.png";
@@ -492,7 +493,7 @@ export default function Home() {
           {/* Image */}
           <div className="w-full md:w-1/2 mb-10 md:mb-0">
             <img 
-              src={donation1} 
+              src={banner5Image} 
               alt="Our Vision" 
               className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
             />
