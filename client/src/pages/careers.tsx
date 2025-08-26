@@ -185,7 +185,7 @@ export default function Careers() {
       </section>
 
       {/* Navigation Menu */}
-      <section className="py-8 bg-white border-b border-gray-100 sticky top-20 z-40 shadow-sm">
+      <section className="py-8 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4">
             <p className="text-sm text-gray-500 font-medium">Quick Navigation</p>
@@ -229,19 +229,6 @@ export default function Careers() {
               }`}
             >
               Apply Now
-            </button>
-            <button 
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setActiveSection("hero");
-              }}
-              className={`px-6 py-3 font-medium rounded-full border-2 transition-all duration-300 hover:scale-105 ${
-                activeSection === "hero" 
-                  ? "bg-coty-navy text-white border-coty-navy shadow-lg" 
-                  : "text-coty-navy border-coty-navy hover:bg-coty-navy hover:text-white hover:shadow-md"
-              }`}
-            >
-              Back to Top
             </button>
           </nav>
         </div>

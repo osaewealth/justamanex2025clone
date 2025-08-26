@@ -309,19 +309,19 @@ export default function ContactUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-coty-navy text-white">
+      <section className="py-20 bg-white text-coty-navy">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
+          <p className="text-xl mb-8 max-w-3xl mx-auto text-coty-gray">
             Whether you're looking for our products, interested in partnerships, or have questions, 
             we're here to help you succeed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/our-brands" className="w-fit flex items-center gap-4 px-8 py-4 bg-white text-coty-navy text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-white border border-white transition-colors duration-300">
+            <a href="/our-brands" className="w-fit flex items-center gap-4 px-8 py-4 bg-coty-navy text-white text-md font-medium rounded-br-3xl hover:bg-transparent hover:text-coty-navy border border-coty-navy transition-colors duration-300">
               EXPLORE PRODUCTS
               <ArrowRight className="text-2xl" />
             </a>
-            <a href="/our-story" className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-white text-md font-medium rounded-br-3xl hover:bg-white hover:text-coty-navy border border-white transition-colors duration-300">
+            <a href="/our-story" className="w-fit flex items-center gap-4 px-8 py-4 bg-transparent text-coty-navy text-md font-medium rounded-br-3xl hover:bg-coty-navy hover:text-white border border-coty-navy transition-colors duration-300">
               LEARN MORE
               <ArrowRight className="text-2xl" />
             </a>

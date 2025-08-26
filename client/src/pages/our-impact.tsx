@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 import donation1 from "@/assets/productimages/donation-1.jpg";
+import herobgImage from "@/assets/herobg.jpg";
 
 export default function OurImpact() {
   const [animatedStats, setAnimatedStats] = useState({
@@ -406,8 +407,17 @@ export default function OurImpact() {
       </section>
 
       {/* Future Vision Section */}
-      <section id="vision" className="py-20 bg-coty-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* <section id="vision" className="py-20 text-white relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={herobgImage} 
+            alt="Vision Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl font-bold mb-6">Our Vision for the Future</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             We envision a future where quality products, sustainable practices, and community development 
@@ -416,19 +426,19 @@ export default function OurImpact() {
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             <div>
               <h3 className="text-2xl font-bold mb-4">Quality</h3>
-              <p className="text-gray-300">Maintaining the highest standards in all our products and processes.</p>
+              <p className="text-gray-200">Maintaining the highest standards in all our products and processes.</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4">Innovation</h3>
-              <p className="text-gray-300">Continuously developing new solutions that meet evolving needs.</p>
+              <p className="text-gray-200">Continuously developing new solutions that meet evolving needs.</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4">Trust</h3>
-              <p className="text-gray-300">Building lasting relationships with customers, partners, and communities.</p>
+              <p className="text-gray-200">Building lasting relationships with customers, partners, and communities.</p>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
       <ScrollToTop />
