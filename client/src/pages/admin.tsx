@@ -798,12 +798,10 @@ function BlogManagement({
     };
 
     if (editingBlog) {
-      setBlogPosts(prev => prev.map(blog => 
-        blog.id === editingBlog.id ? newBlog : blog
-      ));
+      onUpdate(newBlog);
       setEditingBlog(null);
     } else {
-      setBlogPosts(prev => [...prev, newBlog]);
+      onAdd(newBlog);
     }
 
     setShowForm(false);

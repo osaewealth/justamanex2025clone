@@ -345,7 +345,7 @@ export default function Careers() {
                       <div>
                         <h4 className="font-medium text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">Requirements:</h4>
                         <ul className="space-y-2">
-                          {job.requirements.map((req, reqIndex) => (
+                          {job.requirements.map((req: string, reqIndex: number) => (
                             <li key={reqIndex} className="flex items-start gap-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-200">
                               <span className="text-coty-navy mt-1 group-hover:scale-110 transition-transform duration-200">•</span>
                               {req}
@@ -356,7 +356,7 @@ export default function Careers() {
                       <div>
                         <h4 className="font-medium text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">Responsibilities:</h4>
                         <ul className="space-y-2">
-                          {job.responsibilities.map((resp, respIndex) => (
+                          {job.responsibilities.map((resp: string, respIndex: number) => (
                             <li key={respIndex} className="flex items-start gap-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-200">
                               <span className="text-coty-navy mt-1 group-hover:scale-110 transition-transform duration-200">•</span>
                               {resp}

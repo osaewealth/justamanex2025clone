@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowUp, Search, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import StandardHeader from '@/components/StandardHeader';
 import Footer from '@/components/Footer';
