@@ -5,10 +5,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import donation1 from "@/assets/productimages/donation-1.jpg";
 import herobgImage from "@/assets/herobg.jpg";
 
+// Import hero background image
+import ourimpactBg from "@/assets/ourimpact.png";
+
 export default function OurImpact() {
+  const heroText = "OUR\nIMPACT";
+  const { typewriterIndex } = useTypewriter({ 
+    text: heroText, 
+    speed: 200, 
+    delay: 15000 
+  });
+
   const [animatedStats, setAnimatedStats] = useState({
     countries: 0,
     customers: 0,
@@ -221,14 +232,38 @@ export default function OurImpact() {
       <section 
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
         style={{
-          background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #86efac 100%)'
+          background: 'linear-gradient(135deg, rgba(220, 252, 231, 0.9) 0%, rgba(187, 247, 208, 0.9) 50%, rgba(134, 239, 172, 0.9) 100%), url("' + ourimpactBg + '")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
         }}
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
-              OUR<br />
-              <span className="text-coty-navy">IMPACT</span>
+              <div className="typewriter-text min-h-[1.2em]">
+                {heroText.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex} className="typewriter-line mb-2">
+                    {line.split('').map((char, charIndex) => {
+                      const totalCharIndex = lineIndex === 0 ? charIndex : lineIndex * line.length + charIndex;
+                      const isTyped = totalCharIndex < typewriterIndex;
+                      return (
+                        <span 
+                          key={charIndex} 
+                          className={`typewriter-char ${
+                            isTyped 
+                              ? 'typed text-coty-navy opacity-100' 
+                              : 'text-coty-navy opacity-20'
+                          }`}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </h1>
             
             <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">

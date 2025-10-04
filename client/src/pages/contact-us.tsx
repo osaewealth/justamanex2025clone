@@ -7,10 +7,21 @@ import { Textarea } from "@/components/ui/textarea";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useTypewriter } from "@/hooks/use-typewriter";
+
+// Import hero background image
+import contactusBg from "@/assets/contactus.png";
 
 export default function ContactUs() {
   const [isVisible, setIsVisible] = useState(false);
   const contactCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  const heroText = "CONTACT\nUS";
+  const { typewriterIndex } = useTypewriter({ 
+    text: heroText, 
+    speed: 200, 
+    delay: 15000 
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,14 +101,38 @@ export default function ContactUs() {
       <section 
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
         style={{
-          background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%)'
+          background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.9) 0%, rgba(253, 230, 138, 0.9) 50%, rgba(245, 158, 11, 0.9) 100%), url("' + contactusBg + '")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
         }}
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
-              CONTACT<br />
-              <span className="text-coty-navy">US</span>
+              <div className="typewriter-text min-h-[1.2em]">
+                {heroText.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex} className="typewriter-line mb-2">
+                    {line.split('').map((char, charIndex) => {
+                      const totalCharIndex = lineIndex === 0 ? charIndex : lineIndex * line.length + charIndex;
+                      const isTyped = totalCharIndex < typewriterIndex;
+                      return (
+                        <span 
+                          key={charIndex} 
+                          className={`typewriter-char ${
+                            isTyped 
+                              ? 'typed text-coty-navy opacity-100' 
+                              : 'text-coty-navy opacity-20'
+                          }`}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </h1>
             
             <p className="text-xl text-coty-gray mb-8 max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import HomeHeader from "@/components/HomeHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import jdImage from "@/assets/jd.png";
 import banner1Image from "@/assets/Banner1.jpg";
 import banner2Image from "@/assets/Banner2.jpg";
@@ -22,33 +23,40 @@ import redperf from "@/assets/productimages/redperf.png";
 import liquidsoup from "@/assets/productimages/liquidsoup.png";
 import donation1 from "@/assets/productimages/donation-1.jpg";
 
-// Import Instagram images
-import instagram1 from '@/assets/instagram/1754494212936.jpeg';
-import instagram2 from '@/assets/instagram/1754494208261.jpeg';
-import instagram3 from '@/assets/instagram/1754494191808.jpeg';
-import instagram4 from '@/assets/instagram/1754493975858.jpeg';
-import instagram5 from '@/assets/instagram/1754493968553.jpeg';
-import instagram6 from '@/assets/instagram/1754493901235 (1).jpeg';
-import instagram7 from '@/assets/instagram/1754493879750.webp';
-import instagram8 from '@/assets/instagram/1754493749820.jpeg';
+// Import Instagram carousel images
+import insta1 from '@/assets/insta1.jpg';
+import insta2 from '@/assets/insta2.jpg';
+
+import NewsletterService from "@/services/newsletterService";
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [typewriterIndex, setTypewriterIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
+  const [currentInstaIndex, setCurrentInstaIndex] = useState(0);
   
   const heroText = "WE ARE\nAMANEX";
-  const typewriterSpeed = 200; // Slower, smoother typing speed
-  const typewriterDelay = 15000; // 15 seconds between cycles
-  
-
+  const { typewriterIndex } = useTypewriter({ 
+    text: heroText, 
+    speed: 200, 
+    delay: 15000 
+  });
 
   const heroImages = [
-  
     banner1Image,
     banner2Image,
     banner3Image,
     jdImage
+  ];
+
+  // Update this to use mobile and desktop images
+  const instaImages = [
+    {
+      mobile: insta1, // Replace with insta1Mobile when you have mobile-specific images
+      desktop: insta1
+    },
+    {
+      mobile: insta2, // Replace with insta2Mobile when you have mobile-specific images
+      desktop: insta2
+    }
   ];
 
   useEffect(() => {
@@ -66,124 +74,16 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // Typewriter effect for hero text
+  // Auto-slide effect for Instagram carousel
   useEffect(() => {
-    if (!isTyping) return;
+    const interval = setInterval(() => {
+      setCurrentInstaIndex((prevIndex) => 
+        prevIndex === instaImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000); // Change image every 6 seconds
 
-    const typeInterval = setInterval(() => {
-      setTypewriterIndex((prevIndex) => {
-        if (prevIndex < heroText.length) {
-          // Add pause between "WE ARE" and "AMANEX"
-          if (prevIndex === 5) { // After "WE ARE"
-            setTimeout(() => {
-              setTypewriterIndex(prevIndex + 1);
-            }, 800); // Wait 800ms before starting "AMANEX"
-            return prevIndex;
-          }
-          return prevIndex + 1;
-        } else {
-          // Finished typing, wait then reset
-          setTimeout(() => {
-            setTypewriterIndex(0);
-          }, 1500); // Wait 1.5 seconds before restarting
-          return prevIndex;
-        }
-      });
-    }, typewriterSpeed);
-
-    return () => clearInterval(typeInterval);
-  }, [isTyping, heroText, typewriterSpeed]);
-
-  // Reset typewriter every 15 seconds with smoother transition
-  useEffect(() => {
-    const resetInterval = setInterval(() => {
-      // Smooth transition: reset typewriter index
-      setIsTyping(false);
-      setTimeout(() => {
-        setTypewriterIndex(0);
-        setIsTyping(true);
-      }, 200); // Reduced delay to 200ms for smoother transition
-    }, typewriterDelay);
-
-    return () => clearInterval(resetInterval);
-  }, [typewriterDelay]);
-
-
-
-  const instagramPosts = [
-    {
-      id: 1,
-      image: instagram1,
-      caption: "Behind the scenes at our manufacturing facility! Quality control in action 🏭✨ #AmanexQuality #ManufacturingExcellence",
-      likes: 234,
-      comments: 18,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 2,
-      image: instagram2,
-      caption: "Fresh new air freshener collection launching soon! 🌸 Breathe in the difference #FreshAir #NewLaunch",
-      likes: 189,
-      comments: 12,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 3,
-      image: instagram3,
-      caption: "Our team working hard to bring you the best products! 💪 #TeamAmanex #HardWork",
-      likes: 156,
-      comments: 8,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 4,
-      image: instagram4,
-      caption: "Innovation meets tradition in our latest product line 🚀 #Innovation #QualityProducts",
-      likes: 298,
-      comments: 24,
-      type: "video",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 5,
-      image: instagram5,
-      caption: "Sustainability is at the heart of everything we do 🌱 #Sustainability #EcoFriendly",
-      likes: 267,
-      comments: 15,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 6,
-      image: instagram6,
-      caption: "Customer satisfaction is our priority! Thank you for choosing Amanex 🙏 #CustomerFirst #ThankYou",
-      likes: 145,
-      comments: 9,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 7,
-      image: instagram7,
-      caption: "New product development in progress! Can't wait to share this with you 🔥 #NewProduct #ComingSoon",
-      likes: 312,
-      comments: 31,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    },
-    {
-      id: 8,
-      image: instagram8,
-      caption: "Quality control testing in action! Every product meets our high standards ✅ #QualityControl #Testing",
-      likes: 178,
-      comments: 11,
-      type: "image",
-      url: "https://www.instagram.com/amanexcompanyltd"
-    }
-  ];
+    return () => clearInterval(interval);
+  }, [instaImages.length]);
 
   return (
     <div className="min-h-screen">
@@ -276,87 +176,67 @@ export default function Home() {
       </section>
 
       {/* Product Categories Section */}
-      <section className="py-20 bg-white w-full">
+      <section className="py-16 bg-white w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl font-bold text-coty-navy mb-4">OUR TOP PRODUCTS</h2>
-            <p className="text-lg text-coty-gray max-w-3xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-coty-navy mb-4">OUR TOP PRODUCTS</h2>
+            <p className="text-base sm:text-lg text-coty-gray max-w-3xl mx-auto">
               Discover our specialized product categories that bring freshness, cleanliness, and comfort to your home and personal care needs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Air Fresheners Card */}
-            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
-              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
                   src={airfreshersgroup}
                   alt="Air Fresheners" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">AIR FRESHENERS</h3>
-              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
-                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">AIR FRESHENERS</h3>
             </div>
 
             {/* Perfumes & Body Care Card */}
-            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/perfumes-body-care'}>
-              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/perfumes-body-care'}>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
                   src={perfumes}
                   alt="Perfumes & Body Care" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">PERFUMES & BODY CARE</h3>
-              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
-                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">PERFUMES & BODY CARE</h3>
             </div>
 
             {/* Cleaning Products Card */}
-            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
-              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
                   src={classcleaner}
                   alt="Cleaning Products" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">CLEANING PRODUCTS</h3>
-              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
-                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">CLEANING PRODUCTS</h3>
             </div>
 
             {/* Personal Care Card */}
-            <div className="group bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
-              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
                   src={showergel2colors}
                   alt="Personal Care" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-coty-navy mb-6 group-hover:text-coty-gold transition-colors duration-300">PERSONAL CARE</h3>
-              <div className="w-10 h-10 rounded-full border-2 border-coty-navy flex items-center justify-center mx-auto group-hover:border-coty-gold group-hover:bg-coty-navy transition-all duration-300">
-                <svg className="w-5 h-5 text-coty-navy group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">PERSONAL CARE</h3>
             </div>
           </div>
 
-          <div className="text-right">
-            <a href="/our-brands" className="inline-flex items-center gap-2 text-coty-navy hover:text-coty-gold font-medium transition-colors duration-300 group">
+          <div className="text-center">
+            <a href="/our-brands" className="inline-flex items-center gap-2 px-6 py-3 bg-coty-navy text-white font-medium rounded-lg hover:bg-coty-gold hover:text-coty-navy transition-all duration-300 group shadow-md">
               VIEW ALL PRODUCTS
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
@@ -364,88 +244,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Instagram Feed Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50 w-full">
-        <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-pink-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              <h2 className="text-4xl font-bold text-coty-navy">@amanexcompanyltd</h2>
-            </div>
-            <p className="text-lg text-coty-gray max-w-2xl mx-auto">
-              Follow our journey and discover the latest updates, behind-the-scenes moments, and product highlights
-            </p>
-          </div>
-
-          {/* Instagram Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            {instagramPosts.map((post, index) => (
-              <div 
-                key={post.id} 
-                className="group relative aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => window.open(post.url, '_blank')}
-              >
-                {/* Post Image */}
-                <img 
-                  src={post.image} 
-                  alt={post.caption}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                
-                {/* Instagram Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  {/* Instagram Icons */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-4 text-white">
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                      </svg>
-                      <span className="text-sm font-medium">{post.likes}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M21.99 4c0-1.1-.89-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-                      </svg>
-                      <span className="text-sm font-medium">{post.comments}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Post Type Indicator */}
-                {post.type === 'video' && (
-                  <div className="absolute top-3 right-3">
-                    <svg className="w-6 h-6 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                )}
-
-                {/* Caption Preview (on hover) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white text-sm line-clamp-2">{post.caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Follow Button */}
-          <div className="text-center">
-            <Button 
-              className="w-fit flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-md font-medium rounded-br-3xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 mx-auto shadow-lg hover:shadow-xl"
-              onClick={() => window.open('https://www.instagram.com/amanexcompanyltd', '_blank')}
+      {/* Instagram Carousel Section */}
+      <section className="w-full pt-2 mb-8">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden">
+          {instaImages.map((imageSet, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentInstaIndex ? 'opacity-100' : 'opacity-0'
+              }`}
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              FOLLOW US ON INSTAGRAM
-            </Button>
-          </div>
+              {/* Mobile Image */}
+              <img 
+                src={imageSet.mobile} 
+                alt={`Carousel image ${index + 1} - Mobile`}
+                className="w-full h-full object-contain sm:hidden"
+              />
+              {/* Desktop Image */}
+              <img 
+                src={imageSet.desktop} 
+                alt={`Carousel image ${index + 1} - Desktop`}
+                className="hidden sm:block w-full h-full object-contain"
+              />
+            </div>
+          ))}
         </div>
       </section>
-
-
 
       {/* Our Mission Section - Inspired by Homedede */}
       <section className="bg-red-50 py-16 px-4">
@@ -455,7 +279,7 @@ export default function Home() {
             <img 
               src={banner4Image} 
               alt="Our Mission" 
-              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
+              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 object-cover" 
             />
           </div>
 
@@ -495,10 +319,80 @@ export default function Home() {
             <img 
               src={banner5Image} 
               alt="Our Vision" 
-              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg object-cover" 
+              className="w-full h-[300px] md:h-[400px] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 object-cover" 
             />
           </div>
         </div>
+      </section>
+
+      {/* Newsletter Subscription Section */}
+      <section className="py-16 px-4 bg-white relative overflow-hidden">
+        {/* Decorative leaf elements */}
+        <div className="absolute top-0 left-0 w-24 h-24 opacity-20">
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path 
+              d="M20,20 Q40,5 50,20 T80,20 Q95,40 80,50 T80,80 Q60,95 50,80 T20,80 Q5,60 20,50 Z" 
+              fill="none" 
+              stroke="#D4A017" 
+              strokeWidth="1"
+            />
+          </svg>
+        </div>
+        <div className="absolute bottom-0 right-0 w-24 h-24 opacity-20">
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path 
+              d="M20,20 Q40,5 50,20 T80,20 Q95,40 80,50 T80,80 Q60,95 50,80 T20,80 Q5,60 20,50 Z" 
+              fill="none" 
+              stroke="#D4A017" 
+              strokeWidth="1"
+            />
+          </svg>
+        </div>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-8">
+            <h3 className="text-base text-gray-700 mb-2">Our Newsletter</h3>
+            <h2 className="text-2xl font-bold mb-4">
+              Subscribe to Our Newsletter to <span className="text-[#D4A017]">Get Updates on Our Latest Offers</span>
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Be the first to get notified when we have a new product just by subscribing to our newsletter
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-2xl mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter Email Address" 
+              className="flex-grow px-6 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D4A017] focus:border-transparent"
+              id="homepage-newsletter-email"
+            />
+            <button 
+              className="px-8 py-4 bg-[#2E7D32] text-white font-medium rounded-br-3xl hover:bg-transparent hover:text-[#2E7D32] border border-[#2E7D32] transition-colors duration-300 whitespace-nowrap"
+              onClick={() => {
+                const emailInput = document.getElementById('homepage-newsletter-email') as HTMLInputElement;
+                if (emailInput && emailInput.value) {
+                  // Basic email validation
+                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  if (emailRegex.test(emailInput.value)) {
+                    const newSubscriber = NewsletterService.addSubscriber(emailInput.value);
+                    alert(`Thank you for subscribing with ${emailInput.value}!`);
+                    emailInput.value = '';
+                    // In a real app, you would send this to a backend API
+                    console.log('New subscriber:', newSubscriber);
+                  } else {
+                    alert('Please enter a valid email address.');
+                  }
+                } else {
+                  alert('Please enter a valid email address.');
+                }
+              }}
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+
       </section>
 
       <Footer />

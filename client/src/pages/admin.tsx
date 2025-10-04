@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings as SettingsIcon } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings as SettingsIcon, Mail } from 'lucide-react';
 
 // Input sanitization utility
 const sanitizeInput = (input: string): string => {
@@ -37,7 +37,7 @@ interface BlogPost {
 }
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'jobs' | 'blog' | 'settings'>('jobs');
+  const [activeTab, setActiveTab] = useState<'jobs' | 'blog' | 'newsletter' | 'settings'>('jobs');
   const [jobs, setJobs] = useState<JobOpening[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [editingJob, setEditingJob] = useState<JobOpening | null>(null);
@@ -314,7 +314,7 @@ export default function AdminDashboard() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-coty-navy mb-4">Admin Dashboard</h1>
-            <p className="text-gray-600">Manage job openings and blog posts easily</p>
+            <p className="text-gray-600">Manage job openings, blog posts, and newsletter</p>
           </div>
 
           {/* Tab Navigation */}
@@ -341,6 +341,17 @@ export default function AdminDashboard() {
               >
                 <FileText className="inline w-5 h-5 mr-2" />
                 Blog Posts
+              </button>
+              <button
+                onClick={() => setActiveTab('newsletter')}
+                className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+                  activeTab === 'newsletter'
+                    ? 'bg-coty-navy text-white shadow-md'
+                    : 'text-gray-600 hover:text-coty-navy'
+                }`}
+              >
+                <Mail className="inline w-5 h-5 mr-2" />
+                Newsletter
               </button>
               <button
                 onClick={() => setActiveTab('settings')}
@@ -379,6 +390,8 @@ export default function AdminDashboard() {
               showForm={showBlogForm}
               setShowForm={setShowBlogForm}
             />
+          ) : activeTab === 'newsletter' ? (
+            <NewsletterManagement />
           ) : (
             <Settings 
               adminPassword={adminPassword}
@@ -1086,6 +1099,90 @@ function BlogManagement({
           </Card>
         )}
       </div>
+    </div>
+  );
+}
+
+// Newsletter Management Component
+function NewsletterManagement() {
+  return (
+    <div>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-coty-navy mb-4">Newsletter Management</h2>
+        <p className="text-gray-600">Manage your website newsletter</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between text-lg">
+                <span>Newsletter Subscribers</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm text-gray-600">
+              <p><strong>Total Subscribers:</strong> 0</p>
+              <Button 
+                className="mt-4 w-full bg-coty-navy hover:bg-coty-navy/90"
+                onClick={() => window.location.href = '/admin/newsletter-subscribers'}
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                View & Export Subscribers
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between text-lg">
+                <span>Send Newsletter</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Input
+                placeholder="Subject"
+                required
+              />
+              <Textarea
+                placeholder="Newsletter Content"
+                required
+                rows={10}
+              />
+              <Button className="bg-coty-navy hover:bg-coty-navy/90">
+                <Mail className="w-4 h-4 mr-2" />
+                Send Newsletter
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <Card className="mb-4">
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between text-lg">
+            <span>Newsletter Templates</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2 text-sm text-gray-600">
+            <p><strong>Total Templates:</strong> 0</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between text-lg">
+            <span>Newsletter Settings</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-gray-600">
+          <p><strong>Automated Emails:</strong> Disabled</p>
+          <p><strong>Email Frequency:</strong> Weekly</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

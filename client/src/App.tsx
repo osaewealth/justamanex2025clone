@@ -20,6 +20,7 @@ import PersonalCare from "@/pages/personal-care";
 import HomeCare from "@/pages/home-care";
 import SearchPage from "@/pages/search";
 import AdminDashboard from "@/pages/admin";
+import NewsletterSubscribers from "@/pages/admin/newsletter-subscribers";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -41,6 +42,7 @@ function Router() {
       <Route path="/home-care" component={HomeCare} />
       <Route path="/search" component={SearchPage} />
       <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin/newsletter-subscribers" component={NewsletterSubscribers} />
       <Route component={NotFound} />
     </Switch>
   );

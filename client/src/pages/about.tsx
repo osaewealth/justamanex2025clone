@@ -3,11 +3,24 @@ import { Search, Menu, ArrowRight, X, Phone, Briefcase, Globe, ArrowUp } from "l
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import StandardHeader from "@/components/StandardHeader";
+import { useYouTubeAutoplay } from "@/hooks/use-youtube-autoplay";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import directorImage from "@/assets/Director.jpeg";
 import ScrollToTop from "@/components/ScrollToTop";
 
+// Import hero background image
+import aboutusBg from "@/assets/aboutus.png";
+
 export default function About() {
   const purposeRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRef = useYouTubeAutoplay({ threshold: 0.6, rootMargin: '0px 0px -100px 0px' });
+  
+  const heroText = "WHO\nWE ARE";
+  const { typewriterIndex } = useTypewriter({ 
+    text: heroText, 
+    speed: 200, 
+    delay: 15000 
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,12 +52,40 @@ export default function About() {
       <StandardHeader />
 
       {/* About Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-coty-mint-light to-coty-gray-light pt-20">
+      <section className="relative min-h-screen flex items-center justify-center pt-20"
+        style={{
+          background: 'linear-gradient(135deg, rgba(230, 255, 250, 0.9) 0%, rgba(220, 250, 240, 0.9) 50%, rgba(200, 240, 230, 0.9) 100%), url("' + aboutusBg + '")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-bold text-coty-navy leading-tight mb-8 animate-fade-in-up animation-delay-800">
-              WHO<br />
-              <span className="text-coty-navy">WE ARE</span>
+              <div className="typewriter-text min-h-[1.2em]">
+                {heroText.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex} className="typewriter-line mb-2">
+                    {line.split('').map((char, charIndex) => {
+                      const totalCharIndex = lineIndex === 0 ? charIndex : lineIndex * line.length + charIndex;
+                      const isTyped = totalCharIndex < typewriterIndex;
+                      return (
+                        <span 
+                          key={charIndex} 
+                          className={`typewriter-char ${
+                            isTyped 
+                              ? 'typed text-coty-navy opacity-100' 
+                              : 'text-coty-navy opacity-20'
+                          }`}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </h1>
             <p className="text-xl lg:text-2xl text-coty-gray max-w-3xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-0">
               Fearless. Forward. You. We are one of the world's largest beauty companies with iconic brands across fragrance, color cosmetics, and skin & body care.
@@ -83,9 +124,10 @@ export default function About() {
             <div className="relative">
               <div className="rounded-xl shadow-2xl overflow-hidden h-full">
                 <iframe
+                  ref={videoRef}
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/rrsyKhsZN-k?si=_Ntt1XeGpDIn_mOy"
+                  src="https://www.youtube.com/embed/rrsyKhsZN-k?si=_Ntt1XeGpDIn_mOy&enablejsapi=1&origin=https://amanex.com"
                   title="Amanex Company Video"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
