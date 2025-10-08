@@ -79,7 +79,7 @@ export default function PerfumesBodyCare() {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 object-contain group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
                 <CardContent className="p-6">

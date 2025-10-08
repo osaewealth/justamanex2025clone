@@ -367,84 +367,45 @@ export default function OurStory() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {milestones.map((milestone, index) => (
-                <div 
-                  key={index} 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {milestones.map((milestone, index) => (
+              <div 
+                key={index}
                 className={`transform transition-all duration-1000 ease-out ${
-                    isTimelineVisible && index <= activeMilestone 
-                    ? 'opacity-100 translate-y-0 scale-100' 
-                    : 'opacity-0 translate-y-12 scale-95'
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 300}ms`
-                  }}
-                >
-                                                    {/* Certificate-Style Card */}
-                  <div 
-                    className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 cursor-pointer overflow-hidden border border-gray-100 hover:border-transparent ${
-                      hoveredCard === index ? 'ring-2 ring-coty-gold' : ''
-                    }`}
-                      onMouseEnter={() => setHoveredCard(index)}
-                      onMouseLeave={() => setHoveredCard(null)}
-                      onTouchStart={() => setHoveredCard(index)}
-                      onTouchEnd={() => setHoveredCard(null)}
-                    >
-                    {/* Certificate Header with Gradient */}
-                    <div className={`relative h-20 sm:h-24 bg-gradient-to-r ${milestone.color} rounded-t-2xl overflow-hidden transition-all duration-300`}>
-                      {/* Decorative Elements */}
-                      <div className="absolute top-2 right-2 w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-20 rounded-full transition-all duration-300"></div>
-                      <div className="absolute bottom-2 left-2 w-6 h-6 sm:w-8 sm:h-8 bg-white bg-opacity-20 rounded-full transition-all duration-300"></div>
-                      
-                      {/* Achievement Badge */}
-                      <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-white bg-opacity-95 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 shadow-sm transition-all duration-300 group-hover:bg-opacity-100 group-hover:shadow-md">
-                        <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">
-                          {milestone.achievement}
-                        </span>
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 text-3xl sm:text-4xl transition-all duration-300">
-                        {milestone.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Certificate Content */}
-                    <div className="p-4 sm:p-6 relative z-10 bg-white">
-                      {/* Year Badge */}
-                      <div className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-bold mb-4 transition-all duration-300 group-hover:shadow-lg shadow-md">
+                  isTimelineVisible && index <= activeMilestone 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  transitionDelay: `${index * 300}ms`
+                }}
+              >
+                <div className="group h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
+                  <div className={`h-2 bg-gradient-to-r ${
+                    index % 3 === 0 ? 'from-blue-500 to-blue-600' :
+                    index % 3 === 1 ? 'from-purple-500 to-purple-600' :
+                    'from-green-500 to-green-600'
+                  }`}></div>
+                  <div className="p-8">
+                    <div className="flex justify-between items-start mb-6">
+                      <div className={`text-4xl font-bold ${
+                        index % 3 === 0 ? 'text-blue-600' :
+                        index % 3 === 1 ? 'text-purple-600' :
+                        'text-green-600'
+                      }`}>
                         {milestone.year}
-                          </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-lg sm:text-xl font-bold text-coty-navy mb-3 leading-tight transition-colors duration-300 group-hover:text-coty-navy">
-                        {milestone.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 transition-colors duration-300 group-hover:text-gray-700">
-                        {milestone.description}
-                      </p>
-                      
-                      {/* Certificate Footer */}
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100 group-hover:border-gray-200 transition-colors duration-300">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-coty-gold rounded-full animate-pulse"></div>
-                          <span className="text-xs text-gray-500 uppercase tracking-wider group-hover:text-gray-600">Milestone Achieved</span>
-                        </div>
-                        
-                        {/* Achievement Icon */}
-                        <div className="w-8 h-8 bg-gradient-to-br from-coty-gold to-yellow-400 rounded-full flex items-center justify-center transition-all duration-300 group-hover:shadow-md">
-                          <div className="w-3 h-3 bg-white rounded-full"></div>
-                        </div>
                       </div>
+                      <div className="text-3xl">{milestone.icon}</div>
                     </div>
-                    
-                    {/* Subtle Hover Glow Effect */}
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${milestone.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
+                    <h3 className="text-xl font-bold text-coty-navy mb-4">{milestone.title}</h3>
+                    <p className="text-gray-600 mb-6">{milestone.description}</p>
+                    <div className="inline-block bg-coty-gray-light text-coty-navy px-4 py-2 rounded-full text-sm font-medium group-hover:bg-coty-gold transition-colors duration-300">
+                      {milestone.achievement}
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>

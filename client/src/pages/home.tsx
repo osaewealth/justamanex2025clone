@@ -14,14 +14,20 @@ import banner4Image from "@/assets/productimages/Banner4.jpg";
 import banner5Image from "@/assets/Banner5.jpg";
 
 // Import product images
-import airfreshers from "@/assets/productimages/airfreshers.png";
+import airfresherscat from "@/assets/productimages/airfresherscat.png";
 import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
 import perfumes from "@/assets/productimages/perfumes.jpg";
-import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import glasscleaners from "@/assets/productimages/glasscleaners.png";
 import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
 import redperf from "@/assets/productimages/redperf.png";
 import liquidsoup from "@/assets/productimages/liquidsoup.png";
 import donation1 from "@/assets/productimages/donation-1.jpg";
+import softners from "@/assets/productimages/softners.png";
+import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
+import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
+import insertspray from "@/assets/productimages/insertspray.png";
+import showergelcat from "@/assets/productimages/showergelcat.png";
+import sanitizer60ml from "@/assets/productimages/sanitizer-60ml.png";
 
 // Import Instagram carousel images
 import insta1 from '@/assets/insta1.jpg';
@@ -32,6 +38,7 @@ import NewsletterService from "@/services/newsletterService";
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentInstaIndex, setCurrentInstaIndex] = useState(0);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   
   const heroText = "WE ARE\nAMANEX";
   const { typewriterIndex } = useTypewriter({ 
@@ -84,6 +91,52 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [instaImages.length]);
+
+  // Product categories data (only first 6)
+  const productCategories = [
+    {
+      name: "AIR FRESHENERS",
+      image: airfresherscat,
+      link: "/air-fresheners"
+    },
+    {
+      name: "PERFUMES & BODY CARE",
+      image: perfumes,
+      link: "/perfumes-body-care"
+    },
+    {
+      name: "CLEANING PRODUCTS",
+      image: glasscleaners,
+      link: "/cleaning-products"
+    },
+    {
+      name: "PERSONAL CARE",
+      image: showergelcat,
+      link: "/personal-care"
+    },
+    {
+      name: "HOME CARE",
+      image: insertspray,
+      link: "/home-care"
+    },
+    {
+      name: "FABRIC SOFTENER",
+      image: softners,
+      link: "/fabric-softener"
+    }
+  ];
+
+  // Create infinite loop by duplicating categories
+  const infiniteCategories = [...productCategories, ...productCategories];
+
+  // Auto-slide effect for category carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCategoryIndex(prev => (prev + 1) % productCategories.length);
+    }, 6000); // Change category every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [productCategories.length]);
 
   return (
     <div className="min-h-screen">
@@ -175,7 +228,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Categories Section */}
+      {/* Product Categories Carousel Section */}
       <section className="py-16 bg-white w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto">
           <div className="mb-12 text-center">
@@ -185,54 +238,54 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {/* Air Fresheners Card */}
-            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src={airfreshersgroup}
-                  alt="Air Fresheners" 
-                  className="w-full h-full object-cover"
-                />
+          {/* Category Carousel with Arrows */}
+          <div className="relative w-full mb-12">
+            {/* Left Arrow */}
+            <button
+              onClick={() => setCurrentCategoryIndex(prev => (prev - 1 + productCategories.length) % productCategories.length)}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ml-2"
+              aria-label="Previous categories"
+            >
+              <ChevronDown className="w-6 h-6 text-coty-navy rotate-90" />
+            </button>
+
+            {/* Carousel Content */}
+            <div className="overflow-hidden px-12">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentCategoryIndex * (100 / (window.innerWidth < 640 ? 2 : 4))}%)` }}
+              >
+                {infiniteCategories.map((category, index) => (
+                  <div 
+                    key={index}
+                    className="flex-shrink-0 w-1/2 sm:w-1/4 px-4"
+                  >
+                    <div 
+                      className="group flex flex-col items-center text-center cursor-pointer"
+                      onClick={() => window.location.href = category.link}
+                    >
+                      <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                        <img 
+                          src={category.image}
+                          alt={category.name} 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <h3 className="text-base sm:text-lg font-semibold text-coty-navy">{category.name}</h3>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">AIR FRESHENERS</h3>
             </div>
 
-            {/* Perfumes & Body Care Card */}
-            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/perfumes-body-care'}>
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src={perfumes}
-                  alt="Perfumes & Body Care" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">PERFUMES & BODY CARE</h3>
-            </div>
-
-            {/* Cleaning Products Card */}
-            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src={classcleaner}
-                  alt="Cleaning Products" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">CLEANING PRODUCTS</h3>
-            </div>
-
-            {/* Personal Care Card */}
-            <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src={showergel2colors}
-                  alt="Personal Care" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold text-coty-navy">PERSONAL CARE</h3>
-            </div>
+            {/* Right Arrow */}
+            <button
+              onClick={() => setCurrentCategoryIndex(prev => (prev + 1) % productCategories.length)}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 mr-2"
+              aria-label="Next categories"
+            >
+              <ChevronDown className="w-6 h-6 text-coty-navy -rotate-90" />
+            </button>
           </div>
 
           <div className="text-center">
@@ -364,7 +417,7 @@ export default function Home() {
             <input 
               type="email" 
               placeholder="Enter Email Address" 
-              className="flex-grow px-6 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D4A017] focus:border-transparent"
+              className="flex-grow px-6 py-4 rounded-lg border border-gray-3300 focus:outline-none focus:ring-2 focus:ring-[#D4A017] focus:border-transparent"
               id="homepage-newsletter-email"
             />
             <button 

@@ -10,18 +10,18 @@ import NewsletterService from "@/services/newsletterService";
 
 // Import product images
 import airfreshersgroup from "@/assets/productimages/airfreshersgroup.jpg";
-import airfreshers from "@/assets/productimages/airfreshers.jpg";
+import airfresherscat from "@/assets/productimages/airfresherscat.png";
 import airfreshersviolet from "@/assets/productimages/airfreshersviolet.jpg";
 import airfresherspray from "@/assets/productimages/airfresherspray.jpg";
 import liquidsoupyellow from "@/assets/productimages/liquidsoupyellow.jpg";
 import liquidsoup from "@/assets/productimages/liquidsoup.png";
-import showergel from "@/assets/productimages/showergel.jpg";
+import showergelcat from "@/assets/productimages/showergelcat.png";
 import showergel2colors from "@/assets/productimages/showergel2colors.jpg";
 import showergelyellow from "@/assets/productimages/showergelyellow.jpg";
-import insecticide from "@/assets/productimages/insecticide.jpg";
-import classcleaner from "@/assets/productimages/classcleaner.jpg";
+import insertspray from "@/assets/productimages/insertspray.png";
+import glasscleaners from "@/assets/productimages/glasscleaners.png";
 import fabricsoftener from "@/assets/productimages/fabricsoftener.jpg";
-import fabricsoftenergroup from "@/assets/productimages/fabric-softenergroup.png";
+import softners from "@/assets/productimages/softners.png";
 import airfresher12 from "@/assets/productimages/airfresher12.jpg";
 import allproducts from "@/assets/productimages/allproducts.jpg";
 import perfumes from "@/assets/productimages/perfumes.jpg";
@@ -37,13 +37,13 @@ export default function OurBrands() {
     {
       name: "AIR FRESHENER",
       description: "Transform your living spaces with our invigorating air fresheners that create a welcoming atmosphere.",
-      image: airfreshers,
+      image: airfresherscat,
       features: ["Long-lasting fragrance", "Natural ingredients", "Multiple scents available"]
     },
     {
       name: "PERFUME & BODY SPLASH",
       description: "Luxurious perfumes and body splashes that define your personal style and leave lasting impressions.",
-      image: airfresherspray,
+      image: perfumes,
       features: ["Premium fragrances", "Long-lasting scent", "Elegant packaging"]
     },
     {
@@ -55,25 +55,25 @@ export default function OurBrands() {
     {
       name: "SHOWER GEL",
       description: "Moisturizing shower gels that keep you feeling refreshed and protected all day long.",
-      image: showergel2colors,
+      image: showergelcat,
       features: ["Deep cleansing", "Skin nourishment", "Refreshing scents"]
     },
     {
       name: "INSECTICIDE SPRAY",
       description: "Effective insecticide sprays that ensure your home is always immaculate and safe.",
-      image: insecticide,
+      image: insertspray,
       features: ["Powerful protection", "Safe for family use", "Long-lasting effect"]
     },
     {
       name: "GLASS CLEANER",
       description: "Professional-grade glass cleaners that deliver streak-free shine and crystal-clear results.",
-      image: classcleaner,
+      image: glasscleaners,
       features: ["Streak-free formula", "Quick drying", "Safe for all surfaces"]
     },
     {
       name: "FABRIC SOFTENER",
       description: "Gentle fabric softeners that keep your clothes soft, fresh, and beautifully scented.",
-      image: fabricsoftenergroup,
+      image: softners,
       features: ["Softens fabrics", "Long-lasting freshness", "Color-safe formula"]
     },
     {
@@ -112,20 +112,6 @@ export default function OurBrands() {
       rating: 4.8,
       price: "₵22.00",
       image: showergelyellow
-    },
-    {
-      name: "BR2",
-      category: "Glass Cleaner",
-      rating: 4.6,
-      price: "₵15.00",
-      image: classcleaner
-    },
-    {
-      name: "BR5",
-      category: "Fabric Softener",
-      rating: 4.7,
-      price: "₵20.00",
-      image: fabricsoftener
     }
   ];
 
@@ -206,7 +192,7 @@ export default function OurBrands() {
             <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/air-fresheners'}>
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src={airfreshersgroup}
+                  src={airfresherscat}
                   alt="Air Fresheners" 
                   className="w-full h-full object-cover"
                 />
@@ -220,7 +206,7 @@ export default function OurBrands() {
                 <img 
                   src={perfumes}
                   alt="Perfumes & Body Care" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <h3 className="text-base sm:text-lg font-semibold text-coty-navy">PERFUMES & BODY CARE</h3>
@@ -230,7 +216,7 @@ export default function OurBrands() {
             <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/cleaning-products'}>
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src={classcleaner}
+                  src={glasscleaners}
                   alt="Cleaning Products" 
                   className="w-full h-full object-cover"
                 />
@@ -242,7 +228,7 @@ export default function OurBrands() {
             <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/personal-care'}>
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src={showergel2colors}
+                  src={showergelcat}
                   alt="Personal Care" 
                   className="w-full h-full object-cover"
                 />
@@ -254,7 +240,7 @@ export default function OurBrands() {
             <div className="group flex flex-col items-center text-center cursor-pointer" onClick={() => window.location.href = '/home-care'}>
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src={fabricsoftener}
+                  src={softners}
                   alt="Home Care" 
                   className="w-full h-full object-cover"
                 />
@@ -294,7 +280,7 @@ export default function OurBrands() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {bestSellers.map((product, index) => (
               <Card key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
                 <div className="text-center mb-4">
