@@ -108,7 +108,9 @@ export default function About() {
             <div>
               <h2 className="text-4xl font-bold text-coty-navy mb-6">Our Story</h2>
               <p className="text-lg text-coty-gray mb-6 leading-relaxed text-justify">
-                  Amanex Company Limited, founded in 2015 and incorporated in 2017, is a leading Ghanaian manufacturer of high-quality household, cosmetic, and plastic products, including air fresheners, soaps, and sanitizers. Based in Accra as a Free Zones Enterprise, we serve Ghana and export across Africa. Honored at the Ghana Club 100, we are committed to quality and innovation, aiming to be Africaâs top manufacturer in our field.              </p>
+                  Amanex Company Limited, founded in 2015 and incorporated in 2017, is a leading Ghanaian manufacturer of high-quality household, cosmetic, 
+                  and plastic products, including air fresheners, soaps, and sanitizers. Based in Accra as a Free Zones Enterprise, we serve Ghana and export across Africa.
+                   Honored at the Ghana Club 100, we are committed to quality and innovation, aiming to be Africa's top manufacturer in our field.              </p>
               <div className="grid grid-cols-2 gap-8 mt-8">
                 <div>
                   <h3 className="text-3xl font-bold text-coty-navy">3</h3>

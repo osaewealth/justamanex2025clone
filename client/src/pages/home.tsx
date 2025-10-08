@@ -138,6 +138,33 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [productCategories.length]);
 
+  // Touch/swipe handlers for category carousel
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      // Swipe left - go to next category
+      setCurrentCategoryIndex(prev => (prev + 1) % productCategories.length);
+    } else if (isRightSwipe) {
+      // Swipe right - go to previous category
+      setCurrentCategoryIndex(prev => (prev - 1 + productCategories.length) % productCategories.length);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <HomeHeader />
@@ -240,17 +267,22 @@ export default function Home() {
 
           {/* Category Carousel with Arrows */}
           <div className="relative w-full mb-12">
-            {/* Left Arrow */}
+            {/* Left Arrow - hidden on mobile */}
             <button
               onClick={() => setCurrentCategoryIndex(prev => (prev - 1 + productCategories.length) % productCategories.length)}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ml-2"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-coty-navy rounded-full p-3 shadow-lg transition-all duration-300 ml-2 hidden sm:block"
               aria-label="Previous categories"
             >
-              <ChevronDown className="w-6 h-6 text-coty-navy rotate-90" />
+              <ChevronDown className="w-6 h-6 text-coty-navy hover:text-white rotate-90 transition-colors duration-300" />
             </button>
 
             {/* Carousel Content */}
-            <div className="overflow-hidden px-12">
+            <div 
+              className="overflow-hidden px-12"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentCategoryIndex * (100 / (window.innerWidth < 640 ? 2 : 4))}%)` }}
@@ -278,13 +310,13 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Arrow */}
+            {/* Right Arrow - hidden on mobile */}
             <button
               onClick={() => setCurrentCategoryIndex(prev => (prev + 1) % productCategories.length)}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 mr-2"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-coty-navy rounded-full p-3 shadow-lg transition-all duration-300 mr-2 hidden sm:block"
               aria-label="Next categories"
             >
-              <ChevronDown className="w-6 h-6 text-coty-navy -rotate-90" />
+              <ChevronDown className="w-6 h-6 text-coty-navy hover:text-white -rotate-90 transition-colors duration-300" />
             </button>
           </div>
 
