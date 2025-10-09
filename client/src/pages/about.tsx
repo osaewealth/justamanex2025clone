@@ -14,6 +14,11 @@ import ScrollToTop from "@/components/ScrollToTop";
 // Import hero background image
 import aboutusBg from "@/assets/aboutus.png";
 
+// Import icons
+import confidenceIcon from '@/icons/confidence.png';
+import creativityIcon from '@/icons/creativity.png';
+import connectionIcon from '@/icons/foster.png';
+
 export default function About() {
   const purposeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const videoRef = useYouTubeAutoplay({ threshold: 0.6, rootMargin: '0px 0px -100px 0px' });
@@ -150,11 +155,8 @@ export default function About() {
               ref={(el) => (purposeRefs.current[0] = el)}
               className="bg-white p-8 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 hover:shadow-2xl hover:scale-105 transform"
             >
-              <div className="w-16 h-16 bg-coty-mint rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-coty-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9.5 9h5l-1.5 4.5L16 11l1 3" />
-                </svg>
+              <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <img src={confidenceIcon} alt="Confidence" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-coty-navy mb-4">Inspire Confidence</h3>
               <p className="text-coty-gray">We create products that help people express their unique beauty and feel confident in their own skin.</p>
@@ -164,12 +166,8 @@ export default function About() {
               className="bg-white p-8 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 hover:shadow-2xl hover:scale-105 transform"
               style={{ transitionDelay: '200ms' }}
             >
-              <div className="w-16 h-16 bg-coty-gold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-coty-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20 7h-3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3" />
-                  <path d="M4 19V5l16 7-16 7z" />
-                  <circle cx="4" cy="12" r="2" />
-                </svg>
+              <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <img src={connectionIcon} alt="Connection" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-coty-navy mb-4">Foster Creativity</h3>
               <p className="text-coty-gray">Beauty is an art form. We empower creativity and self-expression through innovative products and experiences.</p>
@@ -179,13 +177,8 @@ export default function About() {
               className="bg-white p-8 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 hover:shadow-2xl hover:scale-105 transform"
               style={{ transitionDelay: '400ms' }}
             >
-              <div className="w-16 h-16 bg-coty-blue rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-coty-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
+              <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <img src={creativityIcon} alt="Creativity" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-coty-navy mb-4">Create Connection</h3>
               <p className="text-coty-gray">Beauty brings people together. We build bridges across cultures and communities through shared experiences.</p>
