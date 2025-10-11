@@ -464,7 +464,6 @@ export default function Home() {
                     alert(`Thank you for subscribing with ${emailInput.value}!`);
                     emailInput.value = '';
                     window.dispatchEvent(new CustomEvent('newsletterSubscribed', { detail: newSubscriber }));
-                    // In a real app, you would send this to a backend API
                     console.log('New subscriber:', newSubscriber);
                   } else {
                     alert('Please enter a valid email address.');
