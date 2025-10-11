@@ -11,6 +11,12 @@ import { useTypewriter } from "@/hooks/use-typewriter";
 // Import hero background image
 import ourstoryBg from "@/assets/ourstory.png";
 
+// Import custom icons
+import qualityIcon from '@/icons/quality.png';
+import customerFocusIcon from '@/icons/customerfocus.png';
+import sustainabilityIcon from '@/icons/sustainability.png';
+import innovationIcon from '@/icons/innovation.png';
+
 export default function OurStory() {
   const videoRef = useYouTubeAutoplay({ threshold: 0.6, rootMargin: '0px 0px -100px 0px' });
   
@@ -200,22 +206,22 @@ export default function OurStory() {
 
   const values = [
     {
-      icon: <Star className="h-12 w-12 text-yellow-500" />,
+      icon: qualityIcon,
       title: "Quality First",
       description: "We never compromise on quality, ensuring every product meets the highest standards."
     },
     {
-      icon: <Heart className="h-12 w-12 text-red-500" />,
+      icon: customerFocusIcon,
       title: "Customer Focus",
       description: "Our customers are at the heart of everything we do, driving our innovation and growth."
     },
     {
-      icon: <Globe className="h-12 w-12 text-blue-500" />,
+      icon: sustainabilityIcon,
       title: "Sustainability",
       description: "We're committed to environmentally responsible practices and sustainable product development."
     },
     {
-      icon: <Zap className="h-12 w-12 text-orange-500" />,
+      icon: innovationIcon,
       title: "Innovation",
       description: "We continuously innovate to bring cutting-edge solutions and exceptional products to our customers."
     }
@@ -337,7 +343,7 @@ export default function OurStory() {
               >
                 <div className="mb-6 flex justify-center">
                   <div className="p-4 rounded-full bg-gradient-to-br from-gray-50 to-blue-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
-                    {value.icon}
+                    <img src={value.icon} alt={value.title} className="h-12 w-12 object-contain" />
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-coty-navy mb-4">{value.title}</h3>

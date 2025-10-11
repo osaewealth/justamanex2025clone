@@ -12,6 +12,16 @@ import herobgImage from "@/assets/herobg.jpg";
 // Import hero background image
 import ourimpactBg from "@/assets/ourimpact.png";
 
+// Import custom icons
+import countriesIcon from '@/icons/countries.png';
+import customersIcon from '@/icons/customers.png';
+import suppliersIcon from '@/icons/suppliers.png';
+import employeesIcon from '@/icons/employees.png';
+import environmentalResponsibilityIcon from '@/icons/Environmental Responsibility.png';
+import communityDevelopmentIcon from '@/icons/Community Development.png';
+import qualityStandardsIcon from '@/icons/Qualitystandards.png';
+import innovationGrowthIcon from '@/icons/inoovandgrowth.png';
+
 export default function OurImpact() {
   const heroText = "OUR\nIMPACT";
   const { typewriterIndex } = useTypewriter({ 
@@ -150,25 +160,25 @@ export default function OurImpact() {
     {
       number: "9+",
       label: "Countries",
-      icon: <Globe className="h-8 w-8" />,
+      icon: countriesIcon,
       color: "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
     },
     {
       number: "5000+",
       label: "Customers",
-      icon: <Users className="h-8 w-8" />,
+      icon: customersIcon,
       color: "bg-green-100 text-green-600 group-hover:bg-green-200"
     },
     {
       number: "50+",
       label: "Suppliers",
-      icon: <TrendingUp className="h-8 w-8" />,
+      icon: suppliersIcon,
       color: "bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
     },
     {
       number: "1000+",
       label: "Employees",
-      icon: <Heart className="h-8 w-8" />,
+      icon: employeesIcon,
       color: "bg-red-100 text-red-600 group-hover:bg-red-200"
     }
   ];
@@ -177,25 +187,25 @@ export default function OurImpact() {
     {
       title: "Environmental Responsibility",
       description: "We're committed to reducing our environmental footprint through sustainable packaging and eco-friendly manufacturing processes.",
-      icon: <Leaf className="h-6 w-6" />,
+      icon: environmentalResponsibilityIcon,
       color: "bg-green-100 text-green-600"
     },
     {
       title: "Community Development",
       description: "Supporting local communities through employment opportunities and educational initiatives in Greater Accra and beyond.",
-      icon: <Building2 className="h-6 w-6" />,
+      icon: communityDevelopmentIcon,
       color: "bg-blue-100 text-blue-600"
     },
     {
       title: "Quality Standards",
       description: "Maintaining the highest quality standards while ensuring our products are safe for families and the environment.",
-      icon: <Award className="h-6 w-6" />,
+      icon: qualityStandardsIcon,
       color: "bg-yellow-100 text-yellow-600"
     },
     {
       title: "Innovation & Growth",
       description: "Continuously innovating our product range to meet evolving customer needs and market demands.",
-      icon: <Zap className="h-6 w-6" />,
+      icon: innovationGrowthIcon,
       color: "bg-purple-100 text-purple-600"
     }
   ];
@@ -305,8 +315,8 @@ export default function OurImpact() {
               >
                 <Card className="bg-white rounded-xl p-6 text-center h-full hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
                   <div className="text-coty-navy mb-4 flex justify-center">
-                    <div className={`p-3 rounded-full transition-all duration-300 group-hover:scale-110 transform ${stat.color}`}>
-                      {stat.icon}
+                    <div className="transition-all duration-300 group-hover:scale-110 transform">
+                      <img src={stat.icon} alt={stat.label} className="h-8 w-8 object-contain" />
                     </div>
                   </div>
                   <div className="text-4xl font-bold text-coty-navy mb-2 group-hover:text-coty-navy/80 transition-colors duration-300">
@@ -345,8 +355,8 @@ export default function OurImpact() {
                 }}
               >
                 <Card className="bg-white rounded-xl p-6 h-full hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
-                  <div className={`p-3 rounded-full w-fit mb-4 transition-all duration-300 group-hover:scale-110 transform ${initiative.color}`}>
-                    {initiative.icon}
+                  <div className="mb-4 transition-all duration-300 group-hover:scale-110 transform flex justify-center">
+                    <img src={initiative.icon} alt={initiative.title} className="h-12 w-12 object-contain" />
                   </div>
                   <h3 className="text-xl font-bold text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">{initiative.title}</h3>
                   <p className="text-coty-gray">{initiative.description}</p>

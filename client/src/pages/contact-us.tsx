@@ -12,6 +12,12 @@ import { useTypewriter } from "@/hooks/use-typewriter";
 // Import hero background image
 import contactusBg from "@/assets/contactus.png";
 
+// Import custom icons
+import addressIcon from '@/icons/address.png';
+import emailIcon from '@/icons/email.png';
+import businessHoursIcon from '@/icons/businesshours.png';
+import contactUsIcon from '@/icons/contact-us.png';
+
 export default function ContactUs() {
   const [isVisible, setIsVisible] = useState(false);
   const contactCardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -46,28 +52,28 @@ export default function ContactUs() {
 
   const contactInfo = [
     {
-      icon: <MapPin className="h-6 w-6" />,
+      icon: addressIcon,
       title: "Address",
       content: "4TH KINGDOM RD, OSHIYIE, ACCRA\nP.O.BOX ML 980, MALLAM",
       link: "https://maps.google.com",
       color: "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone",
-      content: "TEL: +233 303 943 842\nMobile: +233 550 434 576\nWhatsApp: 0 303 943 842",
-      link: "tel:+233303943842",
-      color: "bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
+      icon: emailIcon,
       title: "Email",
       content: "amanexcomltd@gmail.com",
       link: "mailto:amanexcomltd@gmail.com",
       color: "bg-red-100 text-red-600 group-hover:bg-red-200"
     },
     {
-      icon: <Clock className="h-6 w-6" />,
+      icon: contactUsIcon,
+      title: "Phone",
+      content: "TEL: +233 303 943 842\nMobile: +233 550 434 576\nWhatsApp: 0 303 943 842",
+      link: "tel:+233303943842",
+      color: "bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
+    },
+    {
+      icon: businessHoursIcon,
       title: "Business Hours",
       content: "Mon - Fri: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 3:00 PM\nSunday: Closed",
       color: "bg-blue-50 text-blue-500 group-hover:bg-blue-100"
@@ -175,8 +181,8 @@ export default function ContactUs() {
               >
                 <Card className="bg-white rounded-xl p-6 text-center h-full hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-2 border-transparent hover:border-coty-navy/20 group">
                   <div className="text-coty-navy mb-4 flex justify-center">
-                    <div className={`p-3 rounded-full transition-all duration-300 group-hover:scale-110 transform ${info.color}`}>
-                      {info.icon}
+                    <div className={`transition-all duration-300 group-hover:scale-110 transform`}>
+                      <img src={info.icon} alt={info.title} className="h-8 w-8 object-contain" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-coty-navy mb-3 group-hover:text-coty-navy/80 transition-colors duration-300">{info.title}</h3>
