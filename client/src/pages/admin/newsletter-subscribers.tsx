@@ -20,7 +20,28 @@ export default function NewsletterSubscribers() {
     const loadedSubscribers = NewsletterService.getAllSubscribers();
     setSubscribers(loadedSubscribers);
     setLoading(false);
-  }, []);
+
+    // Listen for new subscriptions
+    const handleNewSubscription = () => {
+      const updatedSubscribers = NewsletterService.getAllSubscribers();
+      setSubscribers(updatedSubscribers);
+    };
+
+    window.addEventListener('newsletterSubscribed', handleNewSubscription);
+    
+    // Also check periodically for updates (in case of subscriptions from other tabs)
+    const interval = setInterval(() => {
+      const updatedSubscribers = NewsletterService.getAllSubscribers();
+      if (updatedSubscribers.length !== subscribers.length) {
+        setSubscribers(updatedSubscribers);
+      }
+    }, 5000);
+
+    return () => {
+      window.removeEventListener('newsletterSubscribed', handleNewSubscription);
+      clearInterval(interval);
+    };
+  }, [subscribers.length]);
 
   const handleExportCSV = () => {
     const csvContent = NewsletterService.exportToCSV(subscribers);

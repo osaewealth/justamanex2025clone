@@ -463,6 +463,8 @@ export default function Home() {
                     const newSubscriber = NewsletterService.addSubscriber(emailInput.value);
                     alert(`Thank you for subscribing with ${emailInput.value}!`);
                     emailInput.value = '';
+                    // Dispatch a custom event to notify other components of the new subscription
+                    window.dispatchEvent(new CustomEvent('newsletterSubscribed', { detail: newSubscriber }));
                     // In a real app, you would send this to a backend API
                     console.log('New subscriber:', newSubscriber);
                   } else {

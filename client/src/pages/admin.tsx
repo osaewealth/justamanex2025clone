@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Eye, EyeOff, FileText, Briefcase, Settings as SettingsIcon, Mail } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { 
+  Briefcase, 
+  FileText, 
+  Mail, 
+  Settings as SettingsIcon, 
+  Plus, 
+  Edit, 
+  Trash2, 
+  Eye,
+  EyeOff,
+  Download,
+  X,
+  Save
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import StandardHeader from "@/components/StandardHeader";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import NewsletterService from "@/services/newsletterService";
 
 // Input sanitization utility
 const sanitizeInput = (input: string): string => {
   return input.trim().replace(/[<>]/g, '');
 };
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import StandardHeader from '@/components/StandardHeader';
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
 
 interface JobOpening {
   id: number;
@@ -1105,6 +1119,50 @@ function BlogManagement({
 
 // Newsletter Management Component
 function NewsletterManagement() {
+  const [subscribers, setSubscribers] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Load subscribers
+    const loadedSubscribers = NewsletterService.getAllSubscribers();
+    setSubscribers(loadedSubscribers);
+    setLoading(false);
+
+    // Listen for new subscriptions
+    const handleNewSubscription = () => {
+      const updatedSubscribers = NewsletterService.getAllSubscribers();
+      setSubscribers(updatedSubscribers);
+    };
+
+    window.addEventListener('newsletterSubscribed', handleNewSubscription);
+    
+    // Also check periodically for updates (in case of subscriptions from other tabs)
+    const interval = setInterval(() => {
+      const updatedSubscribers = NewsletterService.getAllSubscribers();
+      if (updatedSubscribers.length !== subscribers.length) {
+        setSubscribers(updatedSubscribers);
+      }
+    }, 5000);
+
+    return () => {
+      window.removeEventListener('newsletterSubscribed', handleNewSubscription);
+      clearInterval(interval);
+    };
+  }, [subscribers.length]);
+
+  const handleExportCSV = () => {
+    const csvContent = NewsletterService.exportToCSV(subscribers);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'newsletter_subscribers.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div>
       <div className="text-center mb-8">
@@ -1121,14 +1179,24 @@ function NewsletterManagement() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-gray-600">
-              <p><strong>Total Subscribers:</strong> 0</p>
-              <Button 
-                className="mt-4 w-full bg-coty-navy hover:bg-coty-navy/90"
-                onClick={() => window.location.href = '/admin/newsletter-subscribers'}
-              >
-                <Mail className="w-4 h-4 mr-2" />
-                View & Export Subscribers
-              </Button>
+              <p><strong>Total Subscribers:</strong> {subscribers.length}</p>
+              <div className="flex gap-2 mt-4">
+                <Button 
+                  className="bg-coty-navy hover:bg-coty-navy/90"
+                  onClick={() => window.location.href = '/admin/newsletter-subscribers'}
+                >
+                  <Eye className="w-4 h-4 mr-2" />
+                  View Subscribers
+                </Button>
+                <Button 
+                  className="bg-green-600 hover:bg-green-700"
+                  onClick={handleExportCSV}
+                  disabled={subscribers.length === 0}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Export to CSV
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -1150,9 +1218,9 @@ function NewsletterManagement() {
                 required
                 rows={10}
               />
-              <Button className="bg-coty-navy hover:bg-coty-navy/90">
+              <Button className="bg-coty-navy hover:bg-coty-navy/90" disabled={subscribers.length === 0}>
                 <Mail className="w-4 h-4 mr-2" />
-                Send Newsletter
+                Send Newsletter ({subscribers.length} recipients)
               </Button>
             </CardContent>
           </Card>
